@@ -1,9 +1,9 @@
-package org.example.tanques;
+package org.example.juego.entidades.tanques;
 
-public class TanqueAmarillo extends TanquePlantaminas {
+public class TanqueNegro extends TanquePlantaminas {
 
-    public TanqueAmarillo() {
-        super(1, 1, 1, 1, 1.5, 4, 4);
+    public TanqueNegro() {
+        super(2, 2, 3, 3, 2, 1, 1);
     }
 
     @Override

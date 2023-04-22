@@ -1,4 +1,4 @@
-package org.example.tanques;
+package org.example.juego.entidades.tanques;
 
 public class TanqueVerdeOscuro extends TanqueSinMinas {
     public TanqueVerdeOscuro() {

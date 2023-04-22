@@ -1,4 +1,4 @@
-package org.example.utils;
+package org.example.juego.utils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
