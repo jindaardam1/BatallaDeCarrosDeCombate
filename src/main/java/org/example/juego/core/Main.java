@@ -9,11 +9,27 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Tanques pium pium");
 
-        //Ventana ventana = new Ventana();
-        //ventana.setVisible(true);
+        Ventana ventana = new Ventana();
+        ventana.setVisible(true);
 
-        probarMapaProcedural();
+        //probarMapaProcedural();
+
+        MapaProcedural mapa = new MapaProcedural(20, 25);
+        mapa.generarMapa();
+        MapaGrafico mapaPanel = new MapaGrafico(mapa.getMapa());
+        ventana.add(mapaPanel);
     }
+
+
+
+
+
+
+
+
+
+
+
 
     private static void probarMapaProcedural() {
         MapaProcedural mapa = new MapaProcedural(0, 0);

@@ -19,7 +19,7 @@ public class Ventana extends JFrame {
     public Ventana() {
         // Configura la ventana
         setTitle("Batalla de carros de combate");
-        setSize(800, 600);
+        setSize(1920, 1080);
         setLocationRelativeTo(null); // Centra la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -43,9 +43,9 @@ public class Ventana extends JFrame {
             MouseHandler mouseHandler = new MouseHandler();
 
         // Añadir los listeners a la ventana
-        addKeyListener((KeyListener) keyboardHandler);
+        /*addKeyListener((KeyListener) keyboardHandler);
         addMouseListener((MouseListener) mouseHandler);
-        addMouseMotionListener((MouseMotionListener) mouseHandler);
+        addMouseMotionListener((MouseMotionListener) mouseHandler);*/
 
 
 
