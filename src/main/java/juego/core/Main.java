@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import juego.utils.TipoCasilla;
+
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -15,25 +15,41 @@ import java.io.ObjectInputStream;
 public class Main extends Application {
 
     public static void main(String[] args) {
+        // Inicia el programa llamando al método start
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+
         System.out.println("Tanques pium pium");
 
+        // Crea una instancia de la clase Ventana y llama a su método start() pasando el objeto Stage
         Ventana ventana = new Ventana();
         ventana.start(primaryStage);
 
-        // probarMapaProcedural();
-
-        MapaProcedural mapa = new MapaProcedural(39, 39);
+        // Crea una instancia de la clase MapaProcedural con un tamaño de (X, Y) y llama a su método generarMapa()
+        MapaProcedural mapa = new MapaProcedural(38, 39);
         mapa.generarMapa();
+        mapa.imprimeMapaProcedural(mapa);
+
+        // Crea una instancia de la clase MapaGrafico y le pasa el mapa generado aleatoriamente como parámetro
         MapaGrafico mapaPanel = new MapaGrafico(mapa.getMapa());
-        StackPane root = new StackPane(mapaPanel);
 
-        primaryStage.setScene(new Scene(root, 800, 800));
+        // Crea un StackPane que contiene el mapaPanel
+        StackPane contenedorMapa = new StackPane(mapaPanel);
+
+        // Crea una nueva escena con el StackPane y un tamaño de 800x800
+        Scene escenaMapaAleatorio = new Scene(contenedorMapa, 800, 800);
+
+        // Establece la escena como la escena principal del objeto Stage
+        primaryStage.setScene(escenaMapaAleatorio);
+
+        // Muestra la ventana
         primaryStage.show();
+
+
     }
 
 
@@ -41,38 +57,7 @@ public class Main extends Application {
 
 
 
-
-
-
-
-
-
-    private static void probarMapaProcedural() {
-        MapaProcedural mapa = new MapaProcedural(0, 0);
-        for (int i = 0; i < 30; i++) {
-            mapa.generarMapa();
-            for (TipoCasilla [] casillas : mapa.getMapa()) {
-                for (TipoCasilla casilla : casillas) {
-                    switch (casilla) {
-                        case HOYO -> System.out.printf("%11s", "\u001B[34mXX \u001B[0m");
-                        case NADA -> System.out.printf("%11s", "\u001B[32mXX \u001B[0m");
-                        case PARED -> System.out.printf("%11s", "\u001B[33mXX \u001B[0m");
-                        case SPAWN_JUGADOR -> System.out.printf("%11s", "\u001B[46mXX\u001B[0m ");
-                        default -> System.out.printf("%11s", "\u001B[31mXX \u001B[0m");
-                    }
-                }
-                System.out.println();
-            }
-            System.out.println();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private static SerializadorMapa desserializarMapa(String nombreArchivo) {
+    public static SerializadorMapa desserializarMapa(String nombreArchivo) {
         SerializadorMapa listaPersonas = null;
         try (FileInputStream archivoEntrada = new FileInputStream(nombreArchivo);
              ObjectInputStream entrada = new ObjectInputStream(archivoEntrada)) {

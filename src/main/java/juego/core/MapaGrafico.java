@@ -26,24 +26,28 @@ public class MapaGrafico extends Region {
         return mapa.length * altoCelda;
     }*/
 
+    //dibuja el mapa
     @Override
     protected void layoutChildren() {
-        // Dibuja las celdas del mapa
+        // Se crea un objeto Canvas del tamaño de la región
         Canvas canvas = new Canvas(getWidth(), getHeight());
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        // Contexto gráfico del Canvas
+        GraphicsContext lienzo = canvas.getGraphicsContext2D();
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
                 int x = j * anchoCelda;
                 int y = i * altoCelda;
                 switch (mapa[i][j]) {
-                    case NADA -> gc.setFill(Color.WHITE);
-                    case PARED -> gc.setFill(Color.BLACK);
-                    case HOYO -> gc.setFill(Color.BLUE);
+                    case NADA -> lienzo.setFill(Color.WHITE);
+                    case PARED -> lienzo.setFill(Color.BLACK);
+                    case HOYO -> lienzo.setFill(Color.BLUE);
                 }
-
-                gc.fillRect(x, y, anchoCelda, altoCelda);
+                // Se dibuja la celda
+                lienzo.fillRect(x, y, anchoCelda, altoCelda);
             }
         }
+        // Se establece el Canvas como el único hijo de la región
         getChildren().setAll(canvas);
     }
 }

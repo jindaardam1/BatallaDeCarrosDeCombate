@@ -84,6 +84,47 @@ public class MapaProcedural {
             }
         }
     }
+    /*Representación por terminal del mapa*/
+    public  void imprimeMapaProcedural(MapaProcedural mapa) {
 
+            for (TipoCasilla [] casillas : mapa.getMapa()) {
+                for (TipoCasilla casilla : casillas) {
+                    switch (casilla) {
+                        case HOYO -> System.out.printf("%11s", "\u001B[34mXX \u001B[0m");
+                        case NADA -> System.out.printf("%11s", "\u001B[32mXX \u001B[0m");
+                        case PARED -> System.out.printf("%11s", "\u001B[33mXX \u001B[0m");
+                        case SPAWN_JUGADOR -> System.out.printf("%11s", "\u001B[46mXX\u001B[0m ");
+                        default -> System.out.printf("%11s", "\u001B[31mXX \u001B[0m");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+
+    public  void generadorDeMapasDePrueba() {
+        MapaProcedural mapa = new MapaProcedural(0, 0);
+        for (int i = 0; i < 30; i++) {
+            mapa.generarMapa();
+            for (TipoCasilla [] casillas : mapa.getMapa()) {
+                for (TipoCasilla casilla : casillas) {
+                    switch (casilla) {
+                        case HOYO -> System.out.printf("%11s", "\u001B[34mXX \u001B[0m");
+                        case NADA -> System.out.printf("%11s", "\u001B[32mXX \u001B[0m");
+                        case PARED -> System.out.printf("%11s", "\u001B[33mXX \u001B[0m");
+                        case SPAWN_JUGADOR -> System.out.printf("%11s", "\u001B[46mXX\u001B[0m ");
+                        default -> System.out.printf("%11s", "\u001B[31mXX \u001B[0m");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
