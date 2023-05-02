@@ -50,4 +50,5 @@ public class MapaGrafico extends Region {
         // Se establece el Canvas como el único hijo de la región
         getChildren().setAll(canvas);
     }
+
 }
