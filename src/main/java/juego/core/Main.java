@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import juego.input.InputManager;
 
 
 import java.io.FileInputStream;
@@ -18,63 +19,43 @@ import java.io.ObjectInputStream;
  * @author Aitor Zubillaga y Jagoba Inda
  */
 public class Main extends Application {
-    private Circulo circulo;
+
     public static void main(String[] args) {
         // Inicia el programa llamando al método start
         launch(args);
+
     }
 
     @Override
     public void start(Stage escenaPrincipal) throws Exception {
 
-
         System.out.println("Tanques pium pium");
-        Group grupoRoot = new Group();
-        // Crea una instancia de la clase Ventana
-        Ventana ventana = new Ventana(escenaPrincipal,grupoRoot);
+        Group grupo = new Group();
+        Ventana ventana = new Ventana(escenaPrincipal, grupo);
 
+        MapaProcedural mapaPrcedural = new MapaProcedural(38, 39);
+        mapaPrcedural.generarMapa();
+        mapaPrcedural.imprimeMapaProcedural(mapaPrcedural);
+        MapaGrafico mapa = new MapaGrafico(mapaPrcedural.getMapa());
 
-        // Crea una instancia de la clase MapaProcedural con un tamaño de (X, Y) y llama a su método generarMapa()
-        MapaProcedural mapa = new MapaProcedural(38, 39);
-        mapa.generarMapa();
-        mapa.imprimeMapaProcedural(mapa);
-
-        // Crea una instancia de la clase MapaGrafico y le pasa el mapa generado aleatoriamente como parámetro
-        MapaGrafico mapaPanel = new MapaGrafico(mapa.getMapa());
-
-
-        circulo = new Circulo();
-
-        // Crear el pane y agregar el círculo
-        Pane panel = new Pane();
-        panel.getChildren().add(circulo);
+        Scene escenaPrueba = new Scene(mapa, 800, 800);
 
 
 
-        // Crea una nueva escena con el StackPane y un tamaño de 800x800
-        Scene escenaMapaAleatorio = new Scene(mapaPanel, 800, 800);
+        Circle circulo = new Circle(60,60,60,Color.RED);
+        Pane panelCiruclo = new Pane();
+        panelCiruclo.getChildren().add(circulo);
+        Scene escenaPrueba2 = new Scene(panelCiruclo, 400, 400);
 
-        // Establece la escena como la escena principal del objeto Stage
-        escenaPrincipal.setScene(escenaMapaAleatorio);
 
+        escenaPrincipal.setScene(escenaPrueba2);
+        escenaPrincipal.setScene(escenaPrueba);
 
         escenaPrincipal.show();
 
     }
-
-
-
-
-
-    public static SerializadorMapa desserializarMapa(String nombreArchivo) {
-        SerializadorMapa listaPersonas = null;
-        try (FileInputStream archivoEntrada = new FileInputStream(nombreArchivo);
-             ObjectInputStream entrada = new ObjectInputStream(archivoEntrada)) {
-            listaPersonas = (SerializadorMapa) entrada.readObject();
-            System.out.println("La lista de personas se ha des serializado correctamente del archivo " + nombreArchivo);
-        } catch (Exception e) {
-            System.out.println("Ocurrió un error al des serializar la lista de personas: " + e.getMessage());
-        }
-        return listaPersonas;
+    @Override
+    public void stop() throws Exception {
+        System.exit(0);
     }
 }

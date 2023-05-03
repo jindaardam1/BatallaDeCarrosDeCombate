@@ -38,6 +38,17 @@ public class SerializadorMapa implements Serializable {
             e.printStackTrace();
         }
     }
+    public static SerializadorMapa desserializarMapa(String nombreArchivo) {
+        SerializadorMapa listaPersonas = null;
+        try (FileInputStream archivoEntrada = new FileInputStream(nombreArchivo);
+             ObjectInputStream entrada = new ObjectInputStream(archivoEntrada)) {
+            listaPersonas = (SerializadorMapa) entrada.readObject();
+            System.out.println("La lista de personas se ha des serializado correctamente del archivo " + nombreArchivo);
+        } catch (Exception e) {
+            System.out.println("Ocurrió un error al des serializar la lista de personas: " + e.getMessage());
+        }
+        return listaPersonas;
+    }
 
     private String[] obtenerValores(String cadena) {
         return cadena.split("[,\\s-]+");

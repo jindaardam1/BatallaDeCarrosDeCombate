@@ -8,10 +8,15 @@ public class Circulo extends Entidad{
     private Circle circulo;
     public Circulo(){
         super(10,10,10);
-        circulo = new Circle(50, 50, 30, Color.RED);
+        circulo = new Circle(250, 250, 250, Color.RED);
 
 
     }
+        public Circle getJugadorGrafico(){
+
+        return circulo;
+
+        }
     public  void moveCircleUp() {
         circulo.setCenterY(circulo.getCenterY() - 10);
     }

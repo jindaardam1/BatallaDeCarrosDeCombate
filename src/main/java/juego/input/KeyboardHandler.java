@@ -3,11 +3,13 @@ package juego.input;
 import javafx.scene.input.KeyCode;
 
 public class KeyboardHandler {
+
     public void handleKeyDown(KeyCode keyCode) {
         // Manejar el evento de tecla pulsada
         switch (keyCode) {
             case UP:
                 System.out.println("Se pulso Up");
+
                 // Mover el personaje hacia arriba
                 break;
             case DOWN:
