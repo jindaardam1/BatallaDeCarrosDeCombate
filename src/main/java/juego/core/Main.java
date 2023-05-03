@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import juego.input.InputManager;
+import juego.utils.PantallaUtil;
 
 
 import java.io.FileInputStream;
@@ -28,6 +29,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage escenaPrincipal) throws Exception {
+        double ancho = PantallaUtil.obtenerAnchoPantalla();
+        double altura = PantallaUtil.obtenerAlturaPantalla();
+        System.out.println("Ancho de pantalla: " + ancho);
+        System.out.println("Altura de pantalla: " + altura);
+
+
 
         System.out.println("Tanques pium pium");
         Group grupo = new Group();
