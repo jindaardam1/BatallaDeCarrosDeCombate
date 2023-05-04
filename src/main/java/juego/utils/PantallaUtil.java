@@ -1,5 +1,6 @@
 package juego.utils;
 
+import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 
@@ -33,6 +34,14 @@ public class PantallaUtil {
     public static double obtenerAlturaDisponiblePantalla() {
         Rectangle2D dimensiones = obtenerDimensionesPantalla();
         return dimensiones.getHeight() - dimensiones.getMinY();
+    }
+
+    public static Point2D obtenerCentroPantalla() {
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getBounds();
+        double centerX = bounds.getMinX() + (bounds.getWidth() / 2);
+        double centerY = bounds.getMinY() + (bounds.getHeight() / 2);
+        return new Point2D(centerX, centerY);
     }
 
 }

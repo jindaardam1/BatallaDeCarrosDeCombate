@@ -1,42 +1,50 @@
 package juego.core;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import juego.utils.PantallaUtil;
 
 public class MenuPrincipal extends Application {
 
-    private static final double ANCHO_VENTANA = PantallaUtil.obtenerAnchoPantalla() / 2;
-    private static final double ALTO_VENTANA = PantallaUtil.obtenerAlturaPantalla() / 2;
+    private static final  double ANCHO_VENTANA = PantallaUtil.obtenerAnchoDisponiblePantalla();
+    private static  final double ALTO_VENTANA = PantallaUtil.obtenerAlturaDisponiblePantalla() ;
+    private static  double ANCHO_VENTANA_ACTUAL = ANCHO_VENTANA ;
+    private static   double ALTO_VENTANA_ACUTAL = ALTO_VENTANA ;
 
+    double colWidth = ANCHO_VENTANA_ACTUAL * 0.5;
+    double rowHeight = ALTO_VENTANA_ACUTAL * 0.3333;
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Menu Principal");
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
 
+
+
         // crear paneles para los botones
         GridPane gridPane = new GridPane();
 
+        gridPane.setGridLinesVisible(true);//Sirve para ver los bordes
+
         // Crear las restricciones para las columnas
         ColumnConstraints col1 = new ColumnConstraints();
-        col1.setPercentWidth(50);
+        col1.setPrefWidth(colWidth);
         ColumnConstraints col2 = new ColumnConstraints();
-        col2.setPercentWidth(50);
+        col2.setPrefWidth(colWidth);
 
         // Crear las restricciones para las filas
         RowConstraints row1 = new RowConstraints();
-        row1.setPercentHeight(33.33);
+        row1.setPrefHeight(rowHeight);
         RowConstraints row2 = new RowConstraints();
-        row2.setPercentHeight(33.33);
+        row2.setPrefHeight(rowHeight);
         RowConstraints row3 = new RowConstraints();
-        row3.setPercentHeight(33.33);
+        row3.setPrefHeight(rowHeight);
 
         // Agregar las restricciones a las columnas del GridPane
         gridPane.getColumnConstraints().addAll(col1, col2);
@@ -53,8 +61,9 @@ public class MenuPrincipal extends Application {
         // agregar imagen del logo
         Image logoImage = new Image("C:\\_DiscoDatos-MA\\ASIGNATURAS\\PROGRAMACIÖN\\PROYECTO TANQUES\\BatallaDeCarrosDeCombate\\src\\resources\\imagenes\\VentanaPrincipal\\logo.png");
         ImageView logoImageView = new ImageView(logoImage);
-        logoImageView.setFitWidth(ANCHO_VENTANA);
-        logoImageView.setFitHeight(ALTO_VENTANA/3);
+        logoImageView.setFitWidth(ANCHO_VENTANA_ACTUAL);
+        logoImageView.setFitHeight(ALTO_VENTANA_ACUTAL/3);
+
 
         // agregar botones al grid pane
 
@@ -65,13 +74,20 @@ public class MenuPrincipal extends Application {
         gridPane.add(logoImageView, 0, 0, 2, 1);
 
         // ajustar estilo de los botones
-        campaignButton.setStyle("-fx-font-size: 24pt;");
-        survivalButton.setStyle("-fx-font-size: 24pt;");
-        exitButton.setStyle("-fx-font-size: 24pt;");
-        statsButton.setStyle("-fx-font-size: 24pt;");
+        campaignButton.setStyle("-fx-font-size: 24px;");
+        survivalButton.setStyle("-fx-font-size: 24px;");
+        exitButton.setStyle("-fx-font-size: 24px;");
+        statsButton.setStyle("-fx-font-size: 24px;");
+
+
 
         //configura la alineación de los campos
+
         gridPane.setAlignment(Pos.CENTER);
+        GridPane.setHalignment(campaignButton, Pos.CENTER.getHpos());
+        GridPane.setHalignment(survivalButton, Pos.CENTER.getHpos());
+        GridPane.setHalignment(exitButton, Pos.CENTER.getHpos());
+        GridPane.setHalignment(statsButton, Pos.CENTER.getHpos());
 
 
 
@@ -89,11 +105,48 @@ public class MenuPrincipal extends Application {
         root.getChildren().addAll(gridPane);
 
         // crear escena y agregar al stage
-        Scene scene = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
+        Scene scene = new Scene(root, ANCHO_VENTANA_ACTUAL, ALTO_VENTANA_ACUTAL);
         primaryStage.setScene(scene);
         scene.getStylesheets().add("C:\\_DiscoDatos-MA\\ASIGNATURAS\\PROGRAMACIÖN\\PROYECTO TANQUES\\BatallaDeCarrosDeCombate\\src\\resources\\css\\fondoMenuPrincipal.css");
         primaryStage.show();
+
+
+//        //carga la imagen del boton
+//        Image botonImage = new Image("C:\\_DiscoDatos-MA\\ASIGNATURAS\\PROGRAMACIÖN\\PROYECTO TANQUES\\BatallaDeCarrosDeCombate\\src\\resources\\imagenes\\VentanaPrincipal\\botonPH.png");
+//        ImageView botonImageView = new ImageView(botonImage);
+//
+//        botonImageView.setFitHeight(0);
+//        botonImageView.setFitWidth(0);
+//
+//        exitButton.setGraphic(botonImageView);
+//        campaignButton.setGraphic(botonImageView);
+//        statsButton.setGraphic(botonImageView);
+//        survivalButton.setGraphic(botonImageView);
+
+            //hace que cuando sales de pantalla completa se coloque a la resolucion deseada
+        primaryStage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+
+                this.ANCHO_VENTANA_ACTUAL = ANCHO_VENTANA_ACTUAL/2;
+                this.ALTO_VENTANA_ACUTAL = ALTO_VENTANA_ACUTAL/2;
+                primaryStage.setWidth(ANCHO_VENTANA_ACTUAL);
+                primaryStage.setHeight(ALTO_VENTANA_ACUTAL);
+                logoImageView.setFitWidth(ANCHO_VENTANA_ACTUAL);
+                logoImageView.setFitHeight(ALTO_VENTANA_ACUTAL/3);
+
+
+
+                //coloca la ventana en el medio
+                double centerX = PantallaUtil.obtenerCentroPantalla().getX();
+                double centerY = PantallaUtil.obtenerCentroPantalla().getY();
+                primaryStage.setX(centerX - ANCHO_VENTANA_ACTUAL/2);
+                primaryStage.setY(centerY - ALTO_VENTANA_ACUTAL/2);
+
+            }
+        });
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
