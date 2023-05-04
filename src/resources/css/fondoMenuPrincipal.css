@@ -1,4 +1,11 @@
+/* Establecer el tamaño del fondo al 100% del ancho y alto de la pantalla */
 .root {
-    -fx-background-image: url(../imagenes/VentanaPrincipal/fondo.jpg);
     -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-image: url(../imagenes/VentanaPrincipal/fondo.jpg);
+}
+
+/* Evitar que el contenido se desplace debajo del fondo */
+.scene {
+    -fx-background-color: transparent;
 }
