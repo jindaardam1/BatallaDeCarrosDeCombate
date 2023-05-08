@@ -42,7 +42,6 @@ public class Main extends Application {
 
         MapaProcedural mapaPrcedural = new MapaProcedural(38, 39);
         mapaPrcedural.generarMapa();
-        mapaPrcedural.imprimeMapaProcedural(mapaPrcedural);
         MapaGrafico mapa = new MapaGrafico(mapaPrcedural.getMapa());
 
         Scene escenaPrueba = new Scene(mapa, 800, 800);
