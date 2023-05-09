@@ -52,8 +52,8 @@ public class PuebasMenu extends Application {
         context.strokeText("Batalla De Carros De Combate", 61, 52);
 
         // Creating an image object
-        Image tanque = new Image("resources/imagenes/ImagenesPruebas/tanque.jpg)");
-        Image hitler = new Image("C:\\_DiscoDatos-MA\\ASIGNATURAS\\PROGRAMACIÖN\\PROYECTO TANQUES\\BatallaDeCarrosDeCombate\\src\\resources\\imagenes\\ImagenesPruebas\\hitler.jpg");
+        Image tanque = new Image(getClass().getResourceAsStream("imagenes/ImagenesPruebas/tanque.jpg"));
+        Image hitler = new Image(getClass().getResourceAsStream("imagenes/ImagenesPruebas/hitler.jpg"));
 
         // Creating a button for playing the game
         Button playButton = new Button("PULSE AQUI PARA JUGAR");

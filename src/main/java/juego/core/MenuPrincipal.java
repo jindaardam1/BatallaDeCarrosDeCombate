@@ -1,22 +1,16 @@
 package juego.core;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import juego.utils.PantallaUtil;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 
 public class MenuPrincipal extends Application {
 
@@ -83,10 +77,10 @@ public class MenuPrincipal extends Application {
         gridPane.add(logoImageView, 0, 0, 2, 1);
 
         // ajustar estilo de los botones
-        campaignButton.setStyle("-fx-font-size: 24px;");
-        survivalButton.setStyle("-fx-font-size: 24px;");
-        exitButton.setStyle("-fx-font-size: 24px;");
-        statsButton.setStyle("-fx-font-size: 24px;");
+        campaignButton.setStyle("-fx-font-size: 48px;");
+        survivalButton.setStyle("-fx-font-size: 48px;");
+        exitButton.setStyle("-fx-font-size: 48px;");
+        statsButton.setStyle("-fx-font-size: 48px;");
 
 
         //configura la alineación de los campos
@@ -115,19 +109,16 @@ public class MenuPrincipal extends Application {
         primaryStage.show();
 
 
-        //carga la imagen del boton
-        try {
-            File fontFile = new File("C:\\_DiscoDatos-MA\\ASIGNATURAS\\PROGRAMACIÖN\\PROYECTO TANQUES\\BatallaDeCarrosDeCombate\\src\\main\\resources\\tipografia\\CStipo.ttf");
-            Font fontCS = Font.loadFont(new FileInputStream(fontFile), 12);
-            exitButton.setFont(fontCS);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-//        exitButton.setTextFill(Color.WHITE);
-//        exitButton.setStyle("-fx-background-color: transparent;");
-//        exitButton.setPrefSize(120, 40);
 
+
+
+
+
+        //asigna las funcionalidades a los botones
+        exitButton.setOnAction(e -> {
+            // cerrar la ventana principal
+            primaryStage.close();
+        });
 
         //hace que cuando sales de pantalla completa se coloque a la resolucion deseada
         primaryStage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
@@ -146,6 +137,15 @@ public class MenuPrincipal extends Application {
                 double centerY = PantallaUtil.obtenerCentroPantalla().getY();
                 primaryStage.setX(centerX - ANCHO_VENTANA_ACTUAL / 2);
                 primaryStage.setY(centerY - ALTO_VENTANA_ACUTAL / 2);
+
+                //ajusta el tamaño de los botones
+                campaignButton.setStyle("-fx-font-size: 24px;");
+                survivalButton.setStyle("-fx-font-size: 24px;");
+                exitButton.setStyle("-fx-font-size: 24px;");
+                statsButton.setStyle("-fx-font-size: 24px;");
+
+
+
 
             }
         });
