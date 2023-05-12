@@ -1,21 +1,14 @@
 package juego.core;
 
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import juego.input.InputManager;
-import juego.input.KeyboardHandler;
 
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-
-import static jdk.jfr.FlightRecorder.addListener;
 
 
 public class Ventana extends Main  {
@@ -41,11 +34,6 @@ public  Ventana(Stage escenaPrimaria, Group grupo) {
 
     // Crear la escena con el Group como contenido y las dimensiones de la ventana
     escena = new Scene(grupo, 800, 800);
-
-    //Vincula la escena con los inputs del teclado
-    KeyboardHandler keyboardHandler = new KeyboardHandler();
-    escena.setOnKeyPressed(event -> keyboardHandler.handleKeyDown(event.getCode()));
-    escena.setOnKeyReleased(event -> keyboardHandler.handleKeyUp(event.getCode()));
 
 
 
