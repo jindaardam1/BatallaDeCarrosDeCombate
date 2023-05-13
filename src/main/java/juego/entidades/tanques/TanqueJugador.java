@@ -2,7 +2,7 @@ package juego.entidades.tanques;
 
 public class TanqueJugador extends TanquePlantaminas {
 
-    public TanqueJugador() {
+    public TanqueJugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int balas, int velocidad, int MAXIMO_MINAS, int minas) {
         super(1, 1, 5, 5, 1, 3, 3);
     }
 

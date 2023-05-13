@@ -2,6 +2,7 @@ module com.example.pruebafx {
     requires javafx.controls;
     requires javafx.fxml;
     requires jdk.jfr;
+    requires java.desktop;
 
 
     opens com.example.pruebafx to javafx.fxml;

@@ -1,5 +1,6 @@
 package juego.core;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -7,11 +8,14 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import juego.input.InputManager;
 import juego.utils.PantallaUtil;
@@ -21,12 +25,10 @@ import java.lang.reflect.GenericArrayType;
 import java.util.Objects;
 
 public class CampoDeBatalla extends Application {
-    private static final double ANCHO_VENTANA = PantallaUtil.obtenerAnchoDisponiblePantalla();
-    private static final double ALTO_VENTANA = PantallaUtil.obtenerAlturaDisponiblePantalla();
-    private GraphicsContext graficos;
-    private Group root;
+    private static final double ANCHO_VENTANA = 1920;
+    private static final double ALTO_VENTANA = 1080;
     private Scene escena;
-    private Canvas lienzo;
+    private StackPane contenedorPanel;
     private GridPane panel;
     private TipoCasilla[][] casillas;
 
@@ -34,6 +36,10 @@ public class CampoDeBatalla extends Application {
     private Image imgHoyo;
     private Image imgPared;
     private Image imgOtro;
+    private Jugador jugador;
+    private Group root;
+    private Canvas lienzo;
+    private GraphicsContext graficos;
 
     public static void main(String[] args) {
         launch(args);
@@ -46,26 +52,56 @@ public class CampoDeBatalla extends Application {
         ventana.setScene(escena);
         ventana.setTitle("CampoDeBatalla");
         ventana.show();
+        cicloJuego();
 
     }
+    
+
+    public void cicloJuego(){
+        long tiempoInicial = System.nanoTime();
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long tiempoActual) {
+                double t = (tiempoActual - tiempoInicial) / 1000000000.0;
+
+
+                actualizarEstado();
+                pintar();
+
+            }
+        };
+        animationTimer.start();
+    }
+
+
+    public void actualizarEstado(){
+        jugador.mover();
+    };
 
     public void inizializarComponentes() {
+        jugador =  new Jugador(1,2,3,4,2,10,3);
+        root = new Group();
+        contenedorPanel = new StackPane();
+        lienzo = new Canvas(1920,1080);
+        graficos = lienzo.getGraphicsContext2D();
         panel = new GridPane();
-        StackPane contenedorPanel = new StackPane();
-
         contenedorPanel.getChildren().add(panel);
         contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
 
-        escena = new Scene(contenedorPanel, ANCHO_VENTANA, ALTO_VENTANA);
 
-        pintarEscenario(panel); // Llamar al método después de agregar el panel a la escena
+
+        escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
+        pintarEscenario(panel);
+
+        root.getChildren().add(contenedorPanel);
+        root.getChildren().add(lienzo);
+        ponerFondo();
         panel.setGridLinesVisible(true);
-        // Crear un ImageView con la imagen de fondo
-        ponerFondo(contenedorPanel);
+
 
     }
 
-    private void ponerFondo(StackPane contenedorPanel) {
+    private void ponerFondo() {
         ImageView fondo = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png"))));
         fondo.fitWidthProperty().bind(escena.widthProperty());
         fondo.fitHeightProperty().bind(escena.heightProperty());
@@ -73,6 +109,23 @@ public class CampoDeBatalla extends Application {
         fondo.toBack();
     }
 
+
+
+
+    private void pintar() {
+        Image imagenFondo= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png")));
+        graficos.drawImage(imagenFondo,0,0);
+        Image imagenMapa = fotoDeGridPane(panel);
+        graficos.drawImage(imagenMapa,0,0);
+        jugador.pintar(graficos);
+    }
+
+
+
+    public void gestionEventos() {
+        escena.setOnKeyPressed(new InputManager());
+        escena.setOnKeyReleased(new InputManager());
+    }
 
     public void pintarEscenario(GridPane gridPane) {
         MapaProcedural mapa = new MapaProcedural(20, 20);
@@ -132,13 +185,19 @@ public class CampoDeBatalla extends Application {
             }
         }
     }
+        public Image fotoDeGridPane(GridPane panel){
+// Crear un objeto SnapshotParameters
+            SnapshotParameters sp = new SnapshotParameters();
+            sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
+
+// Crear una imagen vacía con el ancho y alto del GridPane
+            WritableImage image = new WritableImage((int) panel.getWidth(), (int) panel.getHeight());
+
+// Tomar una instantánea del GridPane y guardarla en la imagen
 
 
+        return  panel.snapshot(sp, image);
 
+        }
 
-
-    public void gestionEventos() {
-        escena.setOnKeyPressed(new InputManager());
-
-    }
 }
