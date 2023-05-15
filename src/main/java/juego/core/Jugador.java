@@ -2,7 +2,6 @@ package juego.core;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import juego.entidades.tanques.Tanque;
 import juego.entidades.tanques.TanqueJugador;
 import juego.input.InputManager;
 
@@ -18,7 +17,8 @@ public class Jugador extends TanqueJugador {
     public int balas;
     public int velocidad;
     public int minas;
-    public static String RUTASPRITE = "/imagenes/sprites/tanques/tanqueQuieto.gif";
+    public static String SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
+    public static String SPRITETORRETA = "/imagenes/sprites/tanques/tankTurret.png";
     public InputManager inputManager =  new InputManager();
 
 
@@ -47,33 +47,38 @@ public class Jugador extends TanqueJugador {
 
     //Se jecuta por cada iteracion de ciclo de juego
     public void pintar(GraphicsContext graficos){
-        graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/ImagenesPruebas/tanque.jpg"))), x, y);
+        graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))), x, y);
+        graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETA))), x, y);
 
     }
 
 
     //Se jecuta por cada iteracion de ciclo de juego
     public void mover(){
-        int distancia = velocidad *2; // Distancia que se moverá en cada iteración del ciclo de juego
+        double distancia = velocidad * 2.5; // Distancia que se moverá en cada iteración del ciclo de juego
 
         // Movimiento hacia arriba
         if (InputManager.isArriba()) {
             y -= distancia;
+            SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
         }
 
         // Movimiento hacia abajo
         if (InputManager.isAbajo()) {
             y += distancia;
+            SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
         }
 
         // Movimiento hacia la izquierda
         if (InputManager.isIzquierda()) {
             x -= distancia;
+            SPRITEBASE = "/imagenes/sprites/tanques/tankBaseY.png";
         }
 
         // Movimiento hacia la derecha
         if (InputManager.isDerecha()) {
             x += distancia;
+            SPRITEBASE = "/imagenes/sprites/tanques/tankBaseY.png";
         }
 
     }

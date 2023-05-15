@@ -29,7 +29,7 @@
         private static final double ALTO_VENTANA = 800;
         private Scene escena;
         private StackPane contenedorPanel;
-        private GridPane panel;
+        public GridPane panel;
         private TipoCasilla[][] casillas;
 
         private Image imgNada;
@@ -56,7 +56,6 @@
             ventana.setTitle("CampoDeBatalla");
             ventana.show();
             cicloJuego();
-
         }
 
 
@@ -82,13 +81,14 @@
         };
 
         public void inizializarComponentes() {
-            jugador =  new Jugador(1,2,3,4,2,10,3);
+            jugador =  new Jugador(1,2,3,4,2,2,3);
             root = new Group();
             cargarImagenes();
             contenedorPanel = new StackPane();
             lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
             graficos = lienzo.getGraphicsContext2D();
             panel = new GridPane();
+
             contenedorPanel.getChildren().add(panel);
             contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
 
@@ -207,12 +207,18 @@
             sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
 
 // Crear una imagen vacía con el ancho y alto del GridPane
-            WritableImage image = new WritableImage((int) panel.getWidth(), (int) panel.getHeight());
+            int w = (int) panel.getWidth();
+            int h = (int) panel.getHeight();
+            WritableImage image = new WritableImage(w, h);
 
 // Tomar una instantánea del GridPane y guardarla en la imagen
 
 
             return  panel.snapshot(sp, image);
 
+        }
+
+        public Scene getEscena(){
+            return escena;
         }
     }
