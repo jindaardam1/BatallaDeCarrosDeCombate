@@ -1,124 +1,139 @@
-package juego.core;
+    package juego.core;
 
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import juego.input.InputManager;
-import juego.utils.PantallaUtil;
-import juego.utils.TipoCasilla;
+    import javafx.animation.AnimationTimer;
+    import javafx.application.Application;
+    import javafx.geometry.HPos;
+    import javafx.geometry.Insets;
+    import javafx.geometry.Pos;
+    import javafx.geometry.VPos;
+    import javafx.scene.Group;
+    import javafx.scene.Scene;
+    import javafx.scene.SnapshotParameters;
+    import javafx.scene.canvas.Canvas;
+    import javafx.scene.canvas.GraphicsContext;
+    import javafx.scene.image.Image;
+    import javafx.scene.image.ImageView;
+    import javafx.scene.image.WritableImage;
+    import javafx.scene.layout.*;
+    import javafx.scene.paint.Color;
+    import javafx.stage.Stage;
+    import juego.input.InputManager;
+    import juego.utils.PantallaUtil;
+    import juego.utils.TipoCasilla;
 
-import java.lang.reflect.GenericArrayType;
-import java.util.Objects;
+    import java.lang.reflect.GenericArrayType;
+    import java.util.Objects;
 
-public class CampoDeBatalla extends Application {
-    private static final double ANCHO_VENTANA = 1920;
-    private static final double ALTO_VENTANA = 1080;
-    private Scene escena;
-    private StackPane contenedorPanel;
-    private GridPane panel;
-    private TipoCasilla[][] casillas;
+    public class CampoDeBatalla extends Application {
+        private static final double ANCHO_VENTANA = 800;
+        private static final double ALTO_VENTANA = 800;
+        private Scene escena;
+        private StackPane contenedorPanel;
+        private GridPane panel;
+        private TipoCasilla[][] casillas;
 
-    private Image imgNada;
-    private Image imgHoyo;
-    private Image imgPared;
-    private Image imgOtro;
-    private Jugador jugador;
-    private Group root;
-    private Canvas lienzo;
-    private GraphicsContext graficos;
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage ventana) throws Exception {
-        inizializarComponentes();
-        gestionEventos();
-        ventana.setScene(escena);
-        ventana.setTitle("CampoDeBatalla");
-        ventana.show();
-        cicloJuego();
-
-    }
-    
-
-    public void cicloJuego(){
-        long tiempoInicial = System.nanoTime();
-        AnimationTimer animationTimer = new AnimationTimer() {
-            @Override
-            public void handle(long tiempoActual) {
-                double t = (tiempoActual - tiempoInicial) / 1000000000.0;
+        private Image imgNada;
+        private Image imgHoyo;
+        private Image imgPared;
+        private Image imgOtro;
+        private ImageView fondo;
+        private Jugador jugador;
+        private Group root;
+        private Canvas lienzo;
+        private GraphicsContext graficos;
+        private Image imagenDeMapa;
 
 
-                actualizarEstado();
-                pintar();
+        public static void main(String[] args) {
+            launch(args);
+        }
 
-            }
+        @Override
+        public void start(Stage ventana) throws Exception {
+            inizializarComponentes();
+            gestionEventos();
+            ventana.setScene(escena);
+            ventana.setTitle("CampoDeBatalla");
+            ventana.show();
+            cicloJuego();
+
+        }
+
+
+        public void cicloJuego(){
+            long tiempoInicial = System.nanoTime();
+            AnimationTimer animationTimer = new AnimationTimer() {
+                @Override
+                public void handle(long tiempoActual) {
+                    double t = (tiempoActual - tiempoInicial) / 1000000000.0;
+
+
+                    actualizarEstado();
+                    pintar();
+
+                }
+            };
+            animationTimer.start();
+        }
+
+
+        public void actualizarEstado(){
+            jugador.mover();
         };
-        animationTimer.start();
-    }
 
-
-    public void actualizarEstado(){
-        jugador.mover();
-    };
-
-    public void inizializarComponentes() {
-        jugador =  new Jugador(1,2,3,4,2,10,3);
-        root = new Group();
-        contenedorPanel = new StackPane();
-        lienzo = new Canvas(1920,1080);
-        graficos = lienzo.getGraphicsContext2D();
-        panel = new GridPane();
-        contenedorPanel.getChildren().add(panel);
-        contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
+        public void inizializarComponentes() {
+            jugador =  new Jugador(1,2,3,4,2,10,3);
+            root = new Group();
+            cargarImagenes();
+            contenedorPanel = new StackPane();
+            lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
+            graficos = lienzo.getGraphicsContext2D();
+            panel = new GridPane();
+            contenedorPanel.getChildren().add(panel);
+            contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
 
 
 
-        escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
-        pintarEscenario(panel);
-
-        root.getChildren().add(contenedorPanel);
-        root.getChildren().add(lienzo);
-        ponerFondo();
-        panel.setGridLinesVisible(true);
+            escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
+            pintarEscenario(panel);
 
 
-    }
-
-    private void ponerFondo() {
-        ImageView fondo = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png"))));
-        fondo.fitWidthProperty().bind(escena.widthProperty());
-        fondo.fitHeightProperty().bind(escena.heightProperty());
-        contenedorPanel.getChildren().add(fondo);
-        fondo.toBack();
-    }
+            root.getChildren().add(contenedorPanel);
+            root.getChildren().add(lienzo);
+            ponerFondo();
 
 
 
+        }
 
-    private void pintar() {
-        Image imagenFondo= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png")));
-        graficos.drawImage(imagenFondo,0,0);
-        Image imagenMapa = fotoDeGridPane(panel);
-        graficos.drawImage(imagenMapa,0,0);
-        jugador.pintar(graficos);
-    }
+        private void cargarImagenes() {
+
+                this.imgNada = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/NADA.png")));
+                this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/HOYO.png")));
+                this.imgPared = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/PARED.png")));
+                this.imgOtro = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/OTRO.png")));
+                this.fondo = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png"))));
+
+        }
+
+
+        private void ponerFondo() {
+            fondo.fitWidthProperty().bind(escena.widthProperty());
+            fondo.fitHeightProperty().bind(escena.heightProperty());
+            contenedorPanel.getChildren().add(fondo);
+            fondo.toBack();
+        }
+
+
+
+
+        private void pintar() {
+            Image imagenFondo= new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png")));
+            graficos.drawImage(imagenFondo,0,0);
+            Image imagenMapa = fotoDeGridPane(panel);
+            graficos.drawImage(imagenMapa,0,0);
+            jugador.pintar(graficos);
+        }
 
 
 
@@ -127,64 +142,65 @@ public class CampoDeBatalla extends Application {
         escena.setOnKeyReleased(new InputManager());
     }
 
-    public void pintarEscenario(GridPane gridPane) {
-        MapaProcedural mapa = new MapaProcedural(20, 20);
-        mapa.generarMapa();
+        public void pintarEscenario(GridPane gridPane) {
+            MapaProcedural mapa = new MapaProcedural(20, 20);
+            mapa.generarMapa();
 
-        this.casillas = mapa.getMapa();
-        this.imgNada = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/NADA.jpg")));
-        this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/HOYO.jpg")));
-        this.imgPared = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/PARED.jpg")));
-        this.imgOtro = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/OTRO.jpg")));
+            this.casillas = mapa.getMapa();
+            this.imgNada = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/NADA.png")));
+            this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/HOYO.png")));
+            this.imgPared = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/PARED.png")));
+            this.imgOtro = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/OTRO.png")));
 
 
+            // Recorrer el array de casillas y agregar cada imagen al gridPane
+            for (int i = 0; i < casillas.length; i++) {
+                for (int j = 0; j < casillas[0].length; j++) {
+                    ImageView imageView = new ImageView();
 
-        // Recorrer el array de casillas y agregar cada imagen al gridPane
-        for (int i = 0; i < casillas.length; i++) {
-            for (int j = 0; j < casillas[0].length; j++) {
-                ImageView imageView = new ImageView();
-
-                // Escalar la imagen en función del tamaño de la casilla
-                if (casillas[i][j] == TipoCasilla.NADA) {
-                    if (imgNada != null) {
-                        imageView.setImage(imgNada);
+                    // Escalar la imagen en función del tamaño de la casilla
+                    if (casillas[i][j] == TipoCasilla.NADA) {
+                        if (imgNada != null) {
+                            imageView.setImage(imgNada);
+                        } else {
+                            System.err.println("No se pudo cargar la imagen de NADA.");
+                        }
+                    } else if (casillas[i][j] == TipoCasilla.HOYO) {
+                        if (imgHoyo != null) {
+                            imageView.setImage(imgHoyo);
+                        } else {
+                            System.err.println("No se pudo cargar la imagen de HOYO.");
+                        }
+                    } else if (casillas[i][j] == TipoCasilla.PARED) {
+                        if (imgPared != null) {
+                            imageView.setImage(imgPared);
+                        } else {
+                            System.err.println("No se pudo cargar la imagen de PARED.");
+                        }
                     } else {
-                        System.err.println("No se pudo cargar la imagen de NADA.");
+                        if (imgOtro != null) {
+                            imageView.setImage(imgOtro);
+                        } else {
+                            System.err.println("No se pudo cargar la imagen de PARED.");
+                        }
                     }
-                } else if (casillas[i][j] == TipoCasilla.HOYO) {
-                    if (imgHoyo != null) {
-                        imageView.setImage(imgHoyo);
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de HOYO.");
-                    }
-                } else if (casillas[i][j] == TipoCasilla.PARED) {
-                    if (imgPared != null) {
-                        imageView.setImage(imgPared);
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de PARED.");
-                    }
-                } else {
-                    if (imgOtro != null) {
-                        imageView.setImage(imgOtro);
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de PARED.");
-                    }
+
+                    // Ajustar la imagen para mantener su relación de aspecto
+                    imageView.setPreserveRatio(true);
+
+
+                    // Ajustar el tamaño de la imagen a la celda
+                    imageView.fitWidthProperty().bind(gridPane.widthProperty().divide(casillas[0].length));
+                    imageView.fitHeightProperty().bind(gridPane.heightProperty().divide(casillas.length ));
+
+                    // Agregar la imagen al GridPane en la posición desplazada
+                    gridPane.add(imageView, j, i);
                 }
-
-                // Ajustar la imagen para mantener su relación de aspecto
-                imageView.setPreserveRatio(true);
-
-                // Ajustar el tamaño de la imagen a la celda
-                imageView.fitWidthProperty().bind(gridPane.widthProperty().divide(casillas[0].length));
-                imageView.fitHeightProperty().bind(gridPane.heightProperty().divide(casillas.length ));
-
-
-                // Agregar la imagen al GridPane en la posición desplazada
-                gridPane.add(imageView, j  , i);
-
             }
+
         }
-    }
+
+
         public Image fotoDeGridPane(GridPane panel){
 // Crear un objeto SnapshotParameters
             SnapshotParameters sp = new SnapshotParameters();
@@ -196,8 +212,7 @@ public class CampoDeBatalla extends Application {
 // Tomar una instantánea del GridPane y guardarla en la imagen
 
 
-        return  panel.snapshot(sp, image);
+            return  panel.snapshot(sp, image);
 
         }
-
-}
+    }
