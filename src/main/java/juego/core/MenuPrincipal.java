@@ -120,6 +120,30 @@ public class MenuPrincipal extends Application {
             primaryStage.close();
         });
 
+        survivalButton.setOnAction(e -> {
+            // Abre el modo supervivencia
+
+            CampoDeBatalla campoDeBatalla = new CampoDeBatalla();
+
+
+            try {
+                campoDeBatalla.start(primaryStage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+//            primaryStage.getScene().setRoot(campoDeBatalla.getEscena().getRoot());
+//            scene.setRoot(campoDeBatalla.getEscena().getRoot());
+
+//            try {
+//
+//                campoDeBatalla.start(primaryStage);
+//
+//            } catch (Exception ex) {
+//                throw new RuntimeException(ex);
+//            }
+
+        });
+
         //hace que cuando sales de pantalla completa se coloque a la resolucion deseada
         primaryStage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
