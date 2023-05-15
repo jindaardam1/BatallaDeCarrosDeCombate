@@ -18,6 +18,7 @@ public class MenuPrincipal extends Application {
     private static final double ALTO_VENTANA = PantallaUtil.obtenerAlturaDisponiblePantalla();
     private static double ANCHO_VENTANA_ACTUAL = ANCHO_VENTANA;
     private static double ALTO_VENTANA_ACUTAL = ALTO_VENTANA;
+    public static boolean ESTA_PANTALLA_COMPLETA = true;
 
     double colWidth = ANCHO_VENTANA_ACTUAL * 0.5;
     double rowHeight = ALTO_VENTANA_ACUTAL * 0.3333;
@@ -167,7 +168,7 @@ public class MenuPrincipal extends Application {
                 survivalButton.setStyle("-fx-font-size: 24px;");
                 exitButton.setStyle("-fx-font-size: 24px;");
                 statsButton.setStyle("-fx-font-size: 24px;");
-
+                ESTA_PANTALLA_COMPLETA = false;
 
 
 

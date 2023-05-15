@@ -4,7 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import juego.input.InputManager;
+import juego.input.KeyInputManager;
 
 
 import java.io.FileInputStream;
@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 
 public class Ventana extends Main  {
 
-    private InputManager inputManager;
+    private KeyInputManager keyInputManager;
     private Scene escena;
 public  Ventana(Stage escenaPrimaria, Group grupo) {
     escenaPrimaria.setTitle("Batalla de carros de combate");

@@ -2,10 +2,7 @@
 
     import javafx.animation.AnimationTimer;
     import javafx.application.Application;
-    import javafx.geometry.HPos;
-    import javafx.geometry.Insets;
     import javafx.geometry.Pos;
-    import javafx.geometry.VPos;
     import javafx.scene.Group;
     import javafx.scene.Scene;
     import javafx.scene.SnapshotParameters;
@@ -17,11 +14,10 @@
     import javafx.scene.layout.*;
     import javafx.scene.paint.Color;
     import javafx.stage.Stage;
-    import juego.input.InputManager;
-    import juego.utils.PantallaUtil;
+    import juego.input.KeyInputManager;
+    import juego.input.MouseInputManager;
     import juego.utils.TipoCasilla;
 
-    import java.lang.reflect.GenericArrayType;
     import java.util.Objects;
 
     public class CampoDeBatalla extends Application {
@@ -41,7 +37,7 @@
         private Group root;
         private Canvas lienzo;
         private GraphicsContext graficos;
-        private Image imagenDeMapa;
+
 
 
         public static void main(String[] args) {
@@ -51,10 +47,11 @@
         @Override
         public void start(Stage ventana) throws Exception {
             inizializarComponentes();
-            gestionEventos();
             ventana.setScene(escena);
             ventana.setTitle("CampoDeBatalla");
+            gestionEventos();
             ventana.show();
+
             cicloJuego();
         }
 
@@ -138,8 +135,9 @@
 
 
     public void gestionEventos() {
-        escena.setOnKeyPressed(new InputManager());
-        escena.setOnKeyReleased(new InputManager());
+        escena.setOnKeyPressed(new KeyInputManager());
+        escena.setOnKeyReleased(new KeyInputManager());
+        escena.setOnMouseMoved(new MouseInputManager(jugador.imagenTorreta));
     }
 
         public void pintarEscenario(GridPane gridPane) {
@@ -221,4 +219,7 @@
         public Scene getEscena(){
             return escena;
         }
+
+
+
     }

@@ -1,14 +1,19 @@
 package juego.input;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.transform.Rotate;
 
-public class InputManager implements EventHandler<KeyEvent> {
+public class KeyInputManager implements EventHandler<KeyEvent> {
     public static boolean arriba = false;
     public static  boolean abajo = false;
     public static  boolean izquierda = false;
     public static  boolean derecha = false;
+    private static KeyInputManager instance;
+    private ImageView tankImage;
+
 
     @Override
     public void handle(KeyEvent evento) {
@@ -57,7 +62,10 @@ public class InputManager implements EventHandler<KeyEvent> {
         }
     }
 
-    public static boolean isArriba() {
+
+
+
+public static boolean isArriba() {
         return arriba;
     }
 
