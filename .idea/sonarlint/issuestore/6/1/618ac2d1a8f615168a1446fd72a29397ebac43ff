@@ -1,0 +1,13 @@
+
+k	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(כ©ÿבתÿÿÿÿ
+k	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(כ©ÿבתÿÿÿÿ
+k	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(כ©ÿבתÿÿÿÿ
+k	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(כ©ÿבתÿÿÿÿ
+h	java:S116"SRename this field "SE_MUEVE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(הÞו
+i	java:S116"TRename this field "VELOCIDAD" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(־ֹƒ´
+7
+java:S1170"!Make this final field static too.(הÞו
+T
+java:S5993	"9Change the visibility of this constructor to "protected".(כ©ÿבתÿÿÿÿ
+B
+java:S1068",Remove this unused "SE_MUEVE" private field.(הÞו

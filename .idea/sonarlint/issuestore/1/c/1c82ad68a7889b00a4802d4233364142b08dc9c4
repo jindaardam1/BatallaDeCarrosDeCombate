@@ -1,0 +1,33 @@
+
+m	java:S127†"XRefactor the code in order to not assign to this loop counter from within the loop body.(¨…ÄK
+i	java:S116	"TRename this field "FILAS_MIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ï¤¸
+q	java:S116
+"WRename this field "COLUMNAS_MIN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åö”åýÿÿÿÿ
+v	java:S116"\Rename this field "PROBABILIDAD_HOYO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ»ÆÑøÿÿÿÿ
+7
+java:S1170	"!Make this final field static too.(‹Ï¤¸
+<
+java:S1170
+"!Make this final field static too.(åö”åýÿÿÿÿ
+<
+java:S1170"!Make this final field static too.(Æ»ÆÑøÿÿÿÿ
+3
+java:S21198"Save and re-use this "Random".(¼ÝÅf
+h
+java:S3776M"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ãÏ¹â
+3
+java:S2119N"Save and re-use this "Random".(¼ÝÅf
+<	java:S131]""Add a default case to this switch.(ôáìîûÿÿÿÿ
+<	java:S131g""Add a default case to this switch.(ôáìîûÿÿÿÿ
+3
+java:S2119"Save and re-use this "Random".(¼ÝÅf
+4
+java:S2119›"Save and re-use this "Random".(¼ÝÅf
+4
+java:S2119°"Save and re-use this "Random".(¼ÝÅf
+4
+java:S2119É"Save and re-use this "Random".(¼ÝÅf
+A
+java:S1659â"%Declare "columna" on a separate line.(ÝÃ…Õúÿÿÿÿ
+:
+java:S2119á"Save and re-use this "Random".(šŸ«íøÿÿÿÿ

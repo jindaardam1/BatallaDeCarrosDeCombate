@@ -1,0 +1,41 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¸Ô
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¸Ô
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¸Ô
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ¸Ô
+h
+java:S1104"MMake x a static final constant or non-public and provide accessors if needed.(±Šõ¶ûÿÿÿÿ
+h
+java:S1104"MMake y a static final constant or non-public and provide accessors if needed.(ÔçÛşÿÿÿÿ
+q
+java:S1104"[Make REBOTES_MAXIMOS a static final constant or non-public and provide accessors if needed.(Çîù¹
+u
+java:S1104"ZMake VELOCIDAD_BALA a static final constant or non-public and provide accessors if needed.(ö™âİıÿÿÿÿ
+s
+java:S1104"XMake MAXIMO_BALAS a static final constant or non-public and provide accessors if needed.(·œÑıÿÿÿÿ
+m
+java:S1104"XMake MAXIMO_MINAS a static final constant or non-public and provide accessors if needed.(Àƒá
+l
+java:S1104"QMake balas a static final constant or non-public and provide accessors if needed.(ó÷Èöùÿÿÿÿ
+k
+java:S1104"UMake velocidad a static final constant or non-public and provide accessors if needed.(ßØİğ
+l
+java:S1104"QMake minas a static final constant or non-public and provide accessors if needed.(ÈŒàôùÿÿÿÿ
+q
+java:S1104"VMake RUTASPRITE a static final constant or non-public and provide accessors if needed.(Ö ğÙÿÿÿÿÿ
+n
+java:S1104"XMake inputManager a static final constant or non-public and provide accessors if needed.(µ£ƒâ
+K
+java:S1444"0Make this "public static RUTASPRITE" field final(Ö ğÙÿÿÿÿÿ
+o	java:S116"ZRename this field "REBOTES_MAXIMOS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çîù¹
+s	java:S116"YRename this field "VELOCIDAD_BALA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö™âİıÿÿÿÿ
+q	java:S116"WRename this field "MAXIMO_BALAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·œÑıÿÿÿÿ
+k	java:S116"WRename this field "MAXIMO_MINAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àƒá
+p
+java:S3008"URename this field "RUTASPRITE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö ğÙÿÿÿÿÿ
+œ
+java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ûí‘îşÿÿÿÿ
+œ
+java:S1186+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.( ”™÷ÿÿÿÿÿ
+Q
+java:S1128";Remove this unused import 'juego.entidades.tanques.Tanque'.(é•ªÔ

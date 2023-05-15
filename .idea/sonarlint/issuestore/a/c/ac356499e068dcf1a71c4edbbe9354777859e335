@@ -1,0 +1,21 @@
+
+l
+java:S1192Ž"UDefine a constant instead of duplicating this literal "-fx-font-size: 24px;" 4 times.(œèÜó
+k
+java:S1192P"UDefine a constant instead of duplicating this literal "-fx-font-size: 48px;" 4 times.(÷‘÷Ô
+>
+java:S5411}"(Use a primitive boolean expression here.(ÓÚ™‘
+z
+java:S3008"_Rename this field "ANCHO_VENTANA_ACTUAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûôåâÿÿÿÿÿ
+t
+java:S3008"^Rename this field "ALTO_VENTANA_ACUTAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»‰Íà
+G
+java:S1602v",Remove useless curly braces around statement(²É´¹üÿÿÿÿ
+Q
+java:S2696"6Make the enclosing method "static" or remove this set.(©•çµýÿÿÿÿ
+P
+java:S2209"5Change this instance-reference to a static reference.(©•çµýÿÿÿÿ
+R
+java:S2696€"6Make the enclosing method "static" or remove this set.(ïÏž‡þÿÿÿÿ
+Q
+java:S2209€"5Change this instance-reference to a static reference.(ïÏž‡þÿÿÿÿ

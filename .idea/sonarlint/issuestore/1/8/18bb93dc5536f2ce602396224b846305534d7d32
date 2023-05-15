@@ -1,0 +1,11 @@
+
+q	java:S116	"PRename this field "FILAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¥ù€ÿÿÿÿÿ8Ü€¯ô1
+t	java:S116
+"SRename this field "COLUMNAS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ì»Ïşÿÿÿÿ8Ü€¯ô1
+C
+java:S1170	"!Make this final field static too.(Ç¥ù€ÿÿÿÿÿ8Ü€¯ô1
+C
+java:S1170
+"!Make this final field static too.(´Ì»Ïşÿÿÿÿ8İ€¯ô1
+S	java:S106."9Replace this use of System.out or System.err by a logger.(¶×®Ÿşÿÿÿÿ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(ÜÅË‡ûÿÿÿÿ
