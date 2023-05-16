@@ -78,23 +78,19 @@
         };
 
         public void inizializarComponentes() {
-            jugador =  new Jugador(1,2,3,4,2,2,3);
-            root = new Group();
+            this.jugador =  new Jugador(1,2,3,4,2,2,3);
+            this.root = new Group();
             cargarImagenes();
-            contenedorPanel = new StackPane();
-            lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
-            graficos = lienzo.getGraphicsContext2D();
-            panel = new GridPane();
+            this.contenedorPanel = new StackPane();
+            this.lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
+            this.graficos = lienzo.getGraphicsContext2D();
+            this.panel = new GridPane();
+
 
             contenedorPanel.getChildren().add(panel);
             contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
-
-
-
             escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
             pintarEscenario(panel);
-
-
             root.getChildren().add(contenedorPanel);
             root.getChildren().add(lienzo);
             ponerFondo();
@@ -203,10 +199,13 @@
 // Crear un objeto SnapshotParameters
             SnapshotParameters sp = new SnapshotParameters();
             sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
-
+            panel.setPrefWidth(ALTO_VENTANA);
+            panel.setPrefHeight(ANCHO_VENTANA);
+            panel.setHgap(ALTO_VENTANA);
+            panel.setVgap(ANCHO_VENTANA);
 // Crear una imagen vacía con el ancho y alto del GridPane
-            int w = (int) panel.getWidth();
-            int h = (int) panel.getHeight();
+            int h = (int) panel.getHgap();
+            int w = (int) panel.getVgap();
             WritableImage image = new WritableImage(w, h);
 
 // Tomar una instantánea del GridPane y guardarla en la imagen

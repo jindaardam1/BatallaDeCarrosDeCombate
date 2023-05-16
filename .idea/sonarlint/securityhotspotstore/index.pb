@@ -50,12 +50,6 @@ Y
 ^
 .src/main/java/juego/core/SerializadorMapa.java,1\8\18bb93dc5536f2ce602396224b846305534d7d32
 U
-%src/main/java/juego/core/Jugador.java,6\1\61f7b065b1464566a21cc45ad08c243f60ce7038
-[
-+src/main/java/juego/input/InputManager.java,7\b\7b50364214c7fc791926121e4cbff643327bdabd
-[
-+src/main/java/juego/core/MenuPrincipal.java,a\c\ac356499e068dcf1a71c4edbbe9354777859e335
-U
 %src/main/java/juego/core/Entidad.java,b\4\b41abbcbd978c33972586752f9c6ec626c117ede
 X
 (src/main/java/juego/core/PuebasMenu.java,1\0\10c8ef4eb6e1b699be30db97683d56b5061481a3
@@ -67,5 +61,3 @@ U
 ,src/main/java/juego/utils/GeneradorLogs.java,a\0\a090d70a66391128fbea092af249b62cc5b1d547
 Z
 *src/main/java/juego/utils/creacionBADA.sql,3\1\31f79d133e1c3a0ac6c0c852ceafaadfc0da7436
-\
-,src/main/java/juego/core/CampoDeBatalla.java,4\5\4580f9f0030813f599e5c5341c72c3048560f91a
