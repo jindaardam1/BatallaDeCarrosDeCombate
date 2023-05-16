@@ -14,26 +14,26 @@ public class PantallaUtil {
         return dimensiones;
     }
 
-    public static double obtenerAnchoPantalla() {
+    public static int obtenerAnchoPantalla() {
         Rectangle2D dimensiones = obtenerDimensionesPantalla();
-        return dimensiones.getWidth();
+        return (int) dimensiones.getWidth();
     }
 
-    public static double obtenerAlturaPantalla() {
+    public static int obtenerAlturaPantalla() {
         Rectangle2D dimensiones = obtenerDimensionesPantalla();
-        return dimensiones.getHeight();
+        return (int) dimensiones.getHeight();
     }
 
     // Otras funciones que pueden ser útiles
 
-    public static double obtenerAnchoDisponiblePantalla() {
+    public static int obtenerAnchoDisponiblePantalla() {
         Rectangle2D dimensiones = obtenerDimensionesPantalla();
-        return dimensiones.getWidth() - dimensiones.getMinX();
+        return (int) (dimensiones.getWidth() - dimensiones.getMinX());
     }
 
-    public static double obtenerAlturaDisponiblePantalla() {
+    public static int obtenerAlturaDisponiblePantalla() {
         Rectangle2D dimensiones = obtenerDimensionesPantalla();
-        return dimensiones.getHeight() - dimensiones.getMinY();
+        return (int) (dimensiones.getHeight() - dimensiones.getMinY());
     }
 
     public static Point2D obtenerCentroPantalla() {

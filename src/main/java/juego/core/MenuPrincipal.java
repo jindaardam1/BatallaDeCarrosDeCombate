@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import juego.utils.PantallaUtil;
 
+import java.util.Objects;
 
 
 public class MenuPrincipal extends Application {
@@ -61,7 +62,7 @@ public class MenuPrincipal extends Application {
         Button statsButton = new Button("Estadísticas");
 
         // agregar imagen del logo
-        Image logoImage = new Image(getClass().getResourceAsStream("/imagenes/VentanaPrincipal/logo.png"));
+        Image logoImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/VentanaPrincipal/logo.png")));
 
 
         ImageView logoImageView = new ImageView(logoImage);
@@ -94,7 +95,7 @@ public class MenuPrincipal extends Application {
 
 
         // agregar imagen de fondo
-        Image backgroundImage = new Image(getClass().getResourceAsStream("/imagenes/VentanaPrincipal/fondoMenuPrincipal.jpg"));
+        Image backgroundImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/VentanaPrincipal/fondoMenuPrincipal.jpg")));
         BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(ANCHO_VENTANA, ALTO_VENTANA, true, true, true, true));
         VBox root = new VBox();
         root.setBackground(new Background(background));
@@ -132,16 +133,6 @@ public class MenuPrincipal extends Application {
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-//            primaryStage.getScene().setRoot(campoDeBatalla.getEscena().getRoot());
-//            scene.setRoot(campoDeBatalla.getEscena().getRoot());
-
-//            try {
-//
-//                campoDeBatalla.start(primaryStage);
-//
-//            } catch (Exception ex) {
-//                throw new RuntimeException(ex);
-//            }
 
         });
 
@@ -149,8 +140,8 @@ public class MenuPrincipal extends Application {
         primaryStage.fullScreenProperty().addListener((obs, oldVal, newVal) -> {
             if (!newVal) {
 
-                this.ANCHO_VENTANA_ACTUAL = ANCHO_VENTANA_ACTUAL / 2;
-                this.ALTO_VENTANA_ACUTAL = ALTO_VENTANA_ACUTAL / 2;
+                ANCHO_VENTANA_ACTUAL = ANCHO_VENTANA_ACTUAL / 2;
+                ALTO_VENTANA_ACUTAL = ALTO_VENTANA_ACUTAL / 2;
                 primaryStage.setWidth(ANCHO_VENTANA_ACTUAL);
                 primaryStage.setHeight(ALTO_VENTANA_ACUTAL);
                 logoImageView.setFitWidth(ANCHO_VENTANA_ACTUAL);

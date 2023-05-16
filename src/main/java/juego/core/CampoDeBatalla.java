@@ -21,12 +21,11 @@ import juego.utils.RectangleTipo;
 import juego.utils.TipoCasilla;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class CampoDeBatalla extends Application {
-    private static final double ANCHO_VENTANA = 800;
-    private static final double ALTO_VENTANA = 800;
+    private static final int ANCHO_VENTANA = PantallaUtil.obtenerAnchoDisponiblePantalla();
+    private static final int ALTO_VENTANA = PantallaUtil.obtenerAlturaDisponiblePantalla();
     private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
 
@@ -139,7 +138,7 @@ public class CampoDeBatalla extends Application {
     private void pintar() {
         Image imagenFondo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png")));
         graficos.drawImage(imagenFondo, 0, 0);
-        Image imagenMapa = fotoDeGridPane(panel);
+        Image imagenMapa = fotoDeGridPane();
         graficos.drawImage(imagenMapa, 0, 0);
         jugador.pintar(graficos);
     }
@@ -246,15 +245,15 @@ public class CampoDeBatalla extends Application {
 
     }
 
-    public Image fotoDeGridPane(GridPane panel) {
+    public Image fotoDeGridPane() {
 // Crear un objeto SnapshotParameters
         SnapshotParameters sp = new SnapshotParameters();
         sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
 
 // Crear una imagen vacía con el ancho y alto del GridPane
-        int w = (int) panel.getWidth();
-        int h = (int) panel.getHeight();
-        WritableImage image = new WritableImage(w, h);
+
+
+        WritableImage image = new WritableImage( ALTO_VENTANA,  ANCHO_VENTANA);
 
 // Tomar una instantánea del GridPane y guardarla en la imagen
 
