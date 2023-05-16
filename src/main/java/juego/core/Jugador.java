@@ -1,12 +1,16 @@
 package juego.core;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import juego.entidades.tanques.TanqueJugador;
 import juego.input.KeyInputManager;
 import juego.input.MouseInputManager;
+import juego.utils.RectangleTipo;
+import juego.utils.TipoCasilla;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class Jugador extends TanqueJugador {
@@ -19,12 +23,17 @@ public class Jugador extends TanqueJugador {
     public int balas;
     public int velocidad;
     public int minas;
-    public static String SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
-    public static String SPRITETORRETA = "/imagenes/sprites/tanques/tankTurret.png";
+    public static final String SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
+    public static final String SPRITETORRETA = "/imagenes/sprites/tanques/tankTurret.png";
+
+    public static final String SPRITEBASEHORIZONTAL = "/imagenes/sprites/tanques/tankBaseY.png";
+    public static final String SPRITETORRETAVERTICAL = "/imagenes/sprites/tanques/tankBaseX.png";
     public ImageView imagenBase;
     public ImageView imagenTorreta;
     public ImageView imagenBaseVertical;
     public ImageView imagenBaseHorizontal;
+    private boolean puedeMoverse;
+
 
 
     public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
@@ -32,16 +41,19 @@ public class Jugador extends TanqueJugador {
         this.velocidad = velocidad;
         this.balas = balas;
         this.minas = minas;
-        this.x = 0;
-        this.y = 0;
-        this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/tanques/tankBaseY.png"))));
-        this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/tanques/tankBaseX.png"))));
+        this.x = 200;
+        this.y = 200;
+        this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
+        this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
         this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
         this.imagenTorreta = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETA))));
+        puedeMoverse = true;
+
 
     }
 
     public void pintar(GraphicsContext graficos) {
+        comprobarColision();
         ajustesPantallaCompleta();
         actualizarRotacion();
 
@@ -54,49 +66,101 @@ public class Jugador extends TanqueJugador {
         graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
         graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
         graficos.restore(); //recuperar estado de graficos
+
     }
 
     public void ajustesPantallaCompleta() {
-        if (MenuPrincipal.ESTA_PANTALLA_COMPLETA) {
-            imagenBase.setFitWidth(128);
-            imagenBase.setFitHeight(128);
-            imagenTorreta.setFitWidth(128);
-            imagenTorreta.setFitHeight(128);
-            imagenBaseHorizontal.setFitWidth(128);
-            imagenBaseHorizontal.setFitHeight(128);
-            imagenBaseVertical.setFitWidth(128);
-            imagenBaseVertical.setFitHeight(128);
-        }
+        imagenBase.setPreserveRatio(true);
+        imagenTorreta.setPreserveRatio(true);
+        imagenBaseHorizontal.setPreserveRatio(true);
+        imagenBaseVertical.setPreserveRatio(true);
+        double desiredSize = 128; // Tamaño deseado de la imagen
+
+        imagenBase.setFitWidth(desiredSize);
+        imagenBase.setFitHeight(desiredSize);
+
+        imagenTorreta.setFitWidth(desiredSize);
+        imagenTorreta.setFitHeight(desiredSize);
+
+        imagenBaseHorizontal.setFitWidth(desiredSize);
+        imagenBaseHorizontal.setFitHeight(desiredSize);
+
+        imagenBaseVertical.setFitWidth(desiredSize);
+        imagenBaseVertical.setFitHeight(desiredSize);
+
+        imagenBase.resize(128, 128);
+        imagenTorreta.resize(128, 128);
+        imagenBaseHorizontal.resize(128, 128);
+        imagenBaseVertical.resize(128, 128);
+
 
     }
+
+    public void comprobarColision() {
+        this.puedeMoverse = true; // Variable para rastrear si el jugador puede moverse o no
+
+        for (int i = 0; i < CampoDeBatalla.coordenadasImagenes.length; i++) {
+            for (int j = 0; j < CampoDeBatalla.coordenadasImagenes[i].length; j++) {
+                RectangleTipo rectTipo = CampoDeBatalla.coordenadasImagenes[i][j];
+                Rectangle rectangulo = rectTipo.REC();
+                TipoCasilla tipo = rectTipo.TIPO();
+
+                // Obtener las propiedades del rectángulo
+                int cordenadaX = (int) rectangulo.getX() ;
+                int cordenadaY = (int) rectangulo.getY() ;
+                int heightImagen = (int) rectangulo.getHeight() ;
+                int widthImagen = (int) rectangulo.getWidth() ;
+
+                if (tipo==TipoCasilla.PARED && x >= cordenadaX && x < cordenadaX + widthImagen &&
+                        y >= cordenadaY && y < cordenadaY + heightImagen) {
+                    puedeMoverse = false;
+                    break; // Romper el bucle interno si hay una colisión
+                }
+            }
+
+            if (!puedeMoverse) {
+                break; // Romper el bucle externo si hay una colisión
+            }
+        }
+
+        if (puedeMoverse) {
+            // El jugador puede moverse
+        } else {
+            // El jugador no puede moverse
+        }
+    }
+
 
 
     //Se jecuta por cada iteracion de ciclo de juego
     public void mover() {
         double distancia = velocidad * 2.5; // Distancia que se moverá en cada iteración del ciclo de juego
 
+        if (puedeMoverse) {
 
+            // Movimiento hacia arriba
+            if (KeyInputManager.isArriba()) {
+                y -= distancia;
+                imagenBase = imagenBaseVertical;
+            }
+            // Movimiento hacia abajo
+            if (KeyInputManager.isAbajo()) {
+                y += distancia;
+                imagenBase = imagenBaseVertical;
+            }
 
-        // Movimiento hacia arriba
-        if (KeyInputManager.isArriba()) {
-            y -= distancia;
-            imagenBase = imagenBaseVertical;
-        }
-        // Movimiento hacia abajo
-        if (KeyInputManager.isAbajo()) {
-            y += distancia;
-            imagenBase = imagenBaseVertical;
-        }
-
-        // Movimiento hacia la izquierda
-        if (KeyInputManager.isIzquierda()) {
-            x -= distancia;
-            imagenBase = imagenBaseHorizontal;
-        }
-        // Movimiento hacia la derecha
-        if (KeyInputManager.isDerecha()) {
-            x += distancia;
-            imagenBase = imagenBaseHorizontal;
+            // Movimiento hacia la izquierda
+            if (KeyInputManager.isIzquierda()) {
+                x -= distancia;
+                imagenBase = imagenBaseHorizontal;
+            }
+            // Movimiento hacia la derecha
+            if (KeyInputManager.isDerecha()) {
+                x += distancia;
+                imagenBase = imagenBaseHorizontal;
+            }
+        }else{
+            System.out.println("No te puedes mover");
         }
 
 

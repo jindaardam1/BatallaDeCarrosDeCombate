@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import juego.input.KeyInputManager;
 import juego.input.MouseInputManager;
@@ -24,14 +25,13 @@ import java.awt.*;
 import java.util.Objects;
 
 public class CampoDeBatalla extends Application {
-    private static final int ANCHO_VENTANA = PantallaUtil.obtenerAnchoDisponiblePantalla();
-    private static final int ALTO_VENTANA = PantallaUtil.obtenerAlturaDisponiblePantalla();
-    private static final int CANTIDADFILAS = 20;
+    private static final int ANCHO_VENTANA = 1200;
+    private static final int ALTO_VENTANA = 1200;
+    private static final int CANTIDADFILAS = 30;
     private static final int CANTIDADCOLUMNAS = 27;
 
     private Scene escena;
-    private StackPane contenedorPanel;
-    public GridPane panel;
+    private StackPane stackPane;
     private TipoCasilla[][] casillas;
 
     private Image imgNada;
@@ -40,10 +40,11 @@ public class CampoDeBatalla extends Application {
     private Image imgOtro;
     private ImageView fondo;
     private Jugador jugador;
-    private Group root;
-    private Canvas lienzo;
+
+    public static Canvas lienzo;
     private GraphicsContext graficos;
-    private RectangleTipo[][] coordenadasImagenes;
+    public static RectangleTipo[][] coordenadasImagenes;
+    public GridPane gridPaneMapa;
 
 
     public static void main(String[] args) {
@@ -57,7 +58,6 @@ public class CampoDeBatalla extends Application {
         ventana.setTitle("CampoDeBatalla");
         gestionEventos();
         ventana.show();
-
         cicloJuego();
     }
 
@@ -87,33 +87,25 @@ public class CampoDeBatalla extends Application {
 
     public void inizializarComponentes() {
 
-        //RESUMEN:
-        //root es el grupo en el que se van guardando los elementos que luego se represenaran con Escena y un tamaño
-        //contenedorPanel es un StackPane el cual agrega uno encima del otro
-        //lienzo es la parte en la cual se dibuja el personaje
-        //pintarEscenario(panel) dibuja el mapa en el panel
-        //ponerFondo agrega a contenedorPanel el fondo detras del tod0.
         cargarImagenes();
         this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
         this.coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
-        this.root = new Group();
+        this.gridPaneMapa = new GridPane();
+        this.stackPane = new StackPane();
 
-        this.contenedorPanel = new StackPane();
-        this.lienzo = new Canvas(ALTO_VENTANA, ANCHO_VENTANA);
+
+        this.lienzo = new Canvas(32 * CANTIDADCOLUMNAS, 32 * CANTIDADFILAS);
         this.graficos = lienzo.getGraphicsContext2D();
-        this.panel = new GridPane();
 
 
-        contenedorPanel.getChildren().add(panel);
-        contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
-        escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
-        pintarEscenario(panel);
-        root.getChildren().add(contenedorPanel);
-        root.getChildren().add(lienzo);
-        ponerFondo();
+
+
+        stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo);
+        escena = new Scene(stackPane, 1920, 1080);
+        pintarEscenario();
+
         verArray();
     }
-
 
 
     private void cargarImagenes() {
@@ -127,19 +119,16 @@ public class CampoDeBatalla extends Application {
     }
 
 
-    private void ponerFondo() {
-        fondo.fitWidthProperty().set(ANCHO_VENTANA);
-        fondo.fitHeightProperty().set(ALTO_VENTANA);
-        contenedorPanel.getChildren().add(fondo);
-        fondo.toBack();
+    private ImageView crearFondo() {
+        this.fondo.fitWidthProperty().add(ANCHO_VENTANA); // Ajusta el ancho de la imagen al ancho de la escena
+        this.fondo.fitHeightProperty().add(ALTO_VENTANA); // Ajusta la altura de la imagen al alto de la escena
+        return fondo;
     }
 
 
     private void pintar() {
-        Image imagenFondo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png")));
-        graficos.drawImage(imagenFondo, 0, 0);
-        Image imagenMapa = fotoDeGridPane();
-        graficos.drawImage(imagenMapa, 0, 0);
+        //borra lo de detras
+        graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
         jugador.pintar(graficos);
     }
 
@@ -150,117 +139,102 @@ public class CampoDeBatalla extends Application {
         escena.setOnMouseMoved(new MouseInputManager(jugador.imagenTorreta));
     }
 
-    public void pintarEscenario(GridPane gridPane) {
+    public void pintarEscenario() {
         MapaProcedural mapa = new MapaProcedural(CANTIDADFILAS, CANTIDADCOLUMNAS);
         mapa.generarMapa();
         TipoCasilla tipo = TipoCasilla.NADA;
         this.casillas = mapa.getMapa();
 
 
+        gridPaneMapa.setGridLinesVisible(true); // Opcional: muestra las líneas del grid
+        gridPaneMapa.setAlignment(Pos.CENTER);
 
-        // Recorrer el array de casillas y agregar cada imagen al gridPane
+
+        for (int i = 0; i < CANTIDADFILAS; i++) {
+            RowConstraints rowConstraints = new RowConstraints(32); // Tamaño de celda (32x32)
+            gridPaneMapa.getRowConstraints().add(rowConstraints);
+        }
+
+        for (int j = 0; j < CANTIDADCOLUMNAS; j++) {
+            ColumnConstraints columnConstraints = new ColumnConstraints(32); // Tamaño de celda (32x32)
+            gridPaneMapa.getColumnConstraints().add(columnConstraints);
+        }
+
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[0].length; j++) {
                 ImageView imageView = new ImageView();
 
-                // Escalar la imagen en función del tamaño de la casilla
-                if (casillas[i][j] == TipoCasilla.NADA) {
-                    if (imgNada != null) {
-                        imageView.setImage(imgNada);
+                // Asigna la imagen correspondiente según el tipo de casilla
+                TipoCasilla casilla = casillas[i][j];
+                Image imagen = null;
+
+                switch (casilla) {
+                    case NADA:
+                        imagen = imgNada;
                         tipo = TipoCasilla.NADA;
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de NADA.");
-                    }
-                } else if (casillas[i][j] == TipoCasilla.HOYO) {
-                    if (imgHoyo != null) {
-                        imageView.setImage(imgHoyo);
+                        break;
+                    case HOYO:
+                        imagen = imgHoyo;
                         tipo = TipoCasilla.HOYO;
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de HOYO.");
-                    }
-                } else if (casillas[i][j] == TipoCasilla.PARED) {
-                    if (imgPared != null) {
-                        imageView.setImage(imgPared);
+                        break;
+                    case PARED:
+                        imagen = imgPared;
                         tipo = TipoCasilla.PARED;
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de PARED.");
-                    }
-                } else {
-                    if (imgOtro != null) {
-                        imageView.setImage(imgOtro);
+                        break;
+                    default:
+                        imagen = imgOtro;
                         tipo = TipoCasilla.SPAWN_JUGADOR;
-                    } else {
-                        System.err.println("No se pudo cargar la imagen de PARED.");
-                    }
+                        break;
                 }
 
-                // Ajustar la imagen para mantener su relación de aspecto
-                imageView.setPreserveRatio(true);
-
-
-                // Ajustar el tamaño de la imagen a la celda
-                imageView.fitWidthProperty().bind(gridPane.widthProperty().divide(casillas[0].length));
-                imageView.fitHeightProperty().bind(gridPane.heightProperty().divide(casillas.length));
-
-                // Agregar la imagen al GridPane en la posición desplazada
-                gridPane.add(imageView, j, i);
+                if (imagen != null) {
+                    imageView.setImage(imagen);
+                    imageView.setFitWidth(32); // Ajusta el ancho de la imagen a 32 (tamaño de celda)
+                    imageView.setFitHeight(32); // Ajusta la altura de la imagen a 32 (tamaño de celda)
+                    gridPaneMapa.add(imageView, j, i); // Agrega la imagen a la celda correspondiente
+                } else {
+                    System.err.println("No se pudo cargar la imagen.");
+                }
 
                 int heightImagen = (int) imageView.getImage().getHeight();
                 int widthImagen = (int) imageView.getImage().getWidth();
-                int cordenadaX = heightImagen * i;
-                int cordenadaY = heightImagen * j;
+                int cordenadaX = heightImagen * j;
+                int cordenadaY = heightImagen * i;
+
                 Rectangle rectangulo = new Rectangle(cordenadaX, cordenadaY, heightImagen, widthImagen);
                 coordenadasImagenes[i][j] = new RectangleTipo(rectangulo, tipo);
+            }
+        }
+    }
 
 
+    private void verArray() {
+        for (int i = 0; i < coordenadasImagenes.length; i++) {
+            for (int j = 0; j < coordenadasImagenes[i].length; j++) {
+                RectangleTipo rectTipo = coordenadasImagenes[i][j];
+                Rectangle rectangulo = rectTipo.REC();
+                TipoCasilla tipo = rectTipo.TIPO();
+
+                // Obtener las propiedades del rectángulo
+                int cordenadaX = (int) rectangulo.getX();
+                int cordenadaY = (int) rectangulo.getY();
+                int heightImagen = (int) rectangulo.getHeight();
+                int widthImagen = (int) rectangulo.getWidth();
+
+                // Mostrar los datos en la consola
+                System.out.println("Coordenadas del rectángulo en [" + i + "][" + j + "]:");
+                System.out.println(" - Coordenada X: " + cordenadaX);
+                System.out.println(" - Coordenada Y: " + cordenadaY);
+                System.out.println(" - Altura de la imagen: " + heightImagen);
+                System.out.println(" - Ancho de la imagen: " + widthImagen);
+                System.out.println("Tipo de casilla en [" + i + "][" + j + "]: " + tipo);
+                System.out.println("-----------------------------------");
             }
         }
 
-    }
-    private void verArray() {
-            for (int i = 0; i < coordenadasImagenes.length; i++) {
-                for (int j = 0; j < coordenadasImagenes[i].length; j++) {
-                    RectangleTipo rectTipo = coordenadasImagenes[i][j];
-                    Rectangle rectangulo = rectTipo.REC();
-                    TipoCasilla tipo = rectTipo.TIPO();
-
-                    // Obtener las propiedades del rectángulo
-                    int cordenadaX = (int) rectangulo.getX();
-                    int cordenadaY = (int) rectangulo.getY();
-                    int heightImagen = (int) rectangulo.getHeight();
-                    int widthImagen = (int) rectangulo.getWidth();
-
-                    // Mostrar los datos en la consola
-                    System.out.println("Coordenadas del rectángulo en [" + i + "][" + j + "]:");
-                    System.out.println(" - Coordenada X: " + cordenadaX);
-                    System.out.println(" - Coordenada Y: " + cordenadaY);
-                    System.out.println(" - Altura de la imagen: " + heightImagen);
-                    System.out.println(" - Ancho de la imagen: " + widthImagen);
-                    System.out.println("Tipo de casilla en [" + i + "][" + j + "]: " + tipo);
-                    System.out.println("-----------------------------------");
-                }
-            }
-
-
 
     }
 
-    public Image fotoDeGridPane() {
-// Crear un objeto SnapshotParameters
-        SnapshotParameters sp = new SnapshotParameters();
-        sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
-
-// Crear una imagen vacía con el ancho y alto del GridPane
-
-
-        WritableImage image = new WritableImage( ALTO_VENTANA,  ANCHO_VENTANA);
-
-// Tomar una instantánea del GridPane y guardarla en la imagen
-
-
-        return panel.snapshot(sp, image);
-
-    }
 
     public Scene getEscena() {
         return escena;
