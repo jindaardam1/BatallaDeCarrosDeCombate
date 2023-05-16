@@ -312,6 +312,33 @@ public class OperacionesBADA {
         return skins;
     }
 
+    public static void alterSkin(int id) {
+        String query = "UPDATE skins SET conseguida = 1 WHERE id = ?";
+        try (Connection connection = conectar();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            System.out.println("Registro de Skin actualizado exitosamente");
+
+        } catch (SQLException e) {
+            System.err.println("Error al modificar el registro de Skin: " + e.getMessage());
+        }
+    }
+
+    public static void borrarPartidaGuardada() {
+        String query = "DELETE FROM partida";
+        try (Connection connection = conectar();
+             Statement statement = connection.createStatement()) {
+
+            statement.executeUpdate(query);
+            System.out.println("Partida guardada borrada exitosamente");
+
+        } catch (SQLException e) {
+            System.err.println("Error al borrar la partida guardada: " + e.getMessage());
+        }
+    }
+
     public static SerializadorMapa deserializador(String jsonString) {
         // Crear un objeto ObjectMapper de Jackson
         ObjectMapper objectMapper = new ObjectMapper();
