@@ -2,10 +2,7 @@
 
     import javafx.animation.AnimationTimer;
     import javafx.application.Application;
-    import javafx.geometry.HPos;
-    import javafx.geometry.Insets;
     import javafx.geometry.Pos;
-    import javafx.geometry.VPos;
     import javafx.scene.Group;
     import javafx.scene.Scene;
     import javafx.scene.SnapshotParameters;
@@ -17,11 +14,10 @@
     import javafx.scene.layout.*;
     import javafx.scene.paint.Color;
     import javafx.stage.Stage;
-    import juego.input.InputManager;
-    import juego.utils.PantallaUtil;
+    import juego.input.KeyInputManager;
+    import juego.input.MouseInputManager;
     import juego.utils.TipoCasilla;
 
-    import java.lang.reflect.GenericArrayType;
     import java.util.Objects;
 
     public class CampoDeBatalla extends Application {
@@ -41,7 +37,7 @@
         private Group root;
         private Canvas lienzo;
         private GraphicsContext graficos;
-        private Image imagenDeMapa;
+
 
 
         public static void main(String[] args) {
@@ -51,10 +47,11 @@
         @Override
         public void start(Stage ventana) throws Exception {
             inizializarComponentes();
-            gestionEventos();
             ventana.setScene(escena);
             ventana.setTitle("CampoDeBatalla");
+            gestionEventos();
             ventana.show();
+
             cicloJuego();
         }
 
@@ -81,23 +78,19 @@
         };
 
         public void inizializarComponentes() {
-            jugador =  new Jugador(1,2,3,4,2,2,3);
-            root = new Group();
+            this.jugador =  new Jugador(1,2,3,4,2,2,3);
+            this.root = new Group();
             cargarImagenes();
-            contenedorPanel = new StackPane();
-            lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
-            graficos = lienzo.getGraphicsContext2D();
-            panel = new GridPane();
+            this.contenedorPanel = new StackPane();
+            this.lienzo = new Canvas(ALTO_VENTANA,ANCHO_VENTANA);
+            this.graficos = lienzo.getGraphicsContext2D();
+            this.panel = new GridPane();
+
 
             contenedorPanel.getChildren().add(panel);
             contenedorPanel.setAlignment(Pos.BOTTOM_RIGHT);
-
-
-
             escena = new Scene(root, ANCHO_VENTANA, ALTO_VENTANA);
             pintarEscenario(panel);
-
-
             root.getChildren().add(contenedorPanel);
             root.getChildren().add(lienzo);
             ponerFondo();
@@ -138,8 +131,9 @@
 
 
     public void gestionEventos() {
-        escena.setOnKeyPressed(new InputManager());
-        escena.setOnKeyReleased(new InputManager());
+        escena.setOnKeyPressed(new KeyInputManager());
+        escena.setOnKeyReleased(new KeyInputManager());
+        escena.setOnMouseMoved(new MouseInputManager(jugador.imagenTorreta));
     }
 
         public void pintarEscenario(GridPane gridPane) {
@@ -205,10 +199,13 @@
 // Crear un objeto SnapshotParameters
             SnapshotParameters sp = new SnapshotParameters();
             sp.setFill(Color.TRANSPARENT); // Indicar que el fondo es transparente
-
+            panel.setPrefWidth(ALTO_VENTANA);
+            panel.setPrefHeight(ANCHO_VENTANA);
+            panel.setHgap(ALTO_VENTANA);
+            panel.setVgap(ANCHO_VENTANA);
 // Crear una imagen vacía con el ancho y alto del GridPane
-            int w = (int) panel.getWidth();
-            int h = (int) panel.getHeight();
+            int h = (int) panel.getHgap();
+            int w = (int) panel.getVgap();
             WritableImage image = new WritableImage(w, h);
 
 // Tomar una instantánea del GridPane y guardarla en la imagen
@@ -221,4 +218,7 @@
         public Scene getEscena(){
             return escena;
         }
+
+
+
     }
