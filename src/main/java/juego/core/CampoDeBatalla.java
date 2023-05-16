@@ -198,8 +198,8 @@ public class CampoDeBatalla extends Application {
 
                 int heightImagen = (int) imageView.getImage().getHeight();
                 int widthImagen = (int) imageView.getImage().getWidth();
-                int cordenadaX = heightImagen * j;
-                int cordenadaY = heightImagen * i;
+                int cordenadaX = heightImagen * j + 1;
+                int cordenadaY = heightImagen * i + 1;
 
                 Rectangle rectangulo = new Rectangle(cordenadaX, cordenadaY, heightImagen, widthImagen);
                 coordenadasImagenes[i][j] = new RectangleTipo(rectangulo, tipo);

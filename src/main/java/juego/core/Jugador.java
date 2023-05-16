@@ -41,8 +41,8 @@ public class Jugador extends TanqueJugador {
         this.velocidad = velocidad;
         this.balas = balas;
         this.minas = minas;
-        this.x = 200;
-        this.y = 200;
+        this.x = 500;
+        this.y = 500;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
         this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
