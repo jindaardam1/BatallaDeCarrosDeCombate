@@ -1,21 +1,32 @@
 
+h	java:S112…"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8µ¨Ç™‚1
 l
-java:S1192Ž"UDefine a constant instead of duplicating this literal "-fx-font-size: 24px;" 4 times.(œèÜó
+java:S1192§"UDefine a constant instead of duplicating this literal "-fx-font-size: 24px;" 4 times.(œèÜó
 k
-java:S1192P"UDefine a constant instead of duplicating this literal "-fx-font-size: 48px;" 4 times.(÷‘÷Ô
->
-java:S5411}"(Use a primitive boolean expression here.(ÓÚ™‘
+java:S1192Q"UDefine a constant instead of duplicating this literal "-fx-font-size: 48px;" 4 times.(÷‘÷Ô
+„
+java:S1104"bMake ESTA_PANTALLA_COMPLETA a static final constant or non-public and provide accessors if needed.(³†­Öüÿÿÿÿ8»¨Ç™‚1
+^
+java:S1444"<Make this "public static ESTA_PANTALLA_COMPLETA" field final(³†­Öüÿÿÿÿ8»¨Ç™‚1
+?
+java:S5411–"(Use a primitive boolean expression here.(ÓÚ™‘
 z
 java:S3008"_Rename this field "ANCHO_VENTANA_ACTUAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûôåâÿÿÿÿÿ
 t
 java:S3008"^Rename this field "ALTO_VENTANA_ACUTAL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»‰Íà
+ƒ
+java:S3008"aRename this field "ESTA_PANTALLA_COMPLETA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³†­Öüÿÿÿÿ8ò©Ç™‚1
 G
-java:S1602v",Remove useless curly braces around statement(²É´¹üÿÿÿÿ
-Q
-java:S2696"6Make the enclosing method "static" or remove this set.(©•çµýÿÿÿÿ
-P
-java:S2209"5Change this instance-reference to a static reference.(©•çµýÿÿÿÿ
+java:S1602w",Remove useless curly braces around statement(²É´¹üÿÿÿÿ
+Y	java:S125‡"<This block of commented-out lines of code should be removed.(ôøØÆ8—¬Ç™‚1
+^	java:S125Š"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8—¬Ç™‚1
 R
-java:S2696€"6Make the enclosing method "static" or remove this set.(ïÏž‡þÿÿÿÿ
+java:S2696˜"6Make the enclosing method "static" or remove this set.(©•çµýÿÿÿÿ
 Q
-java:S2209€"5Change this instance-reference to a static reference.(ïÏž‡þÿÿÿÿ
+java:S2209˜"5Change this instance-reference to a static reference.(©•çµýÿÿÿÿ
+R
+java:S2696™"6Make the enclosing method "static" or remove this set.(ïÏž‡þÿÿÿÿ
+Q
+java:S2209™"5Change this instance-reference to a static reference.(ïÏž‡þÿÿÿÿ
+Y
+java:S2696«"6Make the enclosing method "static" or remove this set.(Ù¿Ë¹ÿÿÿÿÿ8£¬Ç™‚1

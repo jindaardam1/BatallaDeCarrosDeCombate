@@ -1,35 +1,30 @@
 
-_
-java:S2583›"CChange this condition so that it does not always evaluate to "true"(äªÉøüÿÿÿÿ
-Z
-java:S2583¡"CChange this condition so that it does not always evaluate to "true"(³¶Œ„
-Y
-java:S2583•"CChange this condition so that it does not always evaluate to "true"(ÿ›
-Z
-java:S2583§"CChange this condition so that it does not always evaluate to "true"(óâı³
-m
-java:S1450!"WRemove the "casillas" field and declare it as a local variable in the relevant methods.(Ãº˜
-q
-java:S1450$"VRemove the "imgHoyo" field and declare it as a local variable in the relevant methods.(‹é’«ûÿÿÿÿ
-l
-java:S1450#"VRemove the "imgNada" field and declare it as a local variable in the relevant methods.(¦’Êı
-q
-java:S1450&"VRemove the "imgOtro" field and declare it as a local variable in the relevant methods.(†ø¨õüÿÿÿÿ
-m
-java:S1450%"WRemove the "imgPared" field and declare it as a local variable in the relevant methods.(õ¨ªÊ
+s
+java:S1104"QMake panel a static final constant or non-public and provide accessors if needed.(‰õÁ™üÿÿÿÿ8à‹üš‚1
+`
+java:S2583"CChange this condition so that it does not always evaluate to "true"(ÿ›8Şüš‚1
+a
+java:S2583©"CChange this condition so that it does not always evaluate to "true"(³¶Œ„8¹üš‚1
+a
+java:S2583¯"CChange this condition so that it does not always evaluate to "true"(óâı³8Şüš‚1
+f
+java:S2583£"CChange this condition so that it does not always evaluate to "true"(äªÉøüÿÿÿÿ8Áüš‚1
+t
+java:S1450"WRemove the "casillas" field and declare it as a local variable in the relevant methods.(Ãº˜8àüš‚1
+w
+java:S1450&"URemove the "lienzo" field and declare it as a local variable in the relevant methods.(ÚŸä’ÿÿÿÿÿ8áüš‚1
 p
-java:S1450)"URemove the "lienzo" field and declare it as a local variable in the relevant methods.(ÚŸä’ÿÿÿÿÿ
-i
-java:S1450("SRemove the "root" field and declare it as a local variable in the relevant methods.(ãôÁ
-P
-java:S1854A"5Remove this useless assignment to local variable "t".(êÅÕ¡úÿÿÿÿ
-A
-java:S1481A"&Remove this unused "t" local variable.(êÅÕ¡úÿÿÿÿ
-7
-java:S1116O"Remove this empty statement.(ôŸìúÿÿÿÿ
-i
-java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(îİøß
-T	java:S106˜"9Replace this use of System.out or System.err by a logger.(äœ½†şÿÿÿÿ
-O	java:S106"9Replace this use of System.out or System.err by a logger.(§´ï¢
-T	java:S106¤"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ
-T	java:S106ª"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ
+java:S1450%"SRemove the "root" field and declare it as a local variable in the relevant methods.(ãôÁ8áüš‚1
+W
+java:S1854@"5Remove this useless assignment to local variable "t".(êÅÕ¡úÿÿÿÿ8êüš‚1
+H
+java:S1481@"&Remove this unused "t" local variable.(êÅÕ¡úÿÿÿÿ8ìüš‚1
+>
+java:S1116N"Remove this empty statement.(ôŸìúÿÿÿÿ8îüš‚1
+p
+java:S3776‹"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(îİøß8†üš‚1
+[	java:S106 "9Replace this use of System.out or System.err by a logger.(äœ½†şÿÿÿÿ8Œüš‚1
+V	java:S106¦"9Replace this use of System.out or System.err by a logger.(§´ï¢8üš‚1
+[	java:S106¬"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ8üš‚1
+[	java:S106²"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ8üš‚1
+U	java:S106À"9Replace this use of System.out or System.err by a logger.(Óşu8üš‚1

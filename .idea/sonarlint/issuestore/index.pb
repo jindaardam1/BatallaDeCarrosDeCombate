@@ -61,3 +61,13 @@ Z
 *src/main/java/juego/utils/creacionBADA.sql,3\1\31f79d133e1c3a0ac6c0c852ceafaadfc0da7436
 ^
 .src/main/java/juego/core/SerializadorMapa.java,1\8\18bb93dc5536f2ce602396224b846305534d7d32
+[
++src/main/java/juego/core/MenuPrincipal.java,a\c\ac356499e068dcf1a71c4edbbe9354777859e335
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+U
+%src/main/java/juego/core/Jugador.java,6\1\61f7b065b1464566a21cc45ad08c243f60ce7038
+\
+,src/main/java/juego/core/CampoDeBatalla.java,4\5\4580f9f0030813f599e5c5341c72c3048560f91a

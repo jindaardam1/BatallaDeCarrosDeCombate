@@ -75,6 +75,8 @@ public class Jugador extends TanqueJugador {
     public void mover() {
         double distancia = velocidad * 2.5; // Distancia que se moverá en cada iteración del ciclo de juego
 
+
+
         // Movimiento hacia arriba
         if (KeyInputManager.isArriba()) {
             y -= distancia;
