@@ -87,10 +87,18 @@ public class CampoDeBatalla extends Application {
     ;
 
     public void inizializarComponentes() {
+
+        //RESUMEN:
+        //root es el grupo en el que se van guardando los elementos que luego se represenaran con Escena y un tamaño
+        //contenedorPanel es un StackPane el cual agrega uno encima del otro
+        //lienzo es la parte en la cual se dibuja el personaje
+        //pintarEscenario(panel) dibuja el mapa en el panel
+        //ponerFondo agrega a contenedorPanel el fondo detras del tod0.
+        cargarImagenes();
         this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
         this.coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
         this.root = new Group();
-        cargarImagenes();
+
         this.contenedorPanel = new StackPane();
         this.lienzo = new Canvas(ALTO_VENTANA, ANCHO_VENTANA);
         this.graficos = lienzo.getGraphicsContext2D();
@@ -121,8 +129,8 @@ public class CampoDeBatalla extends Application {
 
 
     private void ponerFondo() {
-        fondo.fitWidthProperty().bind(escena.widthProperty());
-        fondo.fitHeightProperty().bind(escena.heightProperty());
+        fondo.fitWidthProperty().set(ANCHO_VENTANA);
+        fondo.fitHeightProperty().set(ALTO_VENTANA);
         contenedorPanel.getChildren().add(fondo);
         fondo.toBack();
     }
@@ -197,8 +205,6 @@ public class CampoDeBatalla extends Application {
 
                 // Agregar la imagen al GridPane en la posición desplazada
                 gridPane.add(imageView, j, i);
-
-                System.out.println("Dimensiones de la imagen en [" + i + "][" + j + "]: " + imageView.getImage().getWidth() + "x" + imageView.getImage().getHeight());
 
                 int heightImagen = (int) imageView.getImage().getHeight();
                 int widthImagen = (int) imageView.getImage().getWidth();
