@@ -43,7 +43,7 @@ public class CampoDeBatalla extends Application {
     private Group root;
     private Canvas lienzo;
     private GraphicsContext graficos;
-    private RectangleTipo[][] coordenadasImagenes;
+    public static RectangleTipo[][] coordenadasImagenes;
 
 
     public static void main(String[] args) {
