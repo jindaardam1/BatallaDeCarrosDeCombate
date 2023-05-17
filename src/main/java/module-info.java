@@ -10,6 +10,9 @@ module com.example.pruebafx {
 
 
     opens com.example.pruebafx to javafx.fxml;
-    exports com.example.pruebafx;
-    exports juego.core;
+    exports vista.juego;
+    exports modelo.mapa;
+    exports main;
+    exports modelo;
+    exports vista.menus;
 }

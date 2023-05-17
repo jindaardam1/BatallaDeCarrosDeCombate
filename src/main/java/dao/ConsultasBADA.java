@@ -2,10 +2,10 @@ package dao;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import juego.core.SerializadorMapa;
-import juego.utils.Partida;
-import juego.utils.Score;
-import juego.utils.Skin;
+import modelo.mapa.SerializadorMapa;
+import dao.records.Partida;
+import dao.records.Score;
+import dao.records.Skin;
 
 import java.sql.*;
 import java.util.ArrayList;

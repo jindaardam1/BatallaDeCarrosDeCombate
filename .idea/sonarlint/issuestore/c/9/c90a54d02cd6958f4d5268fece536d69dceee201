@@ -1,8 +1,0 @@
-
-Q
-java:S1854)";Remove this useless assignment to local variable "ventana".(åÉ™ã
-S	java:S106""9Replace this use of System.out or System.err by a logger.(Õ¿©§üÿÿÿÿ
-M	java:S106#"9Replace this use of System.out or System.err by a logger.(ºÍõ2
-S	java:S106'"9Replace this use of System.out or System.err by a logger.(º¦ ìùÿÿÿÿ
-B
-java:S1481)",Remove this unused "ventana" local variable.(åÉ™ã
