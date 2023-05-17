@@ -131,7 +131,7 @@ public class Jugador extends TanqueJugador {
                 int rectanguloHeight = (int) rectangulo.getHeight();
                 int rectanguloWidth = (int) rectangulo.getWidth();
 
-                if (tipo == TipoCasilla.PARED) {
+                if (tipo == TipoCasilla.PARED || tipo == TipoCasilla.HOYO) {
                     colisionLateralDerecho = colisionLateralDerecho || (jugadorX + jugadorWidth > rectanguloX) && (jugadorX + jugadorWidth <= rectanguloX + rectanguloWidth) && (jugadorY + jugadorHeight > rectanguloY) && (jugadorY < rectanguloY + rectanguloHeight);
                     colisionLateralIzquierdo = colisionLateralIzquierdo || (jugadorX < rectanguloX + rectanguloWidth) && (jugadorX >= rectanguloX) && (jugadorY + jugadorHeight > rectanguloY) && (jugadorY < rectanguloY + rectanguloHeight);
                     colisionInferior = colisionInferior || (jugadorY + jugadorHeight > rectanguloY) && (jugadorY + jugadorHeight <= rectanguloY + rectanguloHeight) && (jugadorX + jugadorWidth > rectanguloX) && (jugadorX < rectanguloX + rectanguloWidth);

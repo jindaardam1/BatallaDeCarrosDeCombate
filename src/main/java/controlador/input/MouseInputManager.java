@@ -1,24 +1,25 @@
 package controlador.input;
 
 import javafx.event.EventHandler;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import modelo.Bala;
 import modelo.Jugador;
+import vista.juego.CampoDeBatalla;
 
 
 public class MouseInputManager implements EventHandler<MouseEvent> {
-    private static ImageView tankImage;
+
     private static double mouseX;
     private static double mouseY;
-    private double tankCenterX;
-    private double tankCenterY;
-    private static Boolean clickIzquierdo = false;
+
+    public static Boolean clickIzquierdo = false;
 
 
-    public MouseInputManager(ImageView tanquerImagen) {
+    public MouseInputManager() {
 
-        this.tankImage = tanquerImagen;
+
 
     }
 
@@ -27,16 +28,20 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
 
 
         // obtener las coordenadas x e y del ratón en la escena
-         mouseX = event.getSceneX();
-         mouseY = event.getSceneY();
-        //System.out.println("Raton:X:" + mouseX + ";" + "Y: " + mouseY);
 
 
-        // obtener las coordenadas x e y del centro de la imagen del tanque
-        tankCenterX = Jugador.x;
-        tankCenterY = Jugador.y;
 
-        //System.out.println("Tanque:X:" + tankCenterX + ";" + "Y: " + tankCenterY);
+        // Convertir las coordenadas del ratón a coordenadas en relación al GraphicsContext
+        double canvasMouseX = CampoDeBatalla.lienzo.sceneToLocal(event.getSceneX(), event.getSceneY()).getX();
+        double canvasMouseY =CampoDeBatalla.lienzo.sceneToLocal(event.getSceneX(), event.getSceneY()).getY();
+
+        // obtener las coordenadas x e y del ratón en relación al GraphicsContext
+        mouseX =  canvasMouseX;
+        mouseY = canvasMouseY ;
+       // System.out.println("Raton:X:" + mouseX + ";" + "Y: " + mouseY);
+
+
+
 
         if (event.getButton() == javafx.scene.input.MouseButton.PRIMARY) {
             System.out.println("Hiciste click izquierdo");
@@ -50,9 +55,7 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
 
 
 
-    public static ImageView getTankImage() {
-        return tankImage;
-    }
+
 
     public static double getMouseX() {
         return mouseX;

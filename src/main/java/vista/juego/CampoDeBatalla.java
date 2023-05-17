@@ -45,7 +45,7 @@ public class CampoDeBatalla extends Application {
     private Jugador jugador;
 
     public static Canvas lienzo;
-    private GraphicsContext graficos;
+    public static GraphicsContext graficos;
     public static RectangleTipo[][] coordenadasImagenes;
     public GridPane gridPaneMapa;
     public Bala bala;
@@ -74,7 +74,7 @@ public class CampoDeBatalla extends Application {
                 double t = (tiempoActual - tiempoInicial) / 1000000000.0;
 
 
-                actualizarEstado();
+                jugador.mover();
                 pintar();
 
             }
@@ -83,11 +83,9 @@ public class CampoDeBatalla extends Application {
     }
 
 
-    public void actualizarEstado() {
-        jugador.mover();
-    }
 
-    ;
+
+
 
     public void inizializarComponentes() {
 
@@ -107,6 +105,7 @@ public class CampoDeBatalla extends Application {
 
         stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo);
         escena = new Scene(stackPane, ALTO_VENTANA, ANCHO_VENTANA);
+
         pintarEscenario();
 
         verArray();
@@ -134,16 +133,17 @@ public class CampoDeBatalla extends Application {
     private void pintar() {
         //borra lo de detras
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
-        jugador.pintar(graficos);
         bala.pintar(graficos);
+        jugador.pintar(graficos);
+
     }
 
 
     public void gestionEventos() {
         escena.setOnKeyPressed(new KeyInputManager());
         escena.setOnKeyReleased(new KeyInputManager());
-        escena.setOnMouseMoved(new MouseInputManager(jugador.imagenTorreta));
-        escena.setOnMouseClicked(new MouseInputManager(jugador.imagenTorreta));
+        escena.setOnMouseMoved(new MouseInputManager());
+        escena.setOnMouseClicked(new MouseInputManager());
     }
 
     public void pintarEscenario() {

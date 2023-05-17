@@ -13,72 +13,104 @@ import java.util.Objects;
 
 public class Bala {
     private static final double VELOCIDAD = 2.0;  // Velocidad de la bala
-    public int x;
-    public int y;
+    public double x;
+    public double y;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
     private double posRatonAlDispararX;
     private double posRatonAlDispararY;
+
+    private double posBalaAlDispararX;
+    private double posBalaAlDispararY;
     private ImageView imagenBala;
     private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.png";
-    public static boolean disparo;
+    public boolean disparo;
+    private double mouseX;
+    private double mouseY;
+    private double deltaX;
+    private double deltaY;
+    private double magnitud;
 
     public Bala() {
 
-        this.direccionX = 0;
-        this.direccionY = 0;
-        this.disparo = false;
-
-
-        imagenBala = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBALA))));
+        reubicarBala();
+        disparo = false;
+        this.imagenBala = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBALA))));
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x;
-        this.y = Jugador.y;
+        this.x = Jugador.x+8;
+        this.y = Jugador.y+8;
+
+    }
+
+    public void calcularAnguloDisparo() {
+        deltaX = (posRatonAlDispararX) - posBalaAlDispararX;
+        deltaY = (posRatonAlDispararY) - posBalaAlDispararY;
+        magnitud = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        // Calcular dirección solo si la magnitud es mayor a cero para evitar divisiones por cero
+
+            direccionX = deltaX / magnitud;
+            direccionY = deltaY / magnitud;
+
+    }
+
+
+    public void actualizadorDeCordRaton() {
+        posRatonAlDispararX = mouseX;
+        posRatonAlDispararY = mouseY;
+
     }
 
     public void pintar(GraphicsContext graficos) {
         graficos.drawImage(imagenBala.getImage(), x, y);
-        mover();
-        disparar();
-        if (!disparo) {
+        actualizadorDeCordRaton();
 
+        disparar();
+        if (disparo) {
+            mover();
+        } else {
             reubicarBala();
         }
     }
 
+
     private void mover() {
-        if (disparo) {
-            double mouseX = posRatonAlDispararX;
-            double mouseY = posRatonAlDispararY;
-            double deltaX = mouseX - x;
-            double deltaY = mouseY - y;
-            double magnitud = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-            direccionX = deltaX / magnitud;
-            direccionY = deltaY / magnitud;
-            x += direccionX * VELOCIDAD;
-            y += direccionY * VELOCIDAD;
-        }
+
+        x += direccionX * VELOCIDAD;
+        y += direccionY * VELOCIDAD;
+
     }
 
     private void disparar() {
-        if (MouseInputManager.getClickIzquierdo()) {
-            System.out.println("Has disparado");
-            tomarPosRaton();
-            disparo = true;
-
-            if (chocoPared()) {
-                System.out.println("La bala ha chocado con una pared");
-                disparo = false;
-
+        if (MouseInputManager.clickIzquierdo) {
+            //Calcula el angulo de disparo evitando darle dos veces seguidas
+            if (!disparo) {
+                tomarPosRatonYBala();
+                calcularAnguloDisparo();
             }
+
+            System.out.println("Has disparado");
+
+
+            disparo = true;
+            //para que si no mueves el raton despues de disparar, la bala no salga otra vez.
+            MouseInputManager.clickIzquierdo = false;
+        }
+        if (chocoPared()) {
+            System.out.println("La bala ha chocado con una pared");
+            disparo = false;
+
+
         }
     }
 
-    private void tomarPosRaton() {
-        posRatonAlDispararX =MouseInputManager.getMouseX();
-        posRatonAlDispararY =MouseInputManager.getMouseY();
+    private void tomarPosRatonYBala() {
+        posRatonAlDispararX = MouseInputManager.getMouseX();
+        posRatonAlDispararY = MouseInputManager.getMouseY();
+        posBalaAlDispararX = this.x;
+        posBalaAlDispararY = this.y;
     }
 
     private boolean chocoPared() {
@@ -88,8 +120,8 @@ public class Bala {
                 Rectangle rectangulo = rectTipo.REC();
                 TipoCasilla tipo = rectTipo.TIPO();
 
-                int balaX = x;
-                int balaY = y;
+                double balaX = x;
+                double balaY = y;
                 int balaHeight = (int) imagenBala.getImage().getHeight();
                 int balaWidth = (int) imagenBala.getImage().getWidth();
 
@@ -103,6 +135,7 @@ public class Bala {
                             balaX + balaWidth > rectanguloX &&
                             balaY < rectanguloY + rectanguloHeight &&
                             balaY + balaHeight > rectanguloY) {
+                        System.out.println("CHOCOOOOOOOooooooooo");
                         // Ha ocurrido una colisión entre la bala y el rectángulo
 
                         return true;
