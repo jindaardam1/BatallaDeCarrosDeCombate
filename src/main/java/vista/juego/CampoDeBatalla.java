@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import modelo.Bala;
 import modelo.Jugador;
 import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
@@ -47,6 +48,7 @@ public class CampoDeBatalla extends Application {
     private GraphicsContext graficos;
     public static RectangleTipo[][] coordenadasImagenes;
     public GridPane gridPaneMapa;
+    public Bala bala;
 
 
     public static void main(String[] args) {
@@ -91,12 +93,13 @@ public class CampoDeBatalla extends Application {
 
         cargarImagenes();
         this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
-        this.coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
+        this.bala = new Bala();
+        coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
         this.gridPaneMapa = new GridPane();
         this.stackPane = new StackPane();
 
 
-        this.lienzo = new Canvas(32 * CANTIDADCOLUMNAS, 32 * CANTIDADFILAS);
+        lienzo = new Canvas(32 * CANTIDADCOLUMNAS, 32 * CANTIDADFILAS);
         this.graficos = lienzo.getGraphicsContext2D();
 
 
@@ -132,6 +135,7 @@ public class CampoDeBatalla extends Application {
         //borra lo de detras
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
         jugador.pintar(graficos);
+        bala.pintar(graficos);
     }
 
 
@@ -139,6 +143,7 @@ public class CampoDeBatalla extends Application {
         escena.setOnKeyPressed(new KeyInputManager());
         escena.setOnKeyReleased(new KeyInputManager());
         escena.setOnMouseMoved(new MouseInputManager(jugador.imagenTorreta));
+        escena.setOnMouseClicked(new MouseInputManager(jugador.imagenTorreta));
     }
 
     public void pintarEscenario() {

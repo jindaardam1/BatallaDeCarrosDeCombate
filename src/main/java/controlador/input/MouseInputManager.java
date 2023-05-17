@@ -3,6 +3,7 @@ package controlador.input;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import modelo.Bala;
 import modelo.Jugador;
 
 
@@ -12,6 +13,7 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
     private static double mouseY;
     private double tankCenterX;
     private double tankCenterY;
+    private static Boolean clickIzquierdo = false;
 
 
     public MouseInputManager(ImageView tanquerImagen) {
@@ -36,8 +38,17 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
 
         //System.out.println("Tanque:X:" + tankCenterX + ";" + "Y: " + tankCenterY);
 
+        if (event.getButton() == javafx.scene.input.MouseButton.PRIMARY) {
+            System.out.println("Hiciste click izquierdo");
+                clickIzquierdo = true;
 
+        }else{
+                clickIzquierdo = false;
+        }
     }
+
+
+
 
     public static ImageView getTankImage() {
         return tankImage;
@@ -50,4 +61,5 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
     public static double getMouseY() {
         return mouseY;
     }
+    public static boolean getClickIzquierdo(){return clickIzquierdo;}
 }
