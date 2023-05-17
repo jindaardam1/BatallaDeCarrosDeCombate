@@ -28,7 +28,7 @@ public class OperacionesBADA {
         return conexion;
     }
 
-    private static void crearBADA() {
+    public static void crearBADA() {
         if (!OperacionesBADA.existeBADA()) {
             OperacionesBADA.crearBaseDeDatos();
             System.out.println("Base de datos creada.");
@@ -38,7 +38,7 @@ public class OperacionesBADA {
     }
 
     private static boolean existeBADA() {
-        File archivoBD = new File("C:\\_DiscoDatos-MA\\Programación\\UT8\\BatallaDeCarrosDeCombate\\src\\main\\java\\juego\\utils\\creacionBADA.sql");
+        File archivoBD = new File("tanquesbd.db");
         return archivoBD.exists();
     }
 
@@ -64,7 +64,7 @@ public class OperacionesBADA {
 
     private static String obtenerScriptCreacionBADA() {
         StringBuilder script = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\_DiscoDatos-MA\\Programación\\UT8\\BatallaDeCarrosDeCombate\\src\\main\\java\\juego\\utils\\creacionBADA.sql"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/juego/utils/creacionBADA.sql"))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 script.append(linea).append('\n');
@@ -312,19 +312,25 @@ public class OperacionesBADA {
         return skins;
     }
 
-    public static void alterSkin(int id) {
-        String query = "UPDATE skins SET conseguida = 1 WHERE id = ?";
+    public static void alterSkin(int id, String jugadorNickname) {
+        String updateQuery = "UPDATE skins SET conseguida = 1, jugadorNickname = ? WHERE id = ?";
         try (Connection connection = conectar();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+             PreparedStatement statement = connection.prepareStatement(updateQuery)) {
 
-            statement.setInt(1, id);
-            statement.executeUpdate();
-            System.out.println("Registro de Skin actualizado exitosamente");
+            statement.setString(1, jugadorNickname);
+            statement.setInt(2, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Registro actualizado correctamente");
+            } else {
+                System.out.println("No se encontró un registro con el ID especificado");
+            }
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar el registro de Skin: " + e.getMessage());
+            System.err.println("Error al actualizar el registro: " + e.getMessage());
         }
     }
+
 
     public static void borrarPartidaGuardada() {
         String query = "DELETE FROM partida";
