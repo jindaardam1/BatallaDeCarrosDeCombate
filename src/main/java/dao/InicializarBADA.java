@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class InicializarBADA {
 
@@ -48,7 +49,7 @@ public class InicializarBADA {
         StringBuilder script = new StringBuilder();
 
         try (InputStream inputStream = InicializarBADA.class.getResourceAsStream("/sql/creacionBADA.sql");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+             BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)))) {
 
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -59,10 +60,5 @@ public class InicializarBADA {
         }
 
         return script.toString();
-    }
-
-
-    public static void main(String[] args) {
-        crearBADA();
     }
 }

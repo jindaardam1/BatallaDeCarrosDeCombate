@@ -1,30 +1,47 @@
 
-s
-java:S1104"QMake panel a static final constant or non-public and provide accessors if needed.(‰õÁ™üÿÿÿÿ8à‹üš‚1
-`
-java:S2583"CChange this condition so that it does not always evaluate to "true"(ÿ›8Şüš‚1
-a
-java:S2583©"CChange this condition so that it does not always evaluate to "true"(³¶Œ„8¹üš‚1
-a
-java:S2583¯"CChange this condition so that it does not always evaluate to "true"(óâı³8Şüš‚1
-f
-java:S2583£"CChange this condition so that it does not always evaluate to "true"(äªÉøüÿÿÿÿ8Áüš‚1
 t
-java:S1450"WRemove the "casillas" field and declare it as a local variable in the relevant methods.(Ãº˜8àüš‚1
-w
-java:S1450&"URemove the "lienzo" field and declare it as a local variable in the relevant methods.(ÚŸä’ÿÿÿÿÿ8áüš‚1
-p
-java:S1450%"SRemove the "root" field and declare it as a local variable in the relevant methods.(ãôÁ8áüš‚1
+java:S1104,"RMake lienzo a static final constant or non-public and provide accessors if needed.(‰•â¤şÿÿÿÿ8ßåÿÂ‚1
+{
+java:S1104."_Make coordenadasImagenes a static final constant or non-public and provide accessors if needed.(ú’æZ8ßåÿÂ‚1
+u
+java:S1104/"XMake gridPaneMapa a static final constant or non-public and provide accessors if needed.(½€¡ô8ßåÿÂ‚1
+N
+java:S1444,",Make this "public static lienzo" field final(‰•â¤şÿÿÿÿ8ßåÿÂ‚1
+U
+java:S1444."9Make this "public static coordenadasImagenes" field final(ú’æZ8ßåÿÂ‚1
+j
+java:S2184a"HCast one of the operands of this multiplication operation to a "double".(‘—Î¸ûÿÿÿÿ8âåÿÂ‚1
+j
+java:S2184a"HCast one of the operands of this multiplication operation to a "double".(‘—Î¸ûÿÿÿÿ8âåÿÂ‚1
+t
+java:S1450#"WRemove the "casillas" field and declare it as a local variable in the relevant methods.(Ãº˜8èèÿÂ‚1
+z
+java:S1450""XRemove the "stackPane" field and declare it as a local variable in the relevant methods.(Ÿ÷ïÇüÿÿÿÿ8éèÿÂ‚1
 W
-java:S1854@"5Remove this useless assignment to local variable "t".(êÅÕ¡úÿÿÿÿ8êüš‚1
+java:S1854F"5Remove this useless assignment to local variable "t".(êÅÕ¡úÿÿÿÿ8ùèÿÂ‚1
 H
-java:S1481@"&Remove this unused "t" local variable.(êÅÕ¡úÿÿÿÿ8ìüš‚1
+java:S1481F"&Remove this unused "t" local variable.(êÅÕ¡úÿÿÿÿ8úèÿÂ‚1
 >
-java:S1116N"Remove this empty statement.(ôŸìúÿÿÿÿ8îüš‚1
-p
-java:S3776‹"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(îİøß8†üš‚1
-[	java:S106 "9Replace this use of System.out or System.err by a logger.(äœ½†şÿÿÿÿ8Œüš‚1
-V	java:S106¦"9Replace this use of System.out or System.err by a logger.(§´ï¢8üš‚1
-[	java:S106¬"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ8üš‚1
-[	java:S106²"9Replace this use of System.out or System.err by a logger.(î÷ãôşÿÿÿÿ8üš‚1
-U	java:S106À"9Replace this use of System.out or System.err by a logger.(Óşu8üš‚1
+java:S1116V"Remove this empty statement.(Åñ­õşÿÿÿÿ8üèÿÂ‚1
+K
+java:S2386\".Make member "coordenadasImagenes" "protected".(İ—µ®8ıèÿÂ‚1
+S
+java:S2696\"6Make the enclosing method "static" or remove this set.(İ—µ®8ıèÿÂ‚1
+R
+java:S2209\"5Change this instance-reference to a static reference.(İ—µ®8ıèÿÂ‚1
+X
+java:S2696a"6Make the enclosing method "static" or remove this set.(‘—Î¸ûÿÿÿÿ8éÿÂ‚1
+W
+java:S2209a"5Change this instance-reference to a static reference.(‘—Î¸ûÿÿÿÿ8éÿÂ‚1
+V
+java:S1854‘"8Remove this useless assignment to local variable "tipo".(´úœ‰8‘éÿÂ‚1
+[	java:S106Ä"9Replace this use of System.out or System.err by a logger.(·°ª«ÿÿÿÿÿ8œéÿÂ‚1
+Y
+java:S2696Í"6Make the enclosing method "static" or remove this set.(¼ğ¹ÿøÿÿÿÿ8¡éÿÂ‚1
+U	java:S106á"9Replace this use of System.out or System.err by a logger.(šı›?8¥éÿÂ‚1
+[	java:S106â"9Replace this use of System.out or System.err by a logger.(”½’Áúÿÿÿÿ8¦éÿÂ‚1
+V	java:S106ã"9Replace this use of System.out or System.err by a logger.(¥Âß¨8¨éÿÂ‚1
+[	java:S106ä"9Replace this use of System.out or System.err by a logger.(‡ãàäşÿÿÿÿ8©éÿÂ‚1
+V	java:S106å"9Replace this use of System.out or System.err by a logger.(”³ô½8©éÿÂ‚1
+[	java:S106æ"9Replace this use of System.out or System.err by a logger.(ù¢Ğ”ûÿÿÿÿ8©éÿÂ‚1
+V	java:S106ç"9Replace this use of System.out or System.err by a logger.(ÙŒÉ8ªéÿÂ‚1

@@ -122,12 +122,6 @@ public class Jugador extends TanqueJugador {
                 break; // Romper el bucle externo si hay una colisión
             }
         }
-
-        if (puedeMoverse) {
-            // El jugador puede moverse
-        } else {
-            // El jugador no puede moverse
-        }
     }
 
 

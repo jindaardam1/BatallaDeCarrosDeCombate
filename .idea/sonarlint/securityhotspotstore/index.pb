@@ -67,7 +67,13 @@ Z
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+V
+&src/main/java/juego/utils/Partida.java,d\6\d65bec71a09f0a94f447f1960a7768e9e0aca91d
 U
 %src/main/java/juego/core/Jugador.java,6\1\61f7b065b1464566a21cc45ad08c243f60ce7038
 \
 ,src/main/java/juego/core/CampoDeBatalla.java,4\5\4580f9f0030813f599e5c5341c72c3048560f91a
+V
+&src/main/java/dao/OperacionesBADA.java,5\4\54d97a1f79777984f50d72bea42c618143bfa6d8
+P
+ src/main/java/dao/Consultas.java,e\d\eda1f5e50967d4284e466a6ade97f19924ef5013

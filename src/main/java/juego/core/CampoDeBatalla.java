@@ -25,9 +25,9 @@ import java.awt.*;
 import java.util.Objects;
 
 public class CampoDeBatalla extends Application {
-    private static final int ANCHO_VENTANA = 1200;
-    private static final int ALTO_VENTANA = 1200;
-    private static final int CANTIDADFILAS = 30;
+    private static final int ANCHO_VENTANA = 800;
+    private static final int ALTO_VENTANA = 800;
+    private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
 
     private Scene escena;
@@ -52,7 +52,7 @@ public class CampoDeBatalla extends Application {
     }
 
     @Override
-    public void start(Stage ventana) throws Exception {
+    public void start(Stage ventana) {
         inizializarComponentes();
         ventana.setScene(escena);
         ventana.setTitle("CampoDeBatalla");
