@@ -1,17 +1,20 @@
 package modelo;
 
+import controlador.input.KeyInputManager;
+import controlador.input.MouseInputManager;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import modelo.tanques.TanqueJugador;
-import controlador.input.KeyInputManager;
-import controlador.input.MouseInputManager;
-import modelo.records.RectangleTipo;
+
 import modelo.mapa.TipoCasilla;
+import modelo.records.RectangleTipo;
+import modelo.tanques.TanqueJugador;
 import vista.juego.CampoDeBatalla;
 
 import java.awt.*;
 import java.util.Objects;
+
 
 public class Jugador extends TanqueJugador {
     public static int x;
@@ -33,7 +36,11 @@ public class Jugador extends TanqueJugador {
     public ImageView imagenBaseVertical;
     public ImageView imagenBaseHorizontal;
     private boolean puedeMoverse;
-
+    private double distancia;
+    private boolean puedeMoverseArriba;
+    boolean puedeMoverseAbajo;
+    boolean puedeMoverseIzquierda;
+    boolean puedeMoverseDerecha;
 
 
     public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
@@ -41,20 +48,24 @@ public class Jugador extends TanqueJugador {
         this.velocidad = velocidad;
         this.balas = balas;
         this.minas = minas;
+        this.distancia = 0;
         this.x = 500;
         this.y = 500;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
         this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
         this.imagenTorreta = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETA))));
-        puedeMoverse = true;
+        this.puedeMoverse = true;
+        this.puedeMoverseArriba = true;
+        this.puedeMoverseAbajo = true;
+        this.puedeMoverseDerecha = true;
+        this.puedeMoverseIzquierda = true;
 
 
     }
 
     public void pintar(GraphicsContext graficos) {
-        comprobarColision();
-        ajustesPantallaCompleta();
+        comprobarColision2();
         actualizarRotacion();
 
         graficos.drawImage(imagenBase.getImage(), x, y);
@@ -96,8 +107,13 @@ public class Jugador extends TanqueJugador {
 
     }
 
-    public void comprobarColision() {
-        this.puedeMoverse = true; // Variable para rastrear si el jugador puede moverse o no
+
+    public void comprobarColision2() {
+        boolean colisionDetectada = false;
+        boolean colisionSuperior = false;
+        boolean colisionInferior = false;
+        boolean colisionLateralDerecho = false;
+        boolean colisionLateralIzquierdo = false;
 
         for (int i = 0; i < CampoDeBatalla.coordenadasImagenes.length; i++) {
             for (int j = 0; j < CampoDeBatalla.coordenadasImagenes[i].length; j++) {
@@ -105,59 +121,83 @@ public class Jugador extends TanqueJugador {
                 Rectangle rectangulo = rectTipo.REC();
                 TipoCasilla tipo = rectTipo.TIPO();
 
-                // Obtener las propiedades del rectángulo
-                int cordenadaX = (int) rectangulo.getX() ;
-                int cordenadaY = (int) rectangulo.getY() ;
-                int heightImagen = (int) rectangulo.getHeight() ;
-                int widthImagen = (int) rectangulo.getWidth() ;
+                int jugadorX = x;
+                int jugadorY = y;
+                int jugadorHeight = getJugadorImagenHeight();
+                int jugadorWidth = getJugadorImagenWidth();
 
-                if (tipo==TipoCasilla.PARED && x >= cordenadaX && x < cordenadaX + widthImagen &&
-                        y >= cordenadaY && y < cordenadaY + heightImagen) {
-                    puedeMoverse = false;
-                    break; // Romper el bucle interno si hay una colisión
+                int rectanguloX = (int) rectangulo.getX();
+                int rectanguloY = (int) rectangulo.getY();
+                int rectanguloHeight = (int) rectangulo.getHeight();
+                int rectanguloWidth = (int) rectangulo.getWidth();
+
+                if (tipo == TipoCasilla.PARED) {
+                    colisionLateralDerecho = colisionLateralDerecho || (jugadorX + jugadorWidth > rectanguloX) && (jugadorX + jugadorWidth <= rectanguloX + rectanguloWidth) && (jugadorY + jugadorHeight > rectanguloY) && (jugadorY < rectanguloY + rectanguloHeight);
+                    colisionLateralIzquierdo = colisionLateralIzquierdo || (jugadorX < rectanguloX + rectanguloWidth) && (jugadorX >= rectanguloX) && (jugadorY + jugadorHeight > rectanguloY) && (jugadorY < rectanguloY + rectanguloHeight);
+                    colisionInferior = colisionInferior || (jugadorY + jugadorHeight > rectanguloY) && (jugadorY + jugadorHeight <= rectanguloY + rectanguloHeight) && (jugadorX + jugadorWidth > rectanguloX) && (jugadorX < rectanguloX + rectanguloWidth);
+                    colisionSuperior = colisionSuperior || (jugadorY < rectanguloY + rectanguloHeight) && (jugadorY >= rectanguloY) && (jugadorX + jugadorWidth > rectanguloX) && (jugadorX < rectanguloX + rectanguloWidth);
                 }
             }
+        }
 
-            if (!puedeMoverse) {
-                break; // Romper el bucle externo si hay una colisión
-            }
+        if (colisionSuperior && KeyInputManager.arriba) {
+            System.out.println("Colisiona superior");
+            puedeMoverseArriba = false;
+        } else {
+            puedeMoverseArriba = true;
+        }
+
+        if (colisionInferior && KeyInputManager.abajo) {
+            System.out.println("Colisiona inferior");
+            puedeMoverseAbajo = false;
+        } else {
+            puedeMoverseAbajo = true;
+        }
+
+        if (colisionLateralDerecho && KeyInputManager.derecha) {
+            System.out.println("Colisiona derecha");
+            puedeMoverseDerecha = false;
+        } else {
+            puedeMoverseDerecha = true;
+        }
+
+        if (colisionLateralIzquierdo && KeyInputManager.izquierda) {
+            System.out.println("Colisiona izquierda");
+            puedeMoverseIzquierda = false;
+        } else {
+            puedeMoverseIzquierda = true;
         }
     }
 
-
-
-    //Se jecuta por cada iteracion de ciclo de juego
     public void mover() {
-        double distancia = velocidad * 2.5; // Distancia que se moverá en cada iteración del ciclo de juego
+        distancia = velocidad * 1; // Distancia que se moverá en cada iteración del ciclo de juego
 
         if (puedeMoverse) {
-
             // Movimiento hacia arriba
-            if (KeyInputManager.isArriba()) {
+            if (KeyInputManager.isArriba() && puedeMoverseArriba) {
                 y -= distancia;
                 imagenBase = imagenBaseVertical;
             }
             // Movimiento hacia abajo
-            if (KeyInputManager.isAbajo()) {
+            if (KeyInputManager.isAbajo() && puedeMoverseAbajo) {
                 y += distancia;
                 imagenBase = imagenBaseVertical;
             }
 
             // Movimiento hacia la izquierda
-            if (KeyInputManager.isIzquierda()) {
+            if (KeyInputManager.isIzquierda() && puedeMoverseIzquierda) {
                 x -= distancia;
                 imagenBase = imagenBaseHorizontal;
             }
             // Movimiento hacia la derecha
-            if (KeyInputManager.isDerecha()) {
+            if (KeyInputManager.isDerecha() && puedeMoverseDerecha) {
                 x += distancia;
                 imagenBase = imagenBaseHorizontal;
             }
-        }else{
+
+        } else {
             System.out.println("No te puedes mover");
         }
-
-
     }
 
     public void actualizarRotacion() {
@@ -174,6 +214,14 @@ public class Jugador extends TanqueJugador {
         this.imagenTorreta.setX(torretaX);
         this.imagenTorreta.setY(torretaY);
 
+    }
+
+    private int getJugadorImagenWidth() {
+        return (int) imagenBase.getImage().getWidth();
+    }
+
+    private int getJugadorImagenHeight() {
+        return (int) imagenBase.getImage().getHeight();
     }
 
 

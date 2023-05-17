@@ -1,28 +1,34 @@
 package vista.juego;
 
+import controlador.input.KeyInputManager;
+import controlador.input.MouseInputManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import controlador.input.KeyInputManager;
-import controlador.input.MouseInputManager;
+
 import modelo.Jugador;
 import modelo.mapa.MapaProcedural;
-import modelo.records.RectangleTipo;
 import modelo.mapa.TipoCasilla;
+import modelo.records.RectangleTipo;
 
 import java.awt.*;
 import java.util.Objects;
 
 public class CampoDeBatalla extends Application {
-    private static final int ANCHO_VENTANA = 800;
-    private static final int ALTO_VENTANA = 800;
+    private static final int ANCHO_VENTANA = 1000;
+    private static final int ALTO_VENTANA = 1000;
     private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
 
@@ -97,7 +103,7 @@ public class CampoDeBatalla extends Application {
 
 
         stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo);
-        escena = new Scene(stackPane, 1920, 1080);
+        escena = new Scene(stackPane, ALTO_VENTANA, ANCHO_VENTANA);
         pintarEscenario();
 
         verArray();

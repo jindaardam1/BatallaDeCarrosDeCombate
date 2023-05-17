@@ -19,19 +19,19 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
             switch (evento.getCode()) {
                 case W:
                     arriba = true;
-                    System.out.println("Se pulsó arriba");
+                    // System.out.println("Se pulsó arriba");
                     break;
                 case S:
                     abajo = true;
-                    System.out.println("Se pulsó abajo");
+                    //  System.out.println("Se pulsó abajo");
                     break;
                 case A:
                     izquierda = true;
-                    System.out.println("Se pulsó izquierda");
+                    // System.out.println("Se pulsó izquierda");
                     break;
                 case D:
                     derecha = true;
-                    System.out.println("Se pulsó derecha");
+                    //   System.out.println("Se pulsó derecha");
                     break;
                 default:
                     break;
@@ -40,19 +40,19 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
             switch (evento.getCode()) {
                 case W:
                     arriba = false;
-                    System.out.println("Se soltó arriba");
+                    //   System.out.println("Se soltó arriba");
                     break;
                 case S:
                     abajo = false;
-                    System.out.println("Se soltó abajo");
+                    //   System.out.println("Se soltó abajo");
                     break;
                 case A:
                     izquierda = false;
-                    System.out.println("Se soltó izquierda");
+                    //   System.out.println("Se soltó izquierda");
                     break;
                 case D:
                     derecha = false;
-                    System.out.println("Se soltó derecha");
+                    //   System.out.println("Se soltó derecha");
                     break;
                 default:
                     break;
@@ -63,7 +63,7 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
 
 
 
-public static boolean isArriba() {
+    public static boolean isArriba() {
         return arriba;
     }
 

@@ -27,14 +27,14 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
         // obtener las coordenadas x e y del ratón en la escena
          mouseX = event.getSceneX();
          mouseY = event.getSceneY();
-        System.out.println("Raton:X:" + mouseX + ";" + "Y: " + mouseY);
+        //System.out.println("Raton:X:" + mouseX + ";" + "Y: " + mouseY);
 
 
         // obtener las coordenadas x e y del centro de la imagen del tanque
         tankCenterX = Jugador.x;
         tankCenterY = Jugador.y;
 
-        System.out.println("Tanque:X:" + tankCenterX + ";" + "Y: " + tankCenterY);
+        //System.out.println("Tanque:X:" + tankCenterX + ";" + "Y: " + tankCenterY);
 
 
     }
