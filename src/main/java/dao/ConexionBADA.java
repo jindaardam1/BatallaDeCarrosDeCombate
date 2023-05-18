@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionBADA {
-    private static final String RUTA_BD = "jdbc:sqlite:src\\main\\resources\\tanquesbd.db";
+    private static final String RUTA_BD = "jdbc:sqlite:db\\tanquesbd.db";
 
     public static Connection conectar() {
         Connection conexion = null;
