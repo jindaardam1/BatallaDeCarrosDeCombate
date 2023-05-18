@@ -25,7 +25,7 @@ public class InicializarBADA {
     }
 
     public static void crearBaseDeDatos() {
-        String url = "jdbc:sqlite:src\\main\\resources\\tanquesbd.db";
+        String url = "jdbc:sqlite:db\\tanquesbd.db";
         String sql = obtenerScriptCreacionBADA();
 
         try (Connection connection = DriverManager.getConnection(url);
@@ -43,10 +43,10 @@ public class InicializarBADA {
         }
     }
 
-
-
     private static String obtenerScriptCreacionBADA() {
         StringBuilder script = new StringBuilder();
+
+        crearCarpeta("db");
 
         try (InputStream inputStream = InicializarBADA.class.getResourceAsStream("/sql/creacionBADA.sql");
              BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(inputStream)))) {
@@ -60,5 +60,25 @@ public class InicializarBADA {
         }
 
         return script.toString();
+    }
+
+    private static void crearCarpeta(String nombreCarpeta) {
+        File carpeta = new File(nombreCarpeta);
+
+        if (carpeta.exists()) {
+            System.out.println("La carpeta ya existe.");
+            return;
+        }
+
+        if (carpeta.mkdir()) {
+            System.out.println("Carpeta creada exitosamente.");
+        } else {
+            System.out.println("No se pudo crear la carpeta.");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        crearBADA();
     }
 }

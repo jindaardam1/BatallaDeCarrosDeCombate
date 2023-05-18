@@ -1,5 +1,7 @@
 package dao;
 
+import dao.records.Partida;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -62,32 +64,29 @@ public class InsertsBADA {
             System.out.println("Error al conectar a la base de datos.");
         }
     }
-    public static void insertarPartida(int numMapas, int numTanquesMarrones, int numTanquesGrises, int numTanquesAmarillos,
-                                       int numTanquesMorados, int numTanquesBlancos, int numTanquesNegros,
-                                       int numTanquesRojo, int numTanquesVerdesClaros, int numTanquesVerdesOscuros,
-                                       String jugadorNickname) {
+    public static void insertarPartida(Partida partida) {
 
         try (Connection conn = ConexionBADA.conectar()) {
 
             conn.setAutoCommit(false);
 
-            String sql = "INSERT INTO score (numMapas, numTanquesMarrones, numTanquesGrises, numTanquesAmarillos, " +
+            String sql = "INSERT INTO partida (numMapas, numTanquesMarrones, numTanquesGrises, numTanquesAmarillos, " +
                     "numTanquesMorados, numTanquesBlancos, numTanquesNegros, numTanquesRojo, " +
                     "numTanquesVerdesClaros, numTanquesVerdesOscuros, jugadorNickname) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, numMapas);
-                pstmt.setInt(2, numTanquesMarrones);
-                pstmt.setInt(3, numTanquesGrises);
-                pstmt.setInt(4, numTanquesAmarillos);
-                pstmt.setInt(5, numTanquesMorados);
-                pstmt.setInt(6, numTanquesBlancos);
-                pstmt.setInt(7, numTanquesNegros);
-                pstmt.setInt(8, numTanquesRojo);
-                pstmt.setInt(9, numTanquesVerdesClaros);
-                pstmt.setInt(10, numTanquesVerdesOscuros);
-                pstmt.setString(11, jugadorNickname);
+                pstmt.setInt(1, partida.NUM_MAPAS());
+                pstmt.setInt(2, partida.NUM_TANQUES_MARRONES());
+                pstmt.setInt(3, partida.NUM_TANQUES_GRISES());
+                pstmt.setInt(4, partida.NUM_TANQUES_AMARILLOS());
+                pstmt.setInt(5, partida.NUM_TANQUES_MORADOS());
+                pstmt.setInt(6, partida.NUM_TANQUES_BLANCOS());
+                pstmt.setInt(7, partida.NUM_TANQUES_NEGROS());
+                pstmt.setInt(8, partida.NUM_TANQUES_ROJO());
+                pstmt.setInt(9, partida.NUM_TANQUES_VERDES_CLAROS());
+                pstmt.setInt(10, partida.NUM_TANQUES_VERDES_OSCUROS());
+                pstmt.setString(11, partida.JUGADOR_NICKNAME());
 
                 pstmt.executeUpdate();
 
@@ -101,5 +100,10 @@ public class InsertsBADA {
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos.");
         }
+    }
+
+    public static void main(String[] args) {
+        insertarJugador("Jagoba");
+        insertarPartida(new Partida(4, 1, 4, 2, 5,3, 23,4, 4, 3, "Jagoba"));
     }
 }
