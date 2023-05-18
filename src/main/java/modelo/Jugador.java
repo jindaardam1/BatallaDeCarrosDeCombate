@@ -43,6 +43,8 @@ public class Jugador extends TanqueJugador {
     boolean puedeMoverseDerecha;
 
 
+
+
     public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
         super(REBOTES_MAXIMOS, VELOCIDAD_BALA, MAXIMO_BALAS, MAXIMO_MINAS, balas, velocidad, minas);
         this.velocidad = velocidad;
@@ -65,7 +67,7 @@ public class Jugador extends TanqueJugador {
     }
 
     public void pintar(GraphicsContext graficos) {
-        comprobarColision2();
+        comprobarColision();
         actualizarRotacion();
 
         graficos.drawImage(imagenBase.getImage(), x, y);
@@ -108,12 +110,27 @@ public class Jugador extends TanqueJugador {
     }
 
 
-    public void comprobarColision2() {
-        boolean colisionDetectada = false;
+    public void comprobarColision() {
         boolean colisionSuperior = false;
         boolean colisionInferior = false;
         boolean colisionLateralDerecho = false;
         boolean colisionLateralIzquierdo = false;
+
+        // variables auxiliares para la posición futura del jugador
+        int jugadorXFuturo = x;
+        int jugadorYFuturo = y;
+        if (KeyInputManager.arriba) {
+            jugadorYFuturo -= velocidad;
+        }
+        if (KeyInputManager.abajo) {
+            jugadorYFuturo += velocidad;
+        }
+        if (KeyInputManager.izquierda) {
+            jugadorXFuturo -= velocidad;
+        }
+        if (KeyInputManager.derecha) {
+            jugadorXFuturo += velocidad;
+        }
 
         for (int i = 0; i < CampoDeBatalla.coordenadasImagenes.length; i++) {
             for (int j = 0; j < CampoDeBatalla.coordenadasImagenes[i].length; j++) {
@@ -121,8 +138,8 @@ public class Jugador extends TanqueJugador {
                 Rectangle rectangulo = rectTipo.REC();
                 TipoCasilla tipo = rectTipo.TIPO();
 
-                int jugadorX = x;
-                int jugadorY = y;
+                int jugadorX = jugadorXFuturo;
+                int jugadorY = jugadorYFuturo;
                 int jugadorHeight = getJugadorImagenHeight();
                 int jugadorWidth = getJugadorImagenWidth();
 
@@ -140,65 +157,63 @@ public class Jugador extends TanqueJugador {
             }
         }
 
-        if (colisionSuperior && KeyInputManager.arriba) {
+        if (colisionSuperior) {
             System.out.println("Colisiona superior");
+
             puedeMoverseArriba = false;
         } else {
             puedeMoverseArriba = true;
         }
 
-        if (colisionInferior && KeyInputManager.abajo) {
+        if (colisionInferior) {
             System.out.println("Colisiona inferior");
             puedeMoverseAbajo = false;
         } else {
             puedeMoverseAbajo = true;
         }
 
-        if (colisionLateralDerecho && KeyInputManager.derecha) {
+        if (colisionLateralDerecho) {
             System.out.println("Colisiona derecha");
             puedeMoverseDerecha = false;
         } else {
             puedeMoverseDerecha = true;
         }
 
-        if (colisionLateralIzquierdo && KeyInputManager.izquierda) {
+        if (colisionLateralIzquierdo) {
             System.out.println("Colisiona izquierda");
             puedeMoverseIzquierda = false;
         } else {
             puedeMoverseIzquierda = true;
         }
     }
-
     public void mover() {
         distancia = velocidad * 1; // Distancia que se moverá en cada iteración del ciclo de juego
 
-        if (puedeMoverse) {
+
             // Movimiento hacia arriba
             if (KeyInputManager.isArriba() && puedeMoverseArriba) {
                 y -= distancia;
                 imagenBase = imagenBaseVertical;
             }
             // Movimiento hacia abajo
-            if (KeyInputManager.isAbajo() && puedeMoverseAbajo) {
+            else if (KeyInputManager.isAbajo() && puedeMoverseAbajo) {
                 y += distancia;
                 imagenBase = imagenBaseVertical;
             }
 
             // Movimiento hacia la izquierda
-            if (KeyInputManager.isIzquierda() && puedeMoverseIzquierda) {
+            else if (KeyInputManager.isIzquierda() && puedeMoverseIzquierda) {
                 x -= distancia;
                 imagenBase = imagenBaseHorizontal;
             }
             // Movimiento hacia la derecha
-            if (KeyInputManager.isDerecha() && puedeMoverseDerecha) {
+            else if (KeyInputManager.isDerecha() && puedeMoverseDerecha) {
                 x += distancia;
                 imagenBase = imagenBaseHorizontal;
             }
 
-        } else {
-            System.out.println("No te puedes mover");
         }
-    }
+
 
     public void actualizarRotacion() {
         double mouseX = MouseInputManager.getMouseX();

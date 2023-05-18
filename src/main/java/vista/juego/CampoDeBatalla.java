@@ -83,15 +83,11 @@ public class CampoDeBatalla extends Application {
     }
 
 
-
-
-
-
     public void inizializarComponentes() {
 
         cargarImagenes();
         this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
-        this.bala = new Bala();
+
         coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
         this.gridPaneMapa = new GridPane();
         this.stackPane = new StackPane();
@@ -99,8 +95,6 @@ public class CampoDeBatalla extends Application {
 
         lienzo = new Canvas(32 * CANTIDADCOLUMNAS, 32 * CANTIDADFILAS);
         this.graficos = lienzo.getGraphicsContext2D();
-
-
 
 
         stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo);
@@ -176,22 +170,59 @@ public class CampoDeBatalla extends Application {
                 Image imagen = null;
 
                 switch (casilla) {
-                    case NADA:
+                    case NADA -> {
                         imagen = imgNada;
                         tipo = TipoCasilla.NADA;
-                        break;
-                    case HOYO:
+                    }
+                    case HOYO -> {
                         imagen = imgHoyo;
                         tipo = TipoCasilla.HOYO;
-                        break;
-                    case PARED:
+                    }
+                    case PARED -> {
                         imagen = imgPared;
                         tipo = TipoCasilla.PARED;
-                        break;
-                    default:
+                    }
+                    case SPAWN_JUGADOR -> {
                         imagen = imgOtro;
                         tipo = TipoCasilla.SPAWN_JUGADOR;
-                        break;
+                    }
+                    case SPAWN_TANQUE_AMARILLO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_AMARILLO;
+                    }
+                    case SPAWN_TANQUE_BLANCO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_BLANCO;
+                    }
+                    case SPAWN_TANQUE_GRIS -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_GRIS;
+                    }
+                    case SPAWN_TANQUE_MARRON -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_MARRON;
+                    }
+                    case SPAWN_TANQUE_VERDE_CLARO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_VERDE_CLARO;
+                    }
+                    case SPAWN_TANQUE_ROJO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_ROJO;
+                    }
+                    case SPAWN_TANQUE_NEGRO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_NEGRO;
+                    }
+                    case SPAWN_TANQUE_MORADO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_MORADO;
+                    }
+                    case SPAWN_TANQUE_VERDE_OSCURO -> {
+                        imagen = imgOtro;
+                        tipo = TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO;
+                    }
+                    default -> System.out.println("La casilla que se quiere poner no existe");
                 }
 
                 if (imagen != null) {
