@@ -29,7 +29,7 @@ public class InsertsBADA {
             conn.setAutoCommit(false);
 
             String sql = "INSERT INTO " + tabla + " (numMapas, numTanquesMarrones, numTanquesGrises, numTanquesAmarillos, " +
-                    "numTanquesMorados, numTanquesBlancos, numTanquesNegros, numTanquesRojo, " +
+                    "numTanquesMorados, numTanquesBlancos, numTanquesNegros, numTanquesRojos, " +
                     "numTanquesVerdesClaros, numTanquesVerdesOscuros, jugadorNickname) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -53,6 +53,7 @@ public class InsertsBADA {
             } catch (SQLException e) {
                 conn.rollback();
                 System.out.println("Error al hacer el insert.");
+                e.printStackTrace();
             }
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos.");

@@ -79,10 +79,4 @@ public class InicializarBADA {
             System.out.println("No se pudo crear la carpeta.");
         }
     }
-
-
-    public static void main(String[] args) {
-        Score partida = ServicioPartida.cargarPartidaGuardada();
-        System.out.println(partida.toString());
-    }
 }

@@ -37,7 +37,7 @@ CREATE TABLE partida(
                         numTanquesMorados INTEGER NOT NULL,
                         numTanquesBlancos INTEGER NOT NULL,
                         numTanquesNegros INTEGER NOT NULL,
-                        numTanquesRojo INTEGER NOT NULL,
+                        numTanquesRojos INTEGER NOT NULL,
                         numTanquesVerdesClaros INTEGER NOT NULL,
                         numTanquesVerdesOscuros INTEGER NOT NULL,
                         jugadorNickname TEXT NOT NULL,
