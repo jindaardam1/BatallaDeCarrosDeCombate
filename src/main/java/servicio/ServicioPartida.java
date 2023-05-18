@@ -3,15 +3,15 @@ package servicio;
 import dao.AltersBADA;
 import dao.ConsultasBADA;
 import dao.InsertsBADA;
-import dao.records.Partida;
+import dao.records.Score;
 
 public class ServicioPartida {
-    public static void guardarPartida(Partida partida) {
-        InsertsBADA.insertarPartida(partida);
+    public static void guardarPartida(Score score) {
+        InsertsBADA.insertarRegistro("partida", score);
     }
 
-    public static Partida cargarPartidaGuardada() {
-        Partida partidaGuardada = ConsultasBADA.obtenerPartida().get(0);
+    public static Score cargarPartidaGuardada() {
+        Score partidaGuardada = ConsultasBADA.obtenerPartida();
         AltersBADA.borrarPartidaGuardada();
         return partidaGuardada;
     }

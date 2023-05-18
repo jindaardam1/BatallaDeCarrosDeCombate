@@ -1,6 +1,9 @@
 package dao;
 
 
+import dao.records.Score;
+import servicio.ServicioPartida;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -79,6 +82,7 @@ public class InicializarBADA {
 
 
     public static void main(String[] args) {
-        crearBADA();
+        Score partida = ServicioPartida.cargarPartidaGuardada();
+        System.out.println(partida.toString());
     }
 }
