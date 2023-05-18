@@ -1,8 +1,10 @@
 package utilidades.log;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -18,7 +20,7 @@ public class GeneradorLogs {
      */
     public static void errorLogManager(Exception e) {
         // Se llama al método addLog para guardar la fecha y hora actual, tipo de error y la traza del error en un archivo de registro.
-        addLog(fechaHoraActual(), "ERROR", Arrays.toString(e.getStackTrace()));
+        addLog("ERROR", Arrays.toString(e.getStackTrace()));
     }
 
     /**
@@ -29,7 +31,7 @@ public class GeneradorLogs {
     public static void errorLogManager(String errorPersonalizado) {
         // Llama al método addLog para agregar el registro de error al archivo de registro
         // del sistema con la fecha y hora actual y el mensaje personalizado del error.
-        addLog(fechaHoraActual(), "ERROR", errorPersonalizado);
+        addLog("ERROR", errorPersonalizado);
     }
 
     /**
@@ -39,28 +41,21 @@ public class GeneradorLogs {
      */
     public static void logManager(String tipoLog, String mensaje) {
         // Llama a la función addLog con la fecha y hora actuales, el tipo de registro y el mensaje
-        addLog(fechaHoraActual(), tipoLog, mensaje);
+        addLog(tipoLog, mensaje);
     }
 
     /**
      * Agrega una entrada de registro (log) al archivo "logs.log".
      *
-     * @param fechaHoraActual la fecha y hora actual en formato String.
      * @param tipoLog el tipo de entrada de registro (log) en formato String.
      * @param mensaje el mensaje de la entrada de registro (log) en formato String.
      */
-    private static void addLog(String fechaHoraActual, String tipoLog, String mensaje) {
-        try {
-            // Crea un objeto BufferedWriter para escribir en el archivo "logs.log".
-            BufferedWriter bw = new BufferedWriter(new FileWriter("logs.log", true));
-            // Agrega la fecha, el tipo de entrada de registro y el mensaje al archivo "logs.log".
-            bw.append(fechaHoraActual).append(" [").append(tipoLog).append("] ").append(" -> ").append(mensaje);
-            // Agrega una nueva línea al archivo "logs.log".
-            bw.newLine();
-            // Cierra el objeto BufferedWriter.
-            bw.close();
+    private static void addLog(String tipoLog, String mensaje) {
+        String fechaHoraActual = fechaHoraActual();
+
+        try (PrintWriter pw = new PrintWriter(Files.newBufferedWriter(Path.of("logs.log"), StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
+            pw.printf("%s [%s] -> %s%n", fechaHoraActual, tipoLog, mensaje);
         } catch (IOException e) {
-            // Muestra un mensaje de error si no se puede cargar el registro (log).
             System.out.println("No se ha podido cargar el log.");
         }
     }

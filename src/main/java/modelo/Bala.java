@@ -32,7 +32,7 @@ public class Bala {
     private ImageView imagenBala;
     private ImageView imagenExplosion;
     private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.gif";
-    private final String SPRITEEXPLOSION = "/imagenes/sprites/tanques/explosion.gif";
+    private final String SPRITEEXPLOSION = "/imagenes/sprites/tanques/explotando.gif";
     public boolean enDisparo;
     private double mouseX;
     private double mouseY;
