@@ -117,7 +117,7 @@ public class CampoDeBatalla extends Application {
         this.imgNada2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Naranja.png")));
         this.imgNada3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Azul.png")));
         this.imgJug = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Diamante.png")));
-        this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Lava.png")));
+        this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Lava.gif")));
         this.imgPared1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera1.png")));
         this.imgPared2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera2.png")));
         this.imgPared3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera3.png")));
