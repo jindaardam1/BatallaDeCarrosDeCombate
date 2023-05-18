@@ -5,17 +5,12 @@ import controlador.input.MouseInputManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import modelo.Bala;
@@ -26,6 +21,7 @@ import modelo.records.RectangleTipo;
 
 import java.awt.*;
 import java.util.Objects;
+import java.util.Random;
 
 public class CampoDeBatalla extends Application {
     private static final int ANCHO_VENTANA = 1000;
@@ -37,10 +33,18 @@ public class CampoDeBatalla extends Application {
     private StackPane stackPane;
     private TipoCasilla[][] casillas;
 
-    private Image imgNada;
+    private Image imgNada1;
+    private Image imgNada2;
+    private Image imgNada3;
     private Image imgHoyo;
-    private Image imgPared;
+    private Image imgPared1;
+    private Image imgPared2;
+    private Image imgPared3;
+    private Image imgPared4;
+    private Image imgPared5;
+    private Image imgPared6;
     private Image imgOtro;
+    private Image imgJug;
     private ImageView fondo;
     private Jugador jugador;
 
@@ -87,6 +91,7 @@ public class CampoDeBatalla extends Application {
 
         cargarImagenes();
         this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
+        this.bala = new Bala();
 
         coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
         this.gridPaneMapa = new GridPane();
@@ -108,10 +113,18 @@ public class CampoDeBatalla extends Application {
 
     private void cargarImagenes() {
 
-        this.imgNada = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/NADA.png")));
-        this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/HOYO.png")));
-        this.imgPared = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/PARED.png")));
-        this.imgOtro = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/OTRO.png")));
+        this.imgNada1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Verde.png")));
+        this.imgNada2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Naranja.png")));
+        this.imgNada3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Azul.png")));
+        this.imgJug = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Diamante.png")));
+        this.imgHoyo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Lava.png")));
+        this.imgPared1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera1.png")));
+        this.imgPared2 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera2.png")));
+        this.imgPared3 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera3.png")));
+        this.imgPared4 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera4.png")));
+        this.imgPared5 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera5.png")));
+        this.imgPared6 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Madera6.png")));
+        this.imgOtro = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Oro.png")));
         this.fondo = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/fondoCampoBatalla.png"))));
 
     }
@@ -161,6 +174,8 @@ public class CampoDeBatalla extends Application {
             gridPaneMapa.getColumnConstraints().add(columnConstraints);
         }
 
+        Image imgSuelo = sueloRandom();
+
         for (int i = 0; i < casillas.length; i++) {
             for (int j = 0; j < casillas[0].length; j++) {
                 ImageView imageView = new ImageView();
@@ -171,7 +186,7 @@ public class CampoDeBatalla extends Application {
 
                 switch (casilla) {
                     case NADA -> {
-                        imagen = imgNada;
+                        imagen = imgSuelo;
                         tipo = TipoCasilla.NADA;
                     }
                     case HOYO -> {
@@ -179,11 +194,11 @@ public class CampoDeBatalla extends Application {
                         tipo = TipoCasilla.HOYO;
                     }
                     case PARED -> {
-                        imagen = imgPared;
+                        imagen = paredRandom();
                         tipo = TipoCasilla.PARED;
                     }
                     case SPAWN_JUGADOR -> {
-                        imagen = imgOtro;
+                        imagen = imgJug;
                         tipo = TipoCasilla.SPAWN_JUGADOR;
                     }
                     case SPAWN_TANQUE_AMARILLO -> {
@@ -273,6 +288,49 @@ public class CampoDeBatalla extends Application {
 
     }
 
+    private Image paredRandom() {
+        int roll = getRoll(6);
+        switch (roll) {
+            case 1 -> {
+                return imgPared1;
+            }
+            case 2 -> {
+                return imgPared2;
+            }
+            case 3 -> {
+                return imgPared3;
+            }
+            case 4 -> {
+                return imgPared4;
+            }
+            case 5 -> {
+                return imgPared5;
+            }
+            default -> {
+                return imgPared6;
+            }
+        }
+    }
+
+    private Image sueloRandom() {
+        int roll = getRoll(3);
+        switch (roll) {
+            case 1 -> {
+                return imgNada1;
+            }
+            case 2 -> {
+                return imgNada2;
+            }
+            default -> {
+                return imgNada3;
+            }
+        }
+    }
+
+    private int getRoll(int numMax) {
+        Random rand = new Random();
+        return rand.nextInt(numMax) + 1;
+    }
 
     public Scene getEscena() {
         return escena;
