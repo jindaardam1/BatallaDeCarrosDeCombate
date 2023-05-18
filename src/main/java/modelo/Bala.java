@@ -1,15 +1,22 @@
 package modelo;
 
 import controlador.input.MouseInputManager;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.transform.Rotate;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import vista.juego.CampoDeBatalla;
 
 import java.awt.*;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static java.awt.Transparency.TRANSLUCENT;
 
 public class Bala {
     private static final double VELOCIDAD = 2.0;  // Velocidad de la bala
@@ -23,24 +30,31 @@ public class Bala {
     private double posBalaAlDispararX;
     private double posBalaAlDispararY;
     private ImageView imagenBala;
-    private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.png";
-    public boolean disparo;
+    private ImageView imagenExplosion;
+    private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.gif";
+    private final String SPRITEEXPLOSION = "/imagenes/sprites/tanques/explosion.gif";
+    public boolean enDisparo;
     private double mouseX;
     private double mouseY;
     private double deltaX;
     private double deltaY;
     private double magnitud;
+    private double explosionX;
+    private double explosionY;
+    private boolean explotando = false;
 
     public Bala() {
 
         reubicarBala();
-        disparo = false;
+        enDisparo = false;
         this.imagenBala = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBALA))));
+        this.imagenExplosion = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEEXPLOSION))));
+
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x+8;
-        this.y = Jugador.y+8;
+        this.x = Jugador.x - 3;
+        this.y = Jugador.y - 3;
 
     }
 
@@ -51,8 +65,8 @@ public class Bala {
 
         // Calcular dirección solo si la magnitud es mayor a cero para evitar divisiones por cero
 
-            direccionX = deltaX / magnitud;
-            direccionY = deltaY / magnitud;
+        direccionX = deltaX / magnitud;
+        direccionY = deltaY / magnitud;
 
     }
 
@@ -63,12 +77,43 @@ public class Bala {
 
     }
 
-    public void pintar(GraphicsContext graficos) {
-        graficos.drawImage(imagenBala.getImage(), x, y);
-        actualizadorDeCordRaton();
+    public double rotarSprite() {
+        if (enDisparo) {
 
+
+            double angle = Math.atan2(direccionY, direccionX) * 180 / Math.PI + 90;
+
+            return angle;
+        }
+
+        return 0;
+
+
+    }
+
+    public void ponerExplosion(){
+        explotar();
+
+    }
+
+    public void pintar(GraphicsContext graficos) {
+        CampoDeBatalla.graficos.save();
+        imagenBala.setRotate(rotarSprite()); // Cambiar la rotación a 90 grados
+
+        SnapshotParameters params = new SnapshotParameters();
+        params.setFill(javafx.scene.paint.Color.TRANSPARENT); // Establecer el fondo transparente
+
+        WritableImage rotatedImage = imagenBala.snapshot(params, null);
+        graficos.drawImage(rotatedImage, x, y);
+        CampoDeBatalla.graficos.restore();
+
+        actualizadorDeCordRaton();
+            if(explotando){
+                graficos.drawImage(imagenExplosion.getImage(),explosionX,explosionY);
+            }
         disparar();
-        if (disparo) {
+        if (enDisparo) {
+            rotarSprite();
             mover();
         } else {
             reubicarBala();
@@ -86,7 +131,8 @@ public class Bala {
     private void disparar() {
         if (MouseInputManager.clickIzquierdo) {
             //Calcula el angulo de disparo evitando darle dos veces seguidas
-            if (!disparo) {
+            if (!enDisparo) {
+
                 tomarPosRatonYBala();
                 calcularAnguloDisparo();
             }
@@ -94,13 +140,13 @@ public class Bala {
             System.out.println("Has disparado");
 
 
-            disparo = true;
+            enDisparo = true;
             //para que si no mueves el raton despues de disparar, la bala no salga otra vez.
             MouseInputManager.clickIzquierdo = false;
         }
         if (chocoPared()) {
             System.out.println("La bala ha chocado con una pared");
-            disparo = false;
+            enDisparo = false;
 
 
         }
@@ -137,13 +183,27 @@ public class Bala {
                             balaY + balaHeight > rectanguloY) {
                         System.out.println("CHOCOOOOOOOooooooooo");
                         // Ha ocurrido una colisión entre la bala y el rectángulo
-
+                            explosionX = balaX;
+                            explosionY = balaY;
+                        System.out.println(explosionX+";"+explosionY);
+                        ponerExplosion();
                         return true;
                     }
                 }
             }
         }
         return false;
+    }
+    public void explotar() {
+        explotando = true;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                explotando = false;
+                timer.cancel();
+            }
+        }, 3000); // Establecer el tiempo en milisegundos (1000 ms = 1 segundo)
     }
 
 
