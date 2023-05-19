@@ -1,7 +1,5 @@
 package modelo.mapa;
 
-import modelo.mapa.TipoCasilla;
-
 import java.io.Serializable;
 
 public class SerializadorMapa implements Serializable {

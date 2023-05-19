@@ -10,6 +10,7 @@ module com.example.pruebafx {
 
 
     opens com.example.pruebafx to javafx.fxml;
+    opens modelo.mapa to com.fasterxml.jackson.databind;
     exports vista.juego;
     exports modelo.mapa;
     exports main;

@@ -65,7 +65,6 @@ public class Logs {
         return archivoLog;
     }
 
-
     private static File cargarCarpetaLogs() {
         File carpetaLogs = new File("logs");
 
