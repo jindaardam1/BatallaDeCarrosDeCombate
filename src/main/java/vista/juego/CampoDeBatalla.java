@@ -18,6 +18,7 @@ import modelo.Jugador;
 import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
+import modelo.tanques.Contador;
 
 import java.awt.*;
 import java.util.Objects;
@@ -53,6 +54,9 @@ public class CampoDeBatalla extends Application {
     public static RectangleTipo[][] coordenadasImagenes;
     public GridPane gridPaneMapa;
     public Bala bala;
+    public Contador panelContador;
+    public static  int posSpawnJugadorX;
+    public static int  posSpawnJugadorY;
 
 
     public static void main(String[] args) {
@@ -90,8 +94,7 @@ public class CampoDeBatalla extends Application {
     public void inizializarComponentes() {
 
         cargarImagenes();
-        this.jugador = new Jugador(1, 2, 3, 4, 2, 2, 3);
-        this.bala = new Bala();
+
 
         coordenadasImagenes = new RectangleTipo[CANTIDADFILAS][CANTIDADCOLUMNAS];
         this.gridPaneMapa = new GridPane();
@@ -100,12 +103,19 @@ public class CampoDeBatalla extends Application {
 
         lienzo = new Canvas(32 * CANTIDADCOLUMNAS, 32 * CANTIDADFILAS);
         this.graficos = lienzo.getGraphicsContext2D();
+        this.panelContador = new Contador();
 
 
-        stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo);
+        stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo, panelContador.panel);
         escena = new Scene(stackPane, ALTO_VENTANA, ANCHO_VENTANA);
 
+
+
+
         pintarEscenario();
+        calcularCodendadasSpawn();
+        this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3);
+        this.bala = new Bala(jugador.VELOCIDAD_BALA);
 
         verArray();
     }
@@ -140,8 +150,9 @@ public class CampoDeBatalla extends Application {
     private void pintar() {
         //borra lo de detras
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
-        bala.pintar(graficos);
+        panelContador.pintar(graficos);
         jugador.pintar(graficos);
+
 
     }
 
@@ -200,6 +211,7 @@ public class CampoDeBatalla extends Application {
                     case SPAWN_JUGADOR -> {
                         imagen = imgJug;
                         tipo = TipoCasilla.SPAWN_JUGADOR;
+
                     }
                     case SPAWN_TANQUE_AMARILLO -> {
                         imagen = imgOtro;
@@ -336,5 +348,24 @@ public class CampoDeBatalla extends Application {
         return escena;
     }
 
+    public void calcularCodendadasSpawn(){
+        for (int i = 0; i < coordenadasImagenes.length; i++) {
+            for (int j = 0; j < coordenadasImagenes[i].length; j++) {
+                RectangleTipo rectTipo = coordenadasImagenes[i][j];
+                Rectangle rectangulo = rectTipo.REC();
+                TipoCasilla tipo = rectTipo.TIPO();
+
+                // Obtener las propiedades del rectángulo
+                int cordenadaX = (int) rectangulo.getX();
+                int cordenadaY = (int) rectangulo.getY();
+                int heightImagen = (int) rectangulo.getHeight();
+                int widthImagen = (int) rectangulo.getWidth();
+                if(tipo==TipoCasilla.SPAWN_JUGADOR){
+                    posSpawnJugadorX = rectangulo.x;
+                    posSpawnJugadorY = rectangulo.y;
+                }
+            }}
+
+    }
 
 }

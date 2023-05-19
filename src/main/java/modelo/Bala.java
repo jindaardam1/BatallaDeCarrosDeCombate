@@ -19,7 +19,7 @@ import java.util.TimerTask;
 import static java.awt.Transparency.TRANSLUCENT;
 
 public class Bala {
-    private static final double VELOCIDAD = 2.0;  // Velocidad de la bala
+    public int VELOCIDADBALA;  // Velocidad de la bala
     public double x;
     public double y;
     private double direccionX;  // Dirección X hacia la cual moverse
@@ -43,8 +43,8 @@ public class Bala {
     private double explosionY;
     private boolean explotando = false;
 
-    public Bala() {
-
+    public Bala(int VELOCIDADBALA) {
+        this.VELOCIDADBALA = VELOCIDADBALA;
         reubicarBala();
         enDisparo = false;
         this.imagenBala = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBALA))));
@@ -53,8 +53,8 @@ public class Bala {
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x - 3;
-        this.y = Jugador.y - 3;
+        this.x = Jugador.x - 7;
+        this.y = Jugador.y - 8;
 
     }
 
@@ -123,8 +123,8 @@ public class Bala {
 
     private void mover() {
 
-        x += direccionX * VELOCIDAD;
-        y += direccionY * VELOCIDAD;
+        x += direccionX * VELOCIDADBALA;
+        y += direccionY * VELOCIDADBALA;
 
     }
 
@@ -187,6 +187,8 @@ public class Bala {
                             explosionY = balaY;
                         System.out.println(explosionX+";"+explosionY);
                         ponerExplosion();
+
+
                         return true;
                     }
                 }
@@ -204,6 +206,8 @@ public class Bala {
                 timer.cancel();
             }
         }, 3000); // Establecer el tiempo en milisegundos (1000 ms = 1 segundo)
+        Jugador.eliminarBala();
+        Jugador.balasActivas--;
     }
 
 

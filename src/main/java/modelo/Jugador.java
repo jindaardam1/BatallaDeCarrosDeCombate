@@ -2,30 +2,39 @@ package modelo;
 
 import controlador.input.KeyInputManager;
 import controlador.input.MouseInputManager;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javafx.util.Duration;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import modelo.tanques.TanqueJugador;
+import utilidades.log.Logs;
 import vista.juego.CampoDeBatalla;
 
 import java.awt.*;
-import java.util.Objects;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Jugador extends TanqueJugador {
     public static int x;
     public static int y;
     public int REBOTES_MAXIMOS;
-    public int VELOCIDAD_BALA;
+    public static int VELOCIDAD_BALA;
     public int MAXIMO_BALAS;
     public int MAXIMO_MINAS;
-    public int balas;
+    public static int balas;
     public int velocidad;
     public int minas;
+
     public static final String SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
     public static final String SPRITETORRETA = "/imagenes/sprites/tanques/tankTurret.png";
 
@@ -41,7 +50,9 @@ public class Jugador extends TanqueJugador {
     boolean puedeMoverseAbajo;
     boolean puedeMoverseIzquierda;
     boolean puedeMoverseDerecha;
-
+    public static ArrayList<Bala> arrayBalas;
+    public static int balasActivas;
+    public static boolean recargando = false;
 
 
 
@@ -51,8 +62,9 @@ public class Jugador extends TanqueJugador {
         this.balas = balas;
         this.minas = minas;
         this.distancia = 0;
-        this.x = 500;
-        this.y = 500;
+        this.x = CampoDeBatalla.posSpawnJugadorX;
+        this.y = CampoDeBatalla.posSpawnJugadorY;
+        this.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
         this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
@@ -62,16 +74,71 @@ public class Jugador extends TanqueJugador {
         this.puedeMoverseAbajo = true;
         this.puedeMoverseDerecha = true;
         this.puedeMoverseIzquierda = true;
+        this.arrayBalas = new ArrayList<>();
+        this.balasActivas = 0;
+        cargarCargador();
+        Thread recargarThread = new Thread(() -> recargar());
+        recargarThread.start();
 
 
     }
+
+    public static void cargarCargador() {
+        for (int i = 0; i < balas; i++) {
+
+            Bala bala = new Bala(VELOCIDAD_BALA);
+            arrayBalas.add(bala);
+
+        }
+    }
+
+    public static void crearBala() {
+
+        Bala bala = new Bala(VELOCIDAD_BALA);
+        arrayBalas.add(bala);
+
+
+    }
+
+
+    public static void eliminarBala() {
+        arrayBalas.remove(0);
+    }
+
 
     public void pintar(GraphicsContext graficos) {
         comprobarColision();
         actualizarRotacion();
 
-        graficos.drawImage(imagenBase.getImage(), x, y);
+        if (arrayBalas.size() < 1 && !recargando) {
+            recargando = true;
+            recargar();
+        }
 
+        if (MouseInputManager.clickIzquierdo) {
+            balasActivas++;
+
+        }
+
+
+        try {
+            for (Bala bala : arrayBalas) {
+                if (arrayBalas.size()>0) {
+                    bala.pintar(graficos);
+                }
+            }
+        } catch (ConcurrentModificationException e) {
+            // Manejar la excepción
+            e.printStackTrace();
+            // O realizar alguna otra acción apropiada
+            Logs.errorLogManager(e);
+        }
+
+
+        System.out.println("Balas: " + arrayBalas.size());
+
+
+        graficos.drawImage(imagenBase.getImage(), x, y);
         double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
         double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
         graficos.save(); //guardar estado de graficos
@@ -186,33 +253,34 @@ public class Jugador extends TanqueJugador {
             puedeMoverseIzquierda = true;
         }
     }
+
     public void mover() {
         distancia = velocidad * 1; // Distancia que se moverá en cada iteración del ciclo de juego
 
 
-            // Movimiento hacia arriba
-            if (KeyInputManager.isArriba() && puedeMoverseArriba) {
-                y -= distancia;
-                imagenBase = imagenBaseVertical;
-            }
-            // Movimiento hacia abajo
-            else if (KeyInputManager.isAbajo() && puedeMoverseAbajo) {
-                y += distancia;
-                imagenBase = imagenBaseVertical;
-            }
-
-            // Movimiento hacia la izquierda
-            else if (KeyInputManager.isIzquierda() && puedeMoverseIzquierda) {
-                x -= distancia;
-                imagenBase = imagenBaseHorizontal;
-            }
-            // Movimiento hacia la derecha
-            else if (KeyInputManager.isDerecha() && puedeMoverseDerecha) {
-                x += distancia;
-                imagenBase = imagenBaseHorizontal;
-            }
-
+        // Movimiento hacia arriba
+        if (KeyInputManager.isArriba() && puedeMoverseArriba) {
+            y -= distancia;
+            imagenBase = imagenBaseVertical;
         }
+        // Movimiento hacia abajo
+        else if (KeyInputManager.isAbajo() && puedeMoverseAbajo) {
+            y += distancia;
+            imagenBase = imagenBaseVertical;
+        }
+
+        // Movimiento hacia la izquierda
+        else if (KeyInputManager.isIzquierda() && puedeMoverseIzquierda) {
+            x -= distancia;
+            imagenBase = imagenBaseHorizontal;
+        }
+        // Movimiento hacia la derecha
+        else if (KeyInputManager.isDerecha() && puedeMoverseDerecha) {
+            x += distancia;
+            imagenBase = imagenBaseHorizontal;
+        }
+
+    }
 
 
     public void actualizarRotacion() {
@@ -238,6 +306,20 @@ public class Jugador extends TanqueJugador {
     private int getJugadorImagenHeight() {
         return (int) imagenBase.getImage().getHeight();
     }
+
+    public void recargar() {
+        System.out.println("Está recargando");
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(5000), actionEvent -> {
+            System.out.println("INVOCAR RECARGAR");
+            cargarCargador();
+            System.out.println("RECARGADO");
+            recargando = false; // Reiniciar el estado de recargando después de los 10 segundos
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
 
 
 }
