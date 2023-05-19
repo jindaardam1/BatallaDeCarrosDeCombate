@@ -19,14 +19,13 @@ import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import modelo.tanques.Contador;
+import utilidades.pantalla.PantallaUtil;
 
 import java.awt.*;
 import java.util.Objects;
 import java.util.Random;
 
 public class CampoDeBatalla extends Application {
-    private static final int ANCHO_VENTANA = 1000;
-    private static final int ALTO_VENTANA = 1000;
     private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
 
@@ -107,7 +106,7 @@ public class CampoDeBatalla extends Application {
 
 
         stackPane.getChildren().addAll(crearFondo(), gridPaneMapa, lienzo, panelContador.panel);
-        escena = new Scene(stackPane, ALTO_VENTANA, ANCHO_VENTANA);
+        escena = new Scene(stackPane, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
 
 
 
@@ -141,8 +140,8 @@ public class CampoDeBatalla extends Application {
 
 
     private ImageView crearFondo() {
-        this.fondo.fitWidthProperty().add(ANCHO_VENTANA); // Ajusta el ancho de la imagen al ancho de la escena
-        this.fondo.fitHeightProperty().add(ALTO_VENTANA); // Ajusta la altura de la imagen al alto de la escena
+        this.fondo.fitWidthProperty().add(PantallaUtil.HEIGHT_VENTANA); // Ajusta el ancho de la imagen al ancho de la escena
+        this.fondo.fitHeightProperty().add(PantallaUtil.WIDTH_VENTANA); // Ajusta la altura de la imagen al alto de la escena
         return fondo;
     }
 

@@ -1,7 +1,6 @@
 package controlador.input;
 
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 public class KeyInputManager implements EventHandler<KeyEvent> {
@@ -9,53 +8,29 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
     public static  boolean abajo = false;
     public static  boolean izquierda = false;
     public static  boolean derecha = false;
-    private static KeyInputManager instance;
-    private ImageView tankImage;
+    public static boolean escape = false;
 
 
     @Override
     public void handle(KeyEvent evento) {
         if (evento.getEventType() == KeyEvent.KEY_PRESSED) {
             switch (evento.getCode()) {
-                case W:
-                    arriba = true;
-                    // System.out.println("Se pulsó arriba");
-                    break;
-                case S:
-                    abajo = true;
-                    //  System.out.println("Se pulsó abajo");
-                    break;
-                case A:
-                    izquierda = true;
-                    // System.out.println("Se pulsó izquierda");
-                    break;
-                case D:
-                    derecha = true;
-                    //   System.out.println("Se pulsó derecha");
-                    break;
-                default:
-                    break;
+                case W -> arriba = true;
+                case S -> abajo = true;
+                case A -> izquierda = true;
+                case D -> derecha = true;
+                case ESCAPE -> escape = true;
+                default -> {
+                }
             }
         } else if (evento.getEventType() == KeyEvent.KEY_RELEASED) {
             switch (evento.getCode()) {
-                case W:
-                    arriba = false;
-                    //   System.out.println("Se soltó arriba");
-                    break;
-                case S:
-                    abajo = false;
-                    //   System.out.println("Se soltó abajo");
-                    break;
-                case A:
-                    izquierda = false;
-                    //   System.out.println("Se soltó izquierda");
-                    break;
-                case D:
-                    derecha = false;
-                    //   System.out.println("Se soltó derecha");
-                    break;
-                default:
-                    break;
+                case W -> arriba = false;
+                case S -> abajo = false;
+                case A -> izquierda = false;
+                case D -> derecha = false;
+                default -> {
+                }
             }
         }
     }
@@ -76,6 +51,9 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
     }
 
     public static boolean isDerecha() {
+        return derecha;
+    }
+    public static boolean isEscape() {
         return derecha;
     }
 }
