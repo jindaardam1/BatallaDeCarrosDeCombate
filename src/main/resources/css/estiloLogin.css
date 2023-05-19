@@ -1,0 +1,32 @@
+.boton-login {
+    -fx-background-color: linear-gradient(#0096c9, #0074a7);
+    -fx-text-fill: white;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+
+}
+
+.boton-login:hover {
+    -fx-background-color: linear-gradient(#0074a7, #005380);
+}
+
+.text-field-nickname {
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+.text-field-nickname:focused {
+    -fx-border-color: #0074a7;
+}
+
+#vbox-login {
+    -fx-background-image: url("../imagenes/login/loginbackground.jpg");
+    -fx-background-size: cover;
+}

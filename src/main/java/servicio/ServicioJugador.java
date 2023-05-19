@@ -8,9 +8,7 @@ import java.util.List;
 public class ServicioJugador {
 
     public static void logingJugador(String jugadorNickname) {
-        if (existeJugador(jugadorNickname)) {
-
-        } else {
+        if (!existeJugador(jugadorNickname)) {
             insertarJugador(jugadorNickname);
         }
     }
