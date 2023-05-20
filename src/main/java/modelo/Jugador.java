@@ -4,9 +4,6 @@ import controlador.input.KeyInputManager;
 import controlador.input.MouseInputManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,8 +17,6 @@ import vista.juego.CampoDeBatalla;
 
 import java.awt.*;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 
 public class Jugador extends TanqueJugador {
@@ -35,11 +30,11 @@ public class Jugador extends TanqueJugador {
     public int velocidad;
     public int minas;
 
-    public static final String SPRITEBASE = "/imagenes/sprites/tanques/tankBaseX.png";
-    public static final String SPRITETORRETA = "/imagenes/sprites/tanques/tankTurret.png";
+    public static final String SPRITEBASE = "/imagenes/sprites/tanques/original/tankBaseX.png";
+    public static final String SPRITETORRETA = "/imagenes/sprites/tanques/original/tankTurret.png";
 
-    public static final String SPRITEBASEHORIZONTAL = "/imagenes/sprites/tanques/tankBaseY.png";
-    public static final String SPRITETORRETAVERTICAL = "/imagenes/sprites/tanques/tankBaseX.png";
+    public static final String SPRITEBASEHORIZONTAL = "/imagenes/sprites/tanques/original/tankBaseY.png";
+    public static final String SPRITETORRETAVERTICAL = "/imagenes/sprites/tanques/original/tankBaseX.png";
     public ImageView imagenBase;
     public ImageView imagenTorreta;
     public ImageView imagenBaseVertical;

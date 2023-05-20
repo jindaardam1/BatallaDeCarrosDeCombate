@@ -9,7 +9,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
@@ -17,10 +16,6 @@ import vista.juego.CampoDeBatalla;
 
 import java.awt.*;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import static java.awt.Transparency.TRANSLUCENT;
 
 public class Bala {
     public int VELOCIDADBALA;  // Velocidad de la bala
@@ -35,7 +30,7 @@ public class Bala {
     private double posBalaAlDispararY;
     private ImageView imagenBala;
     private ImageView imagenExplosion;
-    private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.gif";
+    private final String SPRITEBALA = "/imagenes/sprites/balas/bullet.gif";
     private final String SPRITEEXPLOSION = "/imagenes/sprites/otros/explosion.gif";
     public boolean enDisparo;
     private double mouseX;
