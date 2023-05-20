@@ -1,0 +1,26 @@
+#vbox-menu-principal {
+    -fx-background-image: url("../imagenes/VentanaPrincipal/FondoPrincipal1.jpg");
+    -fx-background-size: cover;
+}
+
+.hyperlink-custom {
+    -fx-font-size: 40px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px;
+    -fx-underline: false;
+}
+
+.hyperlink-custom:hover {
+    -fx-border-color: #ff5500;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+}
+
+.hyperlink-custom:pressed {
+    -fx-border-color: #e65c00;
+    -fx-border-radius: 10px;
+}
+
+.hyperlink-custom:selected {
+    -fx-border-radius: 10px;
+}

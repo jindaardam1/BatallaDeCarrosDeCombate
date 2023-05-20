@@ -3,12 +3,13 @@ package vista.menus;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import main.BatallaDeCarrosDeCombate;
 import modelo.records.InfoUsuario;
 import servicio.ServicioJugador;
+import utilidades.eventos.TeclaEscapeUtil;
 import utilidades.pantalla.PantallaUtil;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,15 +18,15 @@ import javafx.scene.control.TextField;
 import java.util.Objects;
 
 public class MenuLogin {
-    private Stage escenaPrincipal;
+    private Stage escenarioPrincipal;
     private Scene scene;
 
-    public MenuLogin(Stage escenaPrincipal) {
-        this.escenaPrincipal = escenaPrincipal;
+    public MenuLogin(Stage escenarioPrincipal) {
+        this.escenarioPrincipal = escenarioPrincipal;
 
         // Crear el VBox como raíz
         VBox root = new VBox();
-        root.setAlignment(Pos.CENTER); // Alinear al centro verticalmente
+        root.setAlignment(Pos.CENTER);
         root.setSpacing(10);
         root.setPadding(new Insets(20));
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloLogin.css")).toExternalForm());
@@ -48,15 +49,23 @@ public class MenuLogin {
         // Crear el botón para iniciar sesión
         Button buttonIniciarSesion = new Button("Iniciar sesión");
         buttonIniciarSesion.getStyleClass().add("boton-login");
+
+        // Configurar el evento de pulsación de tecla "Enter" en el TextField
+        textFieldNickname.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                buttonIniciarSesion.fire(); // Simular un clic en el botón de inicio de sesión
+            }
+        });
+
         buttonIniciarSesion.setOnAction(event -> {
             String nickname = textFieldNickname.getText();
             if (!nickname.isEmpty()) {
                 labelMensaje.setText("Inicio de sesión exitoso: " + nickname);
                 ServicioJugador.logingJugador(nickname);
                 BatallaDeCarrosDeCombate.nickname = new InfoUsuario(nickname);
-                System.out.println(BatallaDeCarrosDeCombate.nickname);
 
-
+                MenuPrincipal2 mp = new MenuPrincipal2(escenarioPrincipal);
+                mp.mostrar();
             } else {
                 labelMensaje.setText("Ingrese un nickname válido");
             }
@@ -72,12 +81,15 @@ public class MenuLogin {
 
     public void mostrar() {
         // Asignar la escena al Stage principal
-        escenaPrincipal.setScene(scene);
+        escenarioPrincipal.setScene(scene);
 
         // Configurar el título de la ventana
-        escenaPrincipal.setTitle("Login");
+        escenarioPrincipal.setTitle("Login");
+
+        // Configurar el evento de pulsación de tecla para cerrar con "Escape"
+        TeclaEscapeUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
 
         // Mostrar la ventana
-        escenaPrincipal.show();
+        escenarioPrincipal.show();
     }
 }
