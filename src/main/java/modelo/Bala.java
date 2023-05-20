@@ -1,12 +1,16 @@
 package modelo;
 
 import controlador.input.MouseInputManager;
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import vista.juego.CampoDeBatalla;
@@ -32,7 +36,7 @@ public class Bala {
     private ImageView imagenBala;
     private ImageView imagenExplosion;
     private final String SPRITEBALA = "/imagenes/sprites/tanques/bullet.gif";
-    private final String SPRITEEXPLOSION = "/imagenes/sprites/tanques/explotando.gif";
+    private final String SPRITEEXPLOSION = "/imagenes/sprites/otros/explosion.gif";
     public boolean enDisparo;
     private double mouseX;
     private double mouseY;
@@ -42,6 +46,8 @@ public class Bala {
     private double explosionX;
     private double explosionY;
     private boolean explotando = false;
+    private AnimationTimer animationTimer;
+    private long startTime;
 
     public Bala(int VELOCIDADBALA) {
         this.VELOCIDADBALA = VELOCIDADBALA;
@@ -91,10 +97,7 @@ public class Bala {
 
     }
 
-    public void ponerExplosion(){
-        explotar();
 
-    }
 
     public void pintar(GraphicsContext graficos) {
         CampoDeBatalla.graficos.save();
@@ -108,11 +111,15 @@ public class Bala {
         CampoDeBatalla.graficos.restore();
 
         actualizadorDeCordRaton();
-            if(explotando){
-                graficos.drawImage(imagenExplosion.getImage(),explosionX,explosionY);
-            }
+         explotar();
+         if(explotando){
+             System.out.println("EXPLOSION");
+
+             graficos.drawImage(imagenExplosion.getImage(),explosionX,explosionY);
+         }
         disparar();
         if (enDisparo) {
+
             rotarSprite();
             mover();
         } else {
@@ -141,12 +148,14 @@ public class Bala {
 
 
             enDisparo = true;
+
             //para que si no mueves el raton despues de disparar, la bala no salga otra vez.
             MouseInputManager.clickIzquierdo = false;
         }
         if (chocoPared()) {
             System.out.println("La bala ha chocado con una pared");
             enDisparo = false;
+
 
 
         }
@@ -186,7 +195,8 @@ public class Bala {
                             explosionX = balaX;
                             explosionY = balaY;
                         System.out.println(explosionX+";"+explosionY);
-                        ponerExplosion();
+                        Jugador.eliminarBala();
+                        explotando=true;
 
 
                         return true;
@@ -196,18 +206,16 @@ public class Bala {
         }
         return false;
     }
+
     public void explotar() {
-        explotando = true;
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                explotando = false;
-                timer.cancel();
-            }
-        }, 3000); // Establecer el tiempo en milisegundos (1000 ms = 1 segundo)
-        Jugador.eliminarBala();
-        Jugador.balasActivas--;
+        if (explotando) {
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(1), event -> {
+                        explotando = false;
+                    })
+            );
+            timeline.play();
+        }
     }
 
 

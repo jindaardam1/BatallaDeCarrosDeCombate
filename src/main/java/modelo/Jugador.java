@@ -77,8 +77,8 @@ public class Jugador extends TanqueJugador {
         this.arrayBalas = new ArrayList<>();
         this.balasActivas = 0;
         cargarCargador();
-        Thread recargarThread = new Thread(() -> recargar());
-        recargarThread.start();
+
+
 
 
     }
@@ -102,11 +102,12 @@ public class Jugador extends TanqueJugador {
 
 
     public static void eliminarBala() {
-        arrayBalas.remove(0);
+        arrayBalas.remove(arrayBalas.size()-1);
     }
 
 
     public void pintar(GraphicsContext graficos) {
+
         comprobarColision();
         actualizarRotacion();
 
@@ -124,6 +125,7 @@ public class Jugador extends TanqueJugador {
         try {
             for (Bala bala : arrayBalas) {
                 if (arrayBalas.size()>0) {
+
                     bala.pintar(graficos);
                 }
             }
@@ -135,7 +137,7 @@ public class Jugador extends TanqueJugador {
         }
 
 
-        System.out.println("Balas: " + arrayBalas.size());
+
 
 
         graficos.drawImage(imagenBase.getImage(), x, y);
