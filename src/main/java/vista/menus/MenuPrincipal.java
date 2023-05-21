@@ -11,6 +11,9 @@ import utilidades.eventos.PulsarTeclasUtil;
 import utilidades.pantalla.PantallaUtil;
 import vista.juego.CampoDeBatalla;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import java.util.Objects;
 
 public class MenuPrincipal {
@@ -19,6 +22,18 @@ public class MenuPrincipal {
 
     public MenuPrincipal(Stage escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
+
+        String audioPath = Objects.requireNonNull(getClass().getResource("/musica/MenuPrincipalCancion.mp3")).toExternalForm();
+
+        Media media = new Media(audioPath);
+
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+
+        mediaPlayer.setVolume(0.05);
+
+        mediaPlayer.play();
 
         VBox root = new VBox();
         root.setBackground(new Background(new BackgroundImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(RandomizadorFondo.obtenerImagenAleatoria()))), BackgroundRepeat.NO_REPEAT,
@@ -49,22 +64,23 @@ public class MenuPrincipal {
         boton1.setOnAction(actionEvent -> {
             MenuMuerte mm = new MenuMuerte(escenarioPrincipal);
             mm.mostrar();
+            mediaPlayer.stop();
         });
         boton2.setOnAction(actionEvent -> {
 
             CampoDeBatalla cdb = new CampoDeBatalla(escenarioPrincipal);
             cdb.start(escenarioPrincipal);
-
-
+            mediaPlayer.stop();
         });
         boton3.setOnAction(actionEvent -> {
-           MenuTopScores mts = new MenuTopScores(escenarioPrincipal);
-           mts.mostrar();
-
+            MenuTopScores mts = new MenuTopScores(escenarioPrincipal);
+            mts.mostrar();
+            mediaPlayer.stop();
         });
         boton4.setOnAction(actionEvent -> {
             MenuSkins ms = new MenuSkins(escenarioPrincipal);
             ms.mostrar();
+            mediaPlayer.stop();
         });
         boton5.setOnAction(actionEvent -> escenarioPrincipal.close());
     }

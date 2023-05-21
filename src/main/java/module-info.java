@@ -7,6 +7,7 @@ module com.example.pruebafx {
     requires com.fasterxml.jackson.databind;
     requires java.sql;
     requires sqlite.jdbc;
+    requires javafx.media;
 
 
     opens com.example.pruebafx to javafx.fxml;
