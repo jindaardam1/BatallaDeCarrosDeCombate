@@ -59,8 +59,9 @@ public class Jugador extends TanqueJugador {
         this.balas = balas;
         this.minas = minas;
         this.distancia = 0;
-        this.x = CampoDeBatalla.posSpawnJugadorX;
-        this.y = CampoDeBatalla.posSpawnJugadorY;
+        Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_JUGADOR);
+        this.x =cordsJugador.x;
+        this.y = cordsJugador.y;
         this.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
@@ -114,9 +115,9 @@ public class Jugador extends TanqueJugador {
             recargar();
         }
 
-     //  if(estanColisionanadoContraBala()){
-     //      System.out.println("HAS PERDIDO");
-     //  }
+      if(estanColisionanadoContraBala()){
+          System.out.println("HAS PERDIDO");
+      }
 
 
         try {
@@ -295,12 +296,12 @@ public class Jugador extends TanqueJugador {
         timeline.play();
     }
 
-//public boolean estanColisionanadoContraBala(){
-// javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
-//    javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(BalaAuto.x, BalaAuto.y, 30, 30);
+public boolean estanColisionanadoContraBala(){
+ javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
+    javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(BalaAuto.cordsBalAutoX, BalaAuto.cordsBalAutoY, 30, 30);
 
-//    return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
-//}
+    return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
+}
 
 
 

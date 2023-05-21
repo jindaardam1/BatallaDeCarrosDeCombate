@@ -21,6 +21,8 @@ public class Bala {
     public int VELOCIDADBALA;  // Velocidad de la bala
     public  double x;
     public  double y;
+    public static double cordsBalX;
+    public static double cordsBaY;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
     private double posRatonAlDispararX;
@@ -54,8 +56,10 @@ public class Bala {
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x - 7;
+        this.x = Jugador.x - 8;
         this.y = Jugador.y - 8;
+        cordsBalX = Jugador.x - 8;
+        cordsBaY = Jugador.y - 8;
 
     }
 
@@ -127,7 +131,8 @@ public class Bala {
 
         this.x += direccionX * VELOCIDADBALA;
         this.y += direccionY * VELOCIDADBALA;
-
+        cordsBalX+= direccionX * VELOCIDADBALA;
+        cordsBaY+= direccionY * VELOCIDADBALA;
     }
 
     private void disparar() {

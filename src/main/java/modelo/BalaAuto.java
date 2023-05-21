@@ -21,6 +21,8 @@ public class BalaAuto {
     public int VELOCIDADBALA;  // Velocidad de la bala
     public  double x;
     public  double y;
+    public static double cordsBalAutoX;
+    public static double cordsBalAutoY;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
     private double posJugadorAlDispararX;
@@ -54,8 +56,10 @@ public class BalaAuto {
     }
 
     public void reubicarBala() {
-        this.x = JugadorAuto.x - 7;
+        this.x = JugadorAuto.x - 8;
         this.y = JugadorAuto.y - 8;
+        cordsBalAutoX = JugadorAuto.x - 8;
+        cordsBalAutoY = JugadorAuto.y - 8;
 
     }
 
@@ -128,6 +132,8 @@ public class BalaAuto {
 
         x += direccionX * VELOCIDADBALA;
         y += direccionY * VELOCIDADBALA;
+        cordsBalAutoX += direccionX * VELOCIDADBALA;
+        cordsBalAutoY += direccionY * VELOCIDADBALA;
 
     }
 

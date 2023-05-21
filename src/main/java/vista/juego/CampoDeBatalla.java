@@ -20,11 +20,11 @@ import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import modelo.tanques.Contador;
+import utilidades.eventos.CordenadasSpawn;
 import utilidades.pantalla.PantallaUtil;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
@@ -61,7 +61,7 @@ public class CampoDeBatalla extends Application {
     public static  int posSpawnJugadorX;
     public static int  posSpawnJugadorY;
 
-    public static ArrayList[][] posSpawnsEnemigos ;
+    public static ArrayList<CordenadasSpawn> posSpawns;
 
 
     public static void main(String[] args) {
@@ -357,8 +357,8 @@ public class CampoDeBatalla extends Application {
     }
 
     public void calcularCodendadasSpawns(){
-        posSpawnsEnemigos = new ArrayList[][]{
-        };
+        posSpawns = new ArrayList();
+
         for (int i = 0; i < coordenadasImagenes.length; i++) {
             for (int j = 0; j < coordenadasImagenes[i].length; j++) {
                 RectangleTipo rectTipo = coordenadasImagenes[i][j];
@@ -370,20 +370,27 @@ public class CampoDeBatalla extends Application {
                 int cordenadaY = (int) rectangulo.getY();
                 int heightImagen = (int) rectangulo.getHeight();
                 int widthImagen = (int) rectangulo.getWidth();
-                if(tipo==TipoCasilla.SPAWN_JUGADOR){
-                    posSpawnJugadorX = rectangulo.x;
-                    posSpawnJugadorY = rectangulo.y;
-                }
-                if(tipo==TipoCasilla.SPAWN_JUGADOR){
-                    posSpawnJugadorX = rectangulo.x;
-                    posSpawnJugadorY = rectangulo.y;
-                }
-                if(tipo==TipoCasilla.SPAWN_TANQUE_AMARILLO||tipo==TipoCasilla.SPAWN_TANQUE_BLANCO||tipo==TipoCasilla.SPAWN_TANQUE_GRIS||tipo==TipoCasilla.SPAWN_TANQUE_MARRON||tipo==TipoCasilla.SPAWN_TANQUE_MORADO||tipo==TipoCasilla.SPAWN_TANQUE_NEGRO||tipo==TipoCasilla.SPAWN_TANQUE_ROJO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_CLARO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO){
 
+                if(tipo==TipoCasilla.SPAWN_JUGADOR){
+                    posSpawnJugadorX = rectangulo.x;
+                    posSpawnJugadorY = rectangulo.y;
+                }
+                if(tipo==TipoCasilla.SPAWN_JUGADOR||tipo==TipoCasilla.SPAWN_TANQUE_AMARILLO||tipo==TipoCasilla.SPAWN_TANQUE_BLANCO||tipo==TipoCasilla.SPAWN_TANQUE_GRIS||tipo==TipoCasilla.SPAWN_TANQUE_MARRON||tipo==TipoCasilla.SPAWN_TANQUE_MORADO||tipo==TipoCasilla.SPAWN_TANQUE_NEGRO||tipo==TipoCasilla.SPAWN_TANQUE_ROJO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_CLARO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO){
+                    posSpawns.add(new CordenadasSpawn<>(tipo,new Point(cordenadaX,cordenadaY)));
 
                 }
             }}
 
     }
+
+     public static Point getCordenadas(TipoCasilla tipo){
+         for (CordenadasSpawn cords : posSpawns) {
+             if(cords.getTipoCasilla()==tipo){
+                 return (Point) cords.getCordenadas();
+             }
+
+         }
+         return new Point(100,100);
+     }
 
 }
