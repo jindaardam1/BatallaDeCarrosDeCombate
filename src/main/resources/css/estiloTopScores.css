@@ -1,4 +1,29 @@
-#vbox-menu-top-scores {
-    -fx-background-image: url("../imagenes/VentanaPrincipal/FondoPrincipal3.jpg");
-    -fx-background-size: cover;
+#scores-grid-pane {
+    -fx-padding: 100px;
+}
+
+.label-score {
+    -fx-alignment: center;
+    -fx-pref-width: 800px;
+    -fx-pref-height: 67px;
+    -fx-border-color: limegreen;
+    -fx-border-width: 0 0 1px 0;
+    -fx-font-size: 25px;
+    -fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);
+}
+
+.oro {
+    -fx-text-fill: #FFC300;
+}
+
+.plata {
+    -fx-text-fill: #C0C0C0;
+}
+
+.bronce {
+    -fx-text-fill: #CD7F32;
+}
+
+.casi-pero-no {
+    -fx-text-fill: #5E8C31;
 }

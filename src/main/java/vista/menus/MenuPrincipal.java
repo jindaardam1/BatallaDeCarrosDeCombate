@@ -7,16 +7,16 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import utilidades.eventos.RandomizadorFondo;
-import utilidades.eventos.TeclaEscapeUtil;
+import utilidades.eventos.PulsarTeclasUtil;
 import utilidades.pantalla.PantallaUtil;
 
 import java.util.Objects;
 
-public class MenuPrincipal2 {
+public class MenuPrincipal {
     private Stage escenarioPrincipal;
     private Scene scene;
 
-    public MenuPrincipal2(Stage escenarioPrincipal) {
+    public MenuPrincipal(Stage escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
 
         VBox root = new VBox();
@@ -64,7 +64,7 @@ public class MenuPrincipal2 {
         escenarioPrincipal.setTitle("Menú principal");
 
         // Configurar el evento de pulsación de tecla para cerrar con "Escape"
-        TeclaEscapeUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
+        PulsarTeclasUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
 
         // Mostrar la ventana
         escenarioPrincipal.show();

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import main.BatallaDeCarrosDeCombate;
 import modelo.records.InfoUsuario;
 import servicio.ServicioJugador;
-import utilidades.eventos.TeclaEscapeUtil;
+import utilidades.eventos.PulsarTeclasUtil;
 import utilidades.pantalla.PantallaUtil;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -64,7 +64,7 @@ public class MenuLogin {
                 ServicioJugador.logingJugador(nickname);
                 BatallaDeCarrosDeCombate.nickname = new InfoUsuario(nickname);
 
-                MenuPrincipal2 mp = new MenuPrincipal2(escenarioPrincipal);
+                MenuPrincipal mp = new MenuPrincipal(escenarioPrincipal);
                 mp.mostrar();
             } else {
                 labelMensaje.setText("Ingrese un nickname válido");
@@ -87,7 +87,7 @@ public class MenuLogin {
         escenarioPrincipal.setTitle("Login");
 
         // Configurar el evento de pulsación de tecla para cerrar con "Escape"
-        TeclaEscapeUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
+        PulsarTeclasUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
 
         // Mostrar la ventana
         escenarioPrincipal.show();

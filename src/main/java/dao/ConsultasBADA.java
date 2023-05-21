@@ -57,7 +57,7 @@ public class ConsultasBADA {
                 int numTanquesMorados = rs.getInt("numTanquesMorados");
                 int numTanquesBlancos = rs.getInt("numTanquesBlancos");
                 int numTanquesNegros = rs.getInt("numTanquesNegros");
-                int numTanquesRojo = rs.getInt("numTanquesRojo");
+                int numTanquesRojo = rs.getInt("numTanquesRojos");
                 int numTanquesVerdesClaros = rs.getInt("numTanquesVerdesClaros");
                 int numTanquesVerdesOscuros = rs.getInt("numTanquesVerdesOscuros");
                 String jugadorNickname = rs.getString("jugadorNickname");
@@ -70,6 +70,7 @@ public class ConsultasBADA {
             }
         } catch (SQLException e) {
             System.out.println("Error al cargar los registros.");
+            e.printStackTrace();
         }
 
         return registros;

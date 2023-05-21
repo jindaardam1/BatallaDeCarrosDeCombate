@@ -6,7 +6,7 @@ import javafx.stage.Screen;
 
 public class PantallaUtil {
 
-    public static final int HEIGHT_VENTANA = 800;
+    public static final int HEIGHT_VENTANA = 870;
     public static final int WIDTH_VENTANA = 1000;
 
     public static Rectangle2D obtenerDimensionesPantalla() {
