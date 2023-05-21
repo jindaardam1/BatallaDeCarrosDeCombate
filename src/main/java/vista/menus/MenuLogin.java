@@ -3,6 +3,8 @@ package vista.menus;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -32,7 +34,11 @@ public class MenuLogin {
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloLogin.css")).toExternalForm());
         root.setId("vbox-login");
 
-
+        Image imagen = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/login/logo.png")));
+        ImageView logo = new ImageView(imagen);
+        logo.setFitWidth(780);
+        logo.setFitHeight(171.8);
+        logo.setId("logo");
 
         // Crear el campo de entrada de nickname
         TextField textFieldNickname = new TextField();
@@ -72,7 +78,7 @@ public class MenuLogin {
         });
 
         // Agregar los elementos al VBox
-        root.getChildren().addAll(textFieldNickname, buttonIniciarSesion, labelMensaje);
+        root.getChildren().addAll(logo, textFieldNickname, buttonIniciarSesion, labelMensaje);
 
         // Crear la escena con el VBox como nodo raíz
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
