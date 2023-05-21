@@ -1,5 +1,7 @@
 package servicio;
 
+import dao.ConexionBADA;
+import dao.ConsultasBADA;
 import dao.InsertsBADA;
 import dao.records.Score;
 
