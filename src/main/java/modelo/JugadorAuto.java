@@ -50,13 +50,13 @@ public class JugadorAuto extends TanqueJugador {
     boolean puedeMoverseDerecha;
     public static ArrayList<BalaAuto> arrayBalasAuto;
     public static int balasAutoActivas;
-    public  boolean recargando = false;
+    public boolean recargando = false;
     boolean colisionSuperior = false;
-    boolean colisionInferior = false;
-    boolean colisionLateralDerecho = false;
-    boolean colisionLateralIzquierdo = false;
-    Direccion direccionActual = Direccion.ARRIBA;
-
+    public boolean colisionInferior = false;
+    public boolean colisionLateralDerecho = false;
+    public boolean colisionLateralIzquierdo = false;
+    public Direccion direccionActual = Direccion.ARRIBA;
+    public static boolean destruido = false;
 
 
     public JugadorAuto(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
@@ -66,7 +66,7 @@ public class JugadorAuto extends TanqueJugador {
         this.minas = minas;
         this.distancia = 0;
         Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_TANQUE_AMARILLO);
-        x =cordsJugador.x;
+        x = cordsJugador.x;
         y = cordsJugador.y;
         JugadorAuto.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
@@ -84,8 +84,6 @@ public class JugadorAuto extends TanqueJugador {
         cambiarDireccionAleatoria();
 
 
-
-
     }
 
     public static void cargarCargador() {
@@ -99,7 +97,7 @@ public class JugadorAuto extends TanqueJugador {
 
     public static void crearBala() {
 
-     BalaAuto bala = new BalaAuto(VELOCIDAD_BALA);
+        BalaAuto bala = new BalaAuto(VELOCIDAD_BALA);
         arrayBalasAuto.add(bala);
 
 
@@ -107,58 +105,57 @@ public class JugadorAuto extends TanqueJugador {
 
 
     public static void eliminarBala() {
-        arrayBalasAuto.remove(arrayBalasAuto.size()-1);
+        arrayBalasAuto.remove(arrayBalasAuto.size() - 1);
     }
 
 
     public void pintar(GraphicsContext graficos) {
-        mover();
+        if (!destruido) {
+            mover();
 
-        comprobarColision();
-        actualizarRotacion();
+            comprobarColision();
+            actualizarRotacion();
 
 
-        if (arrayBalasAuto.size() < 1 && !recargando) {
-            recargando = true;
-            recargar();
-        }
+            if (arrayBalasAuto.size() < 1 && !recargando) {
+                recargando = true;
+                recargar();
+            }
 
 
             balasAutoActivas++;
 
 
+            try {
+                for (BalaAuto bala : arrayBalasAuto) {
+                    if (arrayBalasAuto.size() > 0) {
 
-
-
-
-
-        try {
-            for (BalaAuto bala : arrayBalasAuto) {
-                if (arrayBalasAuto.size()>0) {
-
-                    bala.pintar(graficos);
+                        bala.pintar(graficos);
+                    }
                 }
+            } catch (ConcurrentModificationException e) {
+                // Manejar la excepción
+                e.printStackTrace();
+                // O realizar alguna otra acción apropiada
+                Logs.errorLogManager(e);
             }
-        } catch (ConcurrentModificationException e) {
-            // Manejar la excepción
-            e.printStackTrace();
-            // O realizar alguna otra acción apropiada
-            Logs.errorLogManager(e);
+
+
+            graficos.drawImage(imagenBase.getImage(), x, y);
+            double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
+            double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
+            graficos.save(); //guardar estado de graficos
+            graficos.translate(torretaX, torretaY); //mover al centro de la torreta
+            graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
+            graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
+            graficos.restore(); //recuperar estado de graficos
+        } else {
+
+            graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/explosionTanque.gif"))), x, y);
+            graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/TanqueDestruido.png"))), x, y);
+
+
         }
-
-
-
-
-
-        graficos.drawImage(imagenBase.getImage(), x, y);
-        double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
-        double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
-        graficos.save(); //guardar estado de graficos
-        graficos.translate(torretaX, torretaY); //mover al centro de la torreta
-        graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
-        graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
-        graficos.restore(); //recuperar estado de graficos
-
     }
 
     public void ajustesPantallaCompleta() {
@@ -190,10 +187,10 @@ public class JugadorAuto extends TanqueJugador {
 
 
     public void comprobarColision() {
-         colisionSuperior = false;
-         colisionInferior = false;
-         colisionLateralDerecho = false;
-         colisionLateralIzquierdo = false;
+        colisionSuperior = false;
+        colisionInferior = false;
+        colisionLateralDerecho = false;
+        colisionLateralIzquierdo = false;
 
         // variables auxiliares para la posición futura del jugador
         int jugadorXFuturo = x;
@@ -265,7 +262,6 @@ public class JugadorAuto extends TanqueJugador {
             puedeMoverseIzquierda = true;
         }
     }
-
 
 
     public void cambiarDireccionAleatoria() {
@@ -352,6 +348,10 @@ public class JugadorAuto extends TanqueJugador {
         timeline.play();
     }
 
+    public static void destruir() {
+       destruido = true;
+
+    }
 
 
 }
