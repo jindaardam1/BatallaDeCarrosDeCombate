@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Objects;
 
+import static utilidades.eventos.SpriteUtils.isCollisionDetected;
+
 
 public class JugadorAuto extends TanqueJugador {
     public static int x;
@@ -63,8 +65,9 @@ public class JugadorAuto extends TanqueJugador {
         this.balas = balas;
         this.minas = minas;
         this.distancia = 0;
-        this.x = 100;
-        this.y = 100;
+        Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_TANQUE_AMARILLO);
+        this.x =cordsJugador.x;
+        this.y = cordsJugador.y;
         this.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
@@ -120,9 +123,9 @@ public class JugadorAuto extends TanqueJugador {
             recargar();
         }
 
-        //   if(estanColisionanadoContraBala()){
-       //      System.out.println("HAS DESTRUIDO UN TANQUE");
-       //  }
+        if(estanColisionanadoContraBala()){
+            System.out.println("HAS DESTRUIDO UN TANQUE");
+        }
 
             balasAutoActivas++;
 
@@ -352,11 +355,11 @@ public class JugadorAuto extends TanqueJugador {
         timeline.play();
     }
 
-//public boolean estanColisionanadoContraBala(){
-// javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
-//    javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Bala.x, Bala.y, 30, 30);
+    public boolean estanColisionanadoContraBala(){
+     javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
+        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Bala.cordsBalX, Bala.cordsBalX, 30, 30);
 
-//    return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
-//}
+        return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
+    }
 
 }
