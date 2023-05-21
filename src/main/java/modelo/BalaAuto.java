@@ -56,8 +56,8 @@ public class BalaAuto {
     }
 
     public void reubicarBala() {
-        this.x = JugadorAuto.x - 8;
-        this.y = JugadorAuto.y - 8;
+        this.x = JugadorAuto.x - 4;
+        this.y = JugadorAuto.y - 4;
 
     }
 

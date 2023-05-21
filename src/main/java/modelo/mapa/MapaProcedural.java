@@ -83,8 +83,8 @@ public class MapaProcedural {
             boolean esValida = true;
             for (int j = 0; j < longitud; j++) {
                 if (x < 1 || x >= columnas - 1 || y < 1 || y >= filas - 1 || mapa[y][x] == TipoCasilla.PARED ||
-                        mapa[y-1][x] == TipoCasilla.PARED || mapa[y+1][x] == TipoCasilla.PARED ||
-                        mapa[y][x-1] == TipoCasilla.PARED || mapa[y][x+1] == TipoCasilla.PARED) {
+                        mapa[y - 1][x] == TipoCasilla.PARED || mapa[y + 1][x] == TipoCasilla.PARED ||
+                        mapa[y][x - 1] == TipoCasilla.PARED || mapa[y][x + 1] == TipoCasilla.PARED) {
                     esValida = false;
                     break;
                 }
@@ -110,28 +110,19 @@ public class MapaProcedural {
     }
 
     private void ponerSpawnsEnemigos() {
-        int numSpawns;
-        if (nivelActual >= 1 && nivelActual <= 5) {
-            numSpawns = 2;
-        } else if (nivelActual >= 6 && nivelActual <= 15) {
-            numSpawns = 3;
-        } else if (nivelActual >= 16 && nivelActual <= 30) {
-            numSpawns = 4;
-        } else if (nivelActual >= 31 && nivelActual <= 70) {
-            numSpawns = 5;
-        } else {
-            numSpawns = 6;
-        }
+
+
         Random random = new Random();
-        for (int i = 0; i < numSpawns; i++) {
-            int x = random.nextInt(columnas);
-            int y = random.nextInt(filas);
-            if (mapa[y][x] == TipoCasilla.NADA) {
-                elegirTanque(x, y);
-            } else {
-                i--;
-            }
+        int x = random.nextInt(columnas);
+        int y = random.nextInt(filas);
+
+
+        if (mapa[y][x] == TipoCasilla.NADA) {
+            elegirTanque(x, y);
+        } else {
+            ponerSpawnsEnemigos();
         }
+
     }
 
     private void elegirTanque(int x, int y) {
@@ -147,6 +138,7 @@ public class MapaProcedural {
     /**
      * Método que devuelve un tanque aleatorio cuando el nivel actual
      * es menor o igual a 20.
+     *
      * @return TipoCasilla tanque aleatorio.
      */
     private TipoCasilla tanquesSub20() {
@@ -168,6 +160,7 @@ public class MapaProcedural {
     /**
      * Método que devuelve un tanque aleatorio cuando el nivel actual
      * es menor o igual a 40.
+     *
      * @return TipoCasilla tanque aleatorio.
      */
     private TipoCasilla tanquesSub40() {
@@ -193,6 +186,7 @@ public class MapaProcedural {
     /**
      * Método que devuelve un tanque aleatorio cuando el nivel actual
      * es mayor a 41.
+     *
      * @return TipoCasilla tanque aleatorio.
      */
     private TipoCasilla tanquesSobre41() {

@@ -56,8 +56,8 @@ public class Bala {
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x - 8;
-        this.y = Jugador.y - 8;
+        this.x = Jugador.x - 4;
+        this.y = Jugador.y - 4;
 
     }
 

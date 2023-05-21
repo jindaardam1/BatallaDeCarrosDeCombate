@@ -17,6 +17,7 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 import java.util.Objects;
 
 import static utilidades.eventos.SpriteUtils.isCollisionDetected;
@@ -32,8 +33,10 @@ public class JugadorAuto extends TanqueJugador {
     public static int balas;
     public int velocidad;
     public int minas;
+    public static boolean borrarBala = false;
+    public int cadencia = 5000;
 
-    public static final String SPRITEBASE = "/imagenes/sprites/tanques/original/tankBaseX.png";
+
     public static final String SPRITETORRETA = "/imagenes/sprites/tanques/original/tankTurret.png";
 
     public static final String SPRITEBASEHORIZONTAL = "/imagenes/sprites/tanques/original/tankBaseY.png";
@@ -59,20 +62,23 @@ public class JugadorAuto extends TanqueJugador {
     public static boolean destruido = false;
 
 
-    public JugadorAuto(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas, int posX, int posY) {
+    public JugadorAuto(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int cadencia, int minas, int posX, int posY, String spriteTorreta, String spriteBaseHorizontal, String spriteTorretaVertical) {
         super(REBOTES_MAXIMOS, VELOCIDAD_BALA, MAXIMO_BALAS, MAXIMO_MINAS, balas, velocidad, minas);
         this.velocidad = velocidad;
         JugadorAuto.balas = balas;
         this.minas = minas;
         this.distancia = 0;
+        this.cadencia = cadencia;
         Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_TANQUE_AMARILLO);
-        x =posX;
+        x = posX;
         y = posY;
         JugadorAuto.VELOCIDAD_BALA = VELOCIDAD_BALA;
-        this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
-        this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
-        this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
-        this.imagenTorreta = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETA))));
+
+        this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(spriteBaseHorizontal))));
+        this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(spriteTorretaVertical))));
+
+        this.imagenTorreta = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(spriteTorreta))));
+
         this.puedeMoverse = true;
         this.puedeMoverseArriba = true;
         this.puedeMoverseAbajo = true;
@@ -80,7 +86,7 @@ public class JugadorAuto extends TanqueJugador {
         this.puedeMoverseIzquierda = true;
         arrayBalasAuto = new ArrayList<>();
         balasAutoActivas = 0;
-        cargarCargador();
+
         cambiarDireccionAleatoria();
 
 
@@ -105,7 +111,7 @@ public class JugadorAuto extends TanqueJugador {
 
 
     public static void eliminarBala() {
-        arrayBalasAuto.remove(arrayBalasAuto.size() - 1);
+        borrarBala = true;
     }
 
 
@@ -127,16 +133,18 @@ public class JugadorAuto extends TanqueJugador {
 
 
             try {
-                for (BalaAuto bala : arrayBalasAuto) {
-                    if (arrayBalasAuto.size() > 0) {
-
-                        bala.pintar(graficos);
+                Iterator<BalaAuto> iterator = arrayBalasAuto.iterator();
+                while (iterator.hasNext()) {
+                    BalaAuto bala = iterator.next();
+                    bala.pintar(graficos);
+                    if (borrarBala) {
+                        iterator.remove();
+                        borrarBala = false;
                     }
                 }
+
             } catch (ConcurrentModificationException e) {
-                // Manejar la excepción
                 e.printStackTrace();
-                // O realizar alguna otra acción apropiada
                 Logs.errorLogManager(e);
             }
 
@@ -156,33 +164,6 @@ public class JugadorAuto extends TanqueJugador {
 
 
         }
-    }
-
-    public void ajustesPantallaCompleta() {
-        imagenBase.setPreserveRatio(true);
-        imagenTorreta.setPreserveRatio(true);
-        imagenBaseHorizontal.setPreserveRatio(true);
-        imagenBaseVertical.setPreserveRatio(true);
-        double desiredSize = 128; // Tamaño deseado de la imagen
-
-        imagenBase.setFitWidth(desiredSize);
-        imagenBase.setFitHeight(desiredSize);
-
-        imagenTorreta.setFitWidth(desiredSize);
-        imagenTorreta.setFitHeight(desiredSize);
-
-        imagenBaseHorizontal.setFitWidth(desiredSize);
-        imagenBaseHorizontal.setFitHeight(desiredSize);
-
-        imagenBaseVertical.setFitWidth(desiredSize);
-        imagenBaseVertical.setFitHeight(desiredSize);
-
-        imagenBase.resize(128, 128);
-        imagenTorreta.resize(128, 128);
-        imagenBaseHorizontal.resize(128, 128);
-        imagenBaseVertical.resize(128, 128);
-
-
     }
 
 
@@ -338,7 +319,7 @@ public class JugadorAuto extends TanqueJugador {
     public void recargar() {
         System.out.println("Está recargando");
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(5000), actionEvent -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(cadencia), actionEvent -> {
             System.out.println("INVOCAR RECARGAR");
             cargarCargador();
             System.out.println("RECARGADO");
@@ -349,7 +330,7 @@ public class JugadorAuto extends TanqueJugador {
     }
 
     public static void destruir() {
-       destruido = true;
+        destruido = true;
 
     }
 

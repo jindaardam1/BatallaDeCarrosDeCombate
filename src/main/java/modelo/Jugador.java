@@ -24,6 +24,7 @@ import static utilidades.eventos.SpriteUtils.isCollisionDetected;
 public class Jugador extends TanqueJugador {
     public static int x;
     public  static int y;
+    public static boolean borrarBala = false;
     public int REBOTES_MAXIMOS;
     public static int VELOCIDAD_BALA;
     public int MAXIMO_BALAS;
@@ -75,7 +76,7 @@ public class Jugador extends TanqueJugador {
         this.puedeMoverseIzquierda = true;
         this.arrayBalas = new ArrayList<>();
         this.balasActivas = 0;
-        cargarCargador();
+
 
 
 
@@ -101,7 +102,7 @@ public class Jugador extends TanqueJugador {
 
 
     public static void eliminarBala() {
-        arrayBalas.remove(arrayBalas.size()-1);
+        borrarBala = true;
     }
 
 
@@ -120,16 +121,18 @@ public class Jugador extends TanqueJugador {
 
 
             try {
-                for (Bala bala : arrayBalas) {
-                    if (arrayBalas.size() > 0) {
-
-                        bala.pintar(graficos);
+                Iterator<Bala> iterator = arrayBalas.iterator();
+                while (iterator.hasNext()) {
+                    Bala bala = iterator.next();
+                    bala.pintar(graficos);
+                    if (borrarBala) {
+                        iterator.remove();
+                        borrarBala = false;
                     }
                 }
+
             } catch (ConcurrentModificationException e) {
-                // Manejar la excepción
                 e.printStackTrace();
-                // O realizar alguna otra acción apropiada
                 Logs.errorLogManager(e);
             }
 
