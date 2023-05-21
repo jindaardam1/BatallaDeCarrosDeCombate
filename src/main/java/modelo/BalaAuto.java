@@ -17,17 +17,17 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.Objects;
 
-public class Bala {
+public class BalaAuto {
     public int VELOCIDADBALA;  // Velocidad de la bala
     public  double x;
     public  double y;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
-    private double posRatonAlDispararX;
-    private double posRatonAlDispararY;
+    private double posJugadorAlDispararX;
+    private double posJugadorAlDispararY;
 
-    private double posBalaAlDispararX;
-    private double posBalaAlDispararY;
+    private double posBalaAutoAlDispararX;
+    private double posBalaAutoAlDispararY;
     private ImageView imagenBala;
     private ImageView imagenExplosion;
     private final String SPRITEBALA = "/imagenes/sprites/balas/bullet.gif";
@@ -44,7 +44,7 @@ public class Bala {
     private AnimationTimer animationTimer;
     private long startTime;
 
-    public Bala(int VELOCIDADBALA) {
+    public BalaAuto(int VELOCIDADBALA) {
         this.VELOCIDADBALA = VELOCIDADBALA;
         reubicarBala();
         enDisparo = false;
@@ -54,14 +54,14 @@ public class Bala {
     }
 
     public void reubicarBala() {
-        this.x = Jugador.x - 7;
-        this.y = Jugador.y - 8;
+        this.x = JugadorAuto.x - 7;
+        this.y = JugadorAuto.y - 8;
 
     }
 
     public void calcularAnguloDisparo() {
-        deltaX = (posRatonAlDispararX) - posBalaAlDispararX;
-        deltaY = (posRatonAlDispararY) - posBalaAlDispararY;
+        deltaX = (Jugador.x) - posBalaAutoAlDispararX;
+        deltaY = (Jugador.y) - posBalaAutoAlDispararY;
         magnitud = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
         // Calcular dirección solo si la magnitud es mayor a cero para evitar divisiones por cero
@@ -73,8 +73,8 @@ public class Bala {
 
 
     public void actualizadorDeCordRaton() {
-        posRatonAlDispararX = mouseX;
-        posRatonAlDispararY = mouseY;
+        posJugadorAlDispararX = Jugador.x;
+        posJugadorAlDispararY = Jugador.y;
 
     }
 
@@ -102,17 +102,18 @@ public class Bala {
         params.setFill(javafx.scene.paint.Color.TRANSPARENT); // Establecer el fondo transparente
 
         WritableImage rotatedImage = imagenBala.snapshot(params, null);
-        graficos.drawImage(rotatedImage, this.x, this.y);
+        graficos.drawImage(rotatedImage, x, y);
         CampoDeBatalla.graficos.restore();
 
         actualizadorDeCordRaton();
          explotar();
+        disparar();
          if(explotando){
              System.out.println("EXPLOSION");
 
              graficos.drawImage(imagenExplosion.getImage(),explosionX,explosionY);
          }
-        disparar();
+
         if (enDisparo) {
 
             rotarSprite();
@@ -125,13 +126,13 @@ public class Bala {
 
     private void mover() {
 
-        this.x += direccionX * VELOCIDADBALA;
-        this.y += direccionY * VELOCIDADBALA;
+        x += direccionX * VELOCIDADBALA;
+        y += direccionY * VELOCIDADBALA;
 
     }
 
     private void disparar() {
-        if (MouseInputManager.clickIzquierdo) {
+
             //Calcula el angulo de disparo evitando darle dos veces seguidas
             if (!enDisparo) {
 
@@ -146,7 +147,7 @@ public class Bala {
 
             //para que si no mueves el raton despues de disparar, la bala no salga otra vez.
             MouseInputManager.clickIzquierdo = false;
-        }
+
         if (chocoPared()) {
             System.out.println("La bala ha chocado con una pared");
             enDisparo = false;
@@ -157,10 +158,10 @@ public class Bala {
     }
 
     private void tomarPosRatonYBala() {
-        posRatonAlDispararX = MouseInputManager.getMouseX();
-        posRatonAlDispararY = MouseInputManager.getMouseY();
-        posBalaAlDispararX = this.x;
-        posBalaAlDispararY = this.y;
+        posJugadorAlDispararX = Jugador.x;
+        posJugadorAlDispararY = Jugador.y;
+        posBalaAutoAlDispararX = this.x;
+        posBalaAutoAlDispararY = this.y;
     }
 
     private boolean chocoPared() {
@@ -170,8 +171,8 @@ public class Bala {
                 Rectangle rectangulo = rectTipo.REC();
                 TipoCasilla tipo = rectTipo.TIPO();
 
-                double balaX = this.x;
-                double balaY = this.y;
+                double balaX = x;
+                double balaY = y;
                 int balaHeight = (int) imagenBala.getImage().getHeight();
                 int balaWidth = (int) imagenBala.getImage().getWidth();
 
@@ -190,7 +191,7 @@ public class Bala {
                             explosionX = balaX;
                             explosionY = balaY;
                         System.out.println(explosionX+";"+explosionY);
-                        Jugador.eliminarBala();
+                        JugadorAuto.eliminarBala();
                         explotando=true;
 
 

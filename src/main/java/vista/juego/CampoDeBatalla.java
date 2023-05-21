@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import modelo.Bala;
 import modelo.Jugador;
+import modelo.JugadorAuto;
 import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
@@ -22,6 +23,8 @@ import modelo.tanques.Contador;
 import utilidades.pantalla.PantallaUtil;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
 
@@ -47,6 +50,7 @@ public class CampoDeBatalla extends Application {
     private Image imgJug;
     private ImageView fondo;
     private Jugador jugador;
+    private JugadorAuto bot;
 
     public static Canvas lienzo;
     public static GraphicsContext graficos;
@@ -56,6 +60,8 @@ public class CampoDeBatalla extends Application {
     public Contador panelContador;
     public static  int posSpawnJugadorX;
     public static int  posSpawnJugadorY;
+
+    public static ArrayList[][] posSpawnsEnemigos ;
 
 
     public static void main(String[] args) {
@@ -81,7 +87,8 @@ public class CampoDeBatalla extends Application {
                 double t = (tiempoActual - tiempoInicial) / 1000000000.0;
 
 
-                jugador.mover();
+
+
                 pintar();
 
             }
@@ -112,8 +119,9 @@ public class CampoDeBatalla extends Application {
 
 
         pintarEscenario();
-        calcularCodendadasSpawn();
+        calcularCodendadasSpawns();
         this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3);
+        this.bot = new JugadorAuto(1, 6, 3, 4, 5, 2, 3);
         this.bala = new Bala(jugador.VELOCIDAD_BALA);
 
         verArray();
@@ -151,6 +159,7 @@ public class CampoDeBatalla extends Application {
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
         panelContador.pintar(graficos);
         jugador.pintar(graficos);
+        bot.pintar(graficos);
 
 
     }
@@ -347,7 +356,9 @@ public class CampoDeBatalla extends Application {
         return escena;
     }
 
-    public void calcularCodendadasSpawn(){
+    public void calcularCodendadasSpawns(){
+        posSpawnsEnemigos = new ArrayList[][]{
+        };
         for (int i = 0; i < coordenadasImagenes.length; i++) {
             for (int j = 0; j < coordenadasImagenes[i].length; j++) {
                 RectangleTipo rectTipo = coordenadasImagenes[i][j];
@@ -362,6 +373,14 @@ public class CampoDeBatalla extends Application {
                 if(tipo==TipoCasilla.SPAWN_JUGADOR){
                     posSpawnJugadorX = rectangulo.x;
                     posSpawnJugadorY = rectangulo.y;
+                }
+                if(tipo==TipoCasilla.SPAWN_JUGADOR){
+                    posSpawnJugadorX = rectangulo.x;
+                    posSpawnJugadorY = rectangulo.y;
+                }
+                if(tipo==TipoCasilla.SPAWN_TANQUE_AMARILLO||tipo==TipoCasilla.SPAWN_TANQUE_BLANCO||tipo==TipoCasilla.SPAWN_TANQUE_GRIS||tipo==TipoCasilla.SPAWN_TANQUE_MARRON||tipo==TipoCasilla.SPAWN_TANQUE_MORADO||tipo==TipoCasilla.SPAWN_TANQUE_NEGRO||tipo==TipoCasilla.SPAWN_TANQUE_ROJO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_CLARO||tipo==TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO){
+
+
                 }
             }}
 

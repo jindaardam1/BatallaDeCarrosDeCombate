@@ -18,10 +18,12 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.*;
 
+import static utilidades.eventos.SpriteUtils.isCollisionDetected;
+
 
 public class Jugador extends TanqueJugador {
     public static int x;
-    public static int y;
+    public  static int y;
     public int REBOTES_MAXIMOS;
     public static int VELOCIDAD_BALA;
     public int MAXIMO_BALAS;
@@ -102,6 +104,7 @@ public class Jugador extends TanqueJugador {
 
 
     public void pintar(GraphicsContext graficos) {
+        mover();
 
         comprobarColision();
         actualizarRotacion();
@@ -111,10 +114,9 @@ public class Jugador extends TanqueJugador {
             recargar();
         }
 
-        if (MouseInputManager.clickIzquierdo) {
-            balasActivas++;
-
-        }
+     //  if(estanColisionanadoContraBala()){
+     //      System.out.println("HAS PERDIDO");
+     //  }
 
 
         try {
@@ -146,32 +148,8 @@ public class Jugador extends TanqueJugador {
 
     }
 
-    public void ajustesPantallaCompleta() {
-        imagenBase.setPreserveRatio(true);
-        imagenTorreta.setPreserveRatio(true);
-        imagenBaseHorizontal.setPreserveRatio(true);
-        imagenBaseVertical.setPreserveRatio(true);
-        double desiredSize = 128; // Tamaño deseado de la imagen
-
-        imagenBase.setFitWidth(desiredSize);
-        imagenBase.setFitHeight(desiredSize);
-
-        imagenTorreta.setFitWidth(desiredSize);
-        imagenTorreta.setFitHeight(desiredSize);
-
-        imagenBaseHorizontal.setFitWidth(desiredSize);
-        imagenBaseHorizontal.setFitHeight(desiredSize);
-
-        imagenBaseVertical.setFitWidth(desiredSize);
-        imagenBaseVertical.setFitHeight(desiredSize);
-
-        imagenBase.resize(128, 128);
-        imagenTorreta.resize(128, 128);
-        imagenBaseHorizontal.resize(128, 128);
-        imagenBaseVertical.resize(128, 128);
 
 
-    }
 
 
     public void comprobarColision() {
@@ -316,6 +294,14 @@ public class Jugador extends TanqueJugador {
         timeline.setCycleCount(1);
         timeline.play();
     }
+
+//public boolean estanColisionanadoContraBala(){
+// javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
+//    javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(BalaAuto.x, BalaAuto.y, 30, 30);
+
+//    return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
+//}
+
 
 
 
