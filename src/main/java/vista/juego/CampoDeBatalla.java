@@ -22,6 +22,7 @@ import modelo.records.RectangleTipo;
 import modelo.tanques.Contador;
 import utilidades.eventos.CordenadasSpawn;
 import utilidades.pantalla.PantallaUtil;
+import vista.menus.MenuMuerte;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import java.util.Random;
 public class CampoDeBatalla extends Application {
     private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
-
+    public static Stage escenarioPrincipal;
     private Scene escena;
     private StackPane stackPane;
     private TipoCasilla[][] casillas;
@@ -63,19 +64,26 @@ public class CampoDeBatalla extends Application {
 
     public static ArrayList<CordenadasSpawn> posSpawns;
 
+public CampoDeBatalla(Stage escenarioPrincipal){
+    this.escenarioPrincipal = escenarioPrincipal;
+    inizializarComponentes();
+    escenarioPrincipal.setScene(escena);
+    escenarioPrincipal.setTitle("CampoDeBatalla");
+    gestionEventos();
+    cicloJuego();
+}
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void mostrarMenuMuerte() {
+        MenuMuerte menuMuerte = new MenuMuerte(escenarioPrincipal);
+        escenarioPrincipal.hide();
+        menuMuerte.mostrar();
+
     }
-
     @Override
     public void start(Stage ventana) {
-        inizializarComponentes();
-        ventana.setScene(escena);
-        ventana.setTitle("CampoDeBatalla");
-        gestionEventos();
-        ventana.show();
-        cicloJuego();
+
+        escenarioPrincipal.show();
+
     }
 
 

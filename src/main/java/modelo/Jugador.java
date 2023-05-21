@@ -50,7 +50,8 @@ public class Jugador extends TanqueJugador {
     public static ArrayList<Bala> arrayBalas;
     public static int balasActivas;
     public static boolean recargando = false;
-
+    public static boolean destruido = false;
+    public boolean mostrasteMenu = false;
 
 
     public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
@@ -105,46 +106,49 @@ public class Jugador extends TanqueJugador {
 
 
     public void pintar(GraphicsContext graficos) {
-        mover();
 
-        comprobarColision();
-        actualizarRotacion();
+        if(!destruido) {
+            mover();
 
-        if (arrayBalas.size() < 1 && !recargando) {
-            recargando = true;
-            recargar();
-        }
+            comprobarColision();
+            actualizarRotacion();
 
-
-
-
-        try {
-            for (Bala bala : arrayBalas) {
-                if (arrayBalas.size()>0) {
-
-                    bala.pintar(graficos);
-                }
+            if (arrayBalas.size() < 1 && !recargando) {
+                recargando = true;
+                recargar();
             }
-        } catch (ConcurrentModificationException e) {
-            // Manejar la excepción
-            e.printStackTrace();
-            // O realizar alguna otra acción apropiada
-            Logs.errorLogManager(e);
+
+
+            try {
+                for (Bala bala : arrayBalas) {
+                    if (arrayBalas.size() > 0) {
+
+                        bala.pintar(graficos);
+                    }
+                }
+            } catch (ConcurrentModificationException e) {
+                // Manejar la excepción
+                e.printStackTrace();
+                // O realizar alguna otra acción apropiada
+                Logs.errorLogManager(e);
+            }
+
+
+            graficos.drawImage(imagenBase.getImage(), x, y);
+            double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
+            double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
+            graficos.save(); //guardar estado de graficos
+            graficos.translate(torretaX, torretaY); //mover al centro de la torreta
+            graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
+            graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
+            graficos.restore(); //recuperar estado de graficos
+        }else{
+            if(!mostrasteMenu) {
+                CampoDeBatalla.mostrarMenuMuerte();
+                mostrasteMenu=true;
+            }
+
         }
-
-
-
-
-
-        graficos.drawImage(imagenBase.getImage(), x, y);
-        double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
-        double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
-        graficos.save(); //guardar estado de graficos
-        graficos.translate(torretaX, torretaY); //mover al centro de la torreta
-        graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
-        graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
-        graficos.restore(); //recuperar estado de graficos
-
     }
 
 
@@ -292,6 +296,10 @@ public class Jugador extends TanqueJugador {
         }));
         timeline.setCycleCount(1);
         timeline.play();
+    }
+    public static void destruir() {
+        destruido = true;
+
     }
 
 

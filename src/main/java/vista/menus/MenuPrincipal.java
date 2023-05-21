@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import utilidades.eventos.RandomizadorFondo;
 import utilidades.eventos.PulsarTeclasUtil;
 import utilidades.pantalla.PantallaUtil;
+import vista.juego.CampoDeBatalla;
 
 import java.util.Objects;
 
@@ -44,14 +45,19 @@ public class MenuPrincipal {
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
 
         boton1.setOnAction(actionEvent -> {
-
+            MenuMuerte mm = new MenuMuerte(escenarioPrincipal);
+            mm.mostrar();
         });
         boton2.setOnAction(actionEvent -> {
+            CampoDeBatalla cdb = new CampoDeBatalla(escenarioPrincipal);
+            cdb.start(escenarioPrincipal);
+
 
         });
         boton3.setOnAction(actionEvent -> {
-            MenuTopScores mts = new MenuTopScores(escenarioPrincipal);
-            mts.mostrar();
+           MenuTopScores mts = new MenuTopScores(escenarioPrincipal);
+           mts.mostrar();
+
         });
         boton4.setOnAction(actionEvent -> escenarioPrincipal.close());
     }

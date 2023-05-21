@@ -117,6 +117,7 @@ public class BalaAuto {
          }
         if(estanColisionanadoContraBala()){
             System.out.println("HAS PERDIDO");
+            Jugador.destruir();
         }
 
 
