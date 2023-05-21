@@ -54,15 +54,15 @@ public class Jugador extends TanqueJugador {
     public boolean mostrasteMenu = false;
 
 
-    public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
+    public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas,int posX, int posY) {
         super(REBOTES_MAXIMOS, VELOCIDAD_BALA, MAXIMO_BALAS, MAXIMO_MINAS, balas, velocidad, minas);
         this.velocidad = velocidad;
         this.balas = balas;
         this.minas = minas;
         this.distancia = 0;
         Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_JUGADOR);
-        this.x =cordsJugador.x;
-        this.y = cordsJugador.y;
+        this.x =posX;
+        this.y = posY;
         this.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));

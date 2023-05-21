@@ -52,6 +52,8 @@ public class CampoDeBatalla extends Application {
     private ImageView fondo;
     private Jugador jugador;
     private JugadorAuto bot;
+    private JugadorAuto bot2;
+    public ArrayList<JugadorAuto> arrayEnemigos = new ArrayList<>();
 
     public static Canvas lienzo;
     public static GraphicsContext graficos;
@@ -61,6 +63,8 @@ public class CampoDeBatalla extends Application {
     public Contador panelContador;
     public static  int posSpawnJugadorX;
     public static int  posSpawnJugadorY;
+    public static int enemigosTotales;
+    public static ArrayList<Point> cordenadasEnemigos = new ArrayList<>();;
 
     public static ArrayList<CordenadasSpawn> posSpawns;
 
@@ -125,14 +129,19 @@ public CampoDeBatalla(Stage escenarioPrincipal){
 
 
 
-
+        bot = new JugadorAuto(1, 6, 3, 4, 5, 2, 3,300,300);
+        bot2 =  new JugadorAuto(1, 6, 3, 4, 5, 2, 3,300,300);
         pintarEscenario();
         calcularCodendadasSpawns();
-        this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3);
-        this.bot = new JugadorAuto(1, 6, 3, 4, 5, 2, 3);
-        this.bala = new Bala(jugador.VELOCIDAD_BALA);
+
+
+        this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3,getCordenadas(TipoCasilla.SPAWN_JUGADOR).x,getCordenadas(TipoCasilla.SPAWN_JUGADOR).y);
+
+
 
         verArray();
+        getCordenadasEnemigos();
+        crearEnemigos();
     }
 
 
@@ -167,7 +176,11 @@ public CampoDeBatalla(Stage escenarioPrincipal){
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
         panelContador.pintar(graficos);
         jugador.pintar(graficos);
+
         bot.pintar(graficos);
+        bot2.pintar(graficos);
+
+
 
 
     }
@@ -400,5 +413,26 @@ public CampoDeBatalla(Stage escenarioPrincipal){
          }
          return new Point(100,100);
      }
+    public static Point getCordenadasEnemigos(){
+        for (CordenadasSpawn cords : posSpawns) {
+            if(cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_AMARILLO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_BLANCO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_GRIS||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_MARRON||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_MORADO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_NEGRO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_ROJO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_VERDE_CLARO||cords.getTipoCasilla()==TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO){
+                cordenadasEnemigos.add((Point) cords.getCordenadas());
+                enemigosTotales++;
+            }
+
+        }
+        return new Point(500,500);
+    }
+
+    public void crearEnemigos(){
+        for (int i = 0; i <cordenadasEnemigos.size() ; i++) {
+            Point posicion = cordenadasEnemigos.get(i);
+                arrayEnemigos.add(new JugadorAuto(1, 6, 3, 4, 5, 2, 3,posicion.x,posicion.y));
+        }
+
+
+    }
+
+
 
 }
