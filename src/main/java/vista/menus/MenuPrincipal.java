@@ -51,6 +51,7 @@ public class MenuPrincipal {
             mm.mostrar();
         });
         boton2.setOnAction(actionEvent -> {
+
             CampoDeBatalla cdb = new CampoDeBatalla(escenarioPrincipal);
             cdb.start(escenarioPrincipal);
 

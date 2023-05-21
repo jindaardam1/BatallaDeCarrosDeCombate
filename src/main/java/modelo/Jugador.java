@@ -18,8 +18,6 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.*;
 
-import static utilidades.eventos.SpriteUtils.isCollisionDetected;
-
 
 public class Jugador extends TanqueJugador {
     public static int x;
@@ -52,7 +50,7 @@ public class Jugador extends TanqueJugador {
     public static int balasActivas;
     public static boolean recargando = false;
     public static boolean destruido = false;
-    public boolean mostrasteMenu = false;
+    public static boolean mostrasteMenu = false;
 
 
     public Jugador(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas,int posX, int posY) {
@@ -147,6 +145,7 @@ public class Jugador extends TanqueJugador {
             graficos.restore(); //recuperar estado de graficos
         }else{
             if(!mostrasteMenu) {
+
                 CampoDeBatalla.mostrarMenuMuerte();
                 mostrasteMenu=true;
             }

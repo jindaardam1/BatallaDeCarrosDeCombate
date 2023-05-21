@@ -32,6 +32,7 @@ public class MenuMuerte {
         Button volverBtn = new Button("Volver al Menú Principal");
         volverBtn.getStyleClass().add("volver-btn");
         volverBtn.setOnAction(actionEvent -> {
+
             MenuPrincipal menuPrincipal = new MenuPrincipal(escenarioPrincipal);
             menuPrincipal.mostrar();
         });

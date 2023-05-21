@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import modelo.Bala;
 import modelo.Jugador;
 import modelo.JugadorAuto;
 import modelo.mapa.MapaProcedural;
@@ -31,6 +30,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class CampoDeBatalla extends Application {
+    public static boolean detener = false;
     private static final int CANTIDADFILAS = 20;
     private static final int CANTIDADCOLUMNAS = 27;
     public static Stage escenarioPrincipal;
@@ -53,24 +53,26 @@ public class CampoDeBatalla extends Application {
     private ImageView fondo;
     private Jugador jugador;
     private JugadorAuto bot;
+    public static AnimationTimer animationTimer;
 
-    public ArrayList<JugadorAuto> arrayEnemigos = new ArrayList<>();
 
     public static Canvas lienzo;
     public static GraphicsContext graficos;
     public static RectangleTipo[][] coordenadasImagenes;
     public GridPane gridPaneMapa;
-    public Bala bala;
+
     public Contador panelContador;
     public static int posSpawnJugadorX;
     public static int posSpawnJugadorY;
     public static Point cordenadasEnemigo = new Point();
-    ;
+
 
     public static ArrayList<CordenadasSpawn> posSpawns = new ArrayList<>();
 
     public CampoDeBatalla(Stage escenarioPrincipal) {
+        Jugador.mostrasteMenu = false;
         this.escenarioPrincipal = escenarioPrincipal;
+
         inizializarComponentes();
         escenarioPrincipal.setScene(escena);
         escenarioPrincipal.setTitle("CampoDeBatalla");
@@ -79,11 +81,13 @@ public class CampoDeBatalla extends Application {
     }
 
     public static void mostrarMenuMuerte() {
+        animationTimer.stop();
         MenuMuerte menuMuerte = new MenuMuerte(escenarioPrincipal);
         escenarioPrincipal.hide();
         menuMuerte.mostrar();
-
+        escenarioPrincipal.show(); // Agregar esta línea para volver a mostrar la ventana principal
     }
+
 
     @Override
     public void start(Stage ventana) {
@@ -94,8 +98,9 @@ public class CampoDeBatalla extends Application {
 
 
     public void cicloJuego() {
+
         long tiempoInicial = System.nanoTime();
-        AnimationTimer animationTimer = new AnimationTimer() {
+        animationTimer = new AnimationTimer() {
             @Override
             public void handle(long tiempoActual) {
                 double t = (tiempoActual - tiempoInicial) / 1000000000.0;
@@ -106,6 +111,8 @@ public class CampoDeBatalla extends Application {
             }
         };
         animationTimer.start();
+
+
     }
 
 
@@ -130,8 +137,6 @@ public class CampoDeBatalla extends Application {
 
         pintarEscenario();
         calcularCodendadasSpawns();
-
-
         this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3, getCordenadas(TipoCasilla.SPAWN_JUGADOR).x, getCordenadas(TipoCasilla.SPAWN_JUGADOR).y);
 
 
@@ -368,7 +373,7 @@ public class CampoDeBatalla extends Application {
 
 
     public void calcularCodendadasSpawns() {
-        posSpawns = new ArrayList();
+        posSpawns = new ArrayList<>();
 
         for (int i = 0; i < coordenadasImagenes.length; i++) {
             for (int j = 0; j < coordenadasImagenes[i].length; j++) {
@@ -419,54 +424,53 @@ public class CampoDeBatalla extends Application {
     public void crearEnemigo() {
 
         Point posicion = cordenadasEnemigo;
-            int numero = (int) (Math.random() * 9) + 1;
-            numero = 8;
+        int numero = (int) (Math.random() * 9) + 1;
+        numero = 6;
 
         switch (numero) {
             case 1 ->
                 // Marrón
-                    this.bot = new JugadorAuto(1, 6, 3, 4, 2, 0,5000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 6, 3, 4, 2, 0, 5000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/marron/marronTankTurret.png", "/imagenes/sprites/tanques/marron/marronTankBaseY.png", "/imagenes/sprites/tanques/marron/marronTankBaseX.png");
             case 2 ->
                 // Gris
-                    this.bot = new JugadorAuto(1, 6, 3, 4, 3, 1,4000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 6, 3, 4, 3, 1, 4000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/gris/grisTankTurret.png", "/imagenes/sprites/tanques/gris/grisTankBaseY.png", "/imagenes/sprites/tanques/gris/grisTankBaseX.png");
             case 3 ->
                 // Amarillo
-                    this.bot = new JugadorAuto(1, 6, 3, 4, 3, 2,5000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 6, 3, 4, 3, 2, 5000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/amarillo/amarilloTankTurret.png.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseY.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseX.png");
             case 4 ->
                 // Verde Oscuro
-                    this.bot = new JugadorAuto(1, 10, 3, 4, 4, 2,3000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 10, 3, 4, 4, 2, 3000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankTurret.png", "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankBaseY.png", "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankBaseX.png");
             case 5 ->
                 // Verde Claro
-                    this.bot = new JugadorAuto(1, 12, 3, 4, 6, 2,2000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 12, 3, 4, 6, 2, 2000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/verde claro/verdeClaroTankTurret.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseY.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseX.png");
             case 6 ->
                 // Morado
-                    this.bot = new JugadorAuto(1, 6, 3, 4, 2, 3,4000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 6, 3, 4, 2, 3, 4000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/morado/moradoTankTurret.png", "/imagenes/sprites/tanques/morado/moradoTankBaseY.png", "/imagenes/sprites/tanques/morado/moradoTankBaseX.png");
             case 7 ->
                 // Rojo
-                    this.bot = new JugadorAuto(1, 8, 10, 4, 5, 3, 5000,3, posicion.x, posicion.y,
-                            "/imagenes/sprites/tanques/rojo/rojoTankTurret.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseY.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseX.png");
+                    this.bot = new JugadorAuto(1, 8, 10, 4, 5, 3, 5000, 3, posicion.x, posicion.y,
+                            "/imagenes/sprites/tanques/rojo/rojoTankTurret.png", "/imagenes/sprites/tanques/rojo/rojoTankBaseY.png.png", "/imagenes/sprites/tanques/rojo/rojoTankBaseX.png");
             case 8 ->
                 // Blanco
-                    this.bot = new JugadorAuto(1, 6, 3, 4, 5, 8,1000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 6, 3, 4, 5, 8, 1000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/blanco/blancoTankTurret.png", "/imagenes/sprites/tanques/blanco/blancoTankBaseY.png", "/imagenes/sprites/tanques/blanco/blancoTankBaseX.png");
             case 9 ->
                 // Negro
-                    this.bot = new JugadorAuto(1, 10, 3, 4, 20, 4,1000, 3, posicion.x, posicion.y,
+                    this.bot = new JugadorAuto(1, 10, 3, 4, 20, 4, 1000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/negro/negroTankTurret.png", "/imagenes/sprites/tanques/negro/negroTankBaseY.png", "/imagenes/sprites/tanques/negro/negroTankBaseX.png");
-            default -> this.bot = new JugadorAuto(1, 6, 3, 4, 5, 2,5000, 3, posicion.x, posicion.y,
+            default -> this.bot = new JugadorAuto(1, 6, 3, 4, 5, 2, 5000, 3, posicion.x, posicion.y,
                     "/imagenes/sprites/tanques/original/tankTurret.png", "/imagenes/sprites/tanques/original/tankBaseY.png", "/imagenes/sprites/tanques/original/tankBaseX.png");
         }
 
 
     }
 
-//original
 
 }
 
