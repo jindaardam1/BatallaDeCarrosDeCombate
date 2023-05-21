@@ -62,13 +62,13 @@ public class JugadorAuto extends TanqueJugador {
     public JugadorAuto(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int minas) {
         super(REBOTES_MAXIMOS, VELOCIDAD_BALA, MAXIMO_BALAS, MAXIMO_MINAS, balas, velocidad, minas);
         this.velocidad = velocidad;
-        this.balas = balas;
+        JugadorAuto.balas = balas;
         this.minas = minas;
         this.distancia = 0;
         Point cordsJugador = CampoDeBatalla.getCordenadas(TipoCasilla.SPAWN_TANQUE_AMARILLO);
-        this.x =cordsJugador.x;
-        this.y = cordsJugador.y;
-        this.VELOCIDAD_BALA = VELOCIDAD_BALA;
+        x =cordsJugador.x;
+        y = cordsJugador.y;
+        JugadorAuto.VELOCIDAD_BALA = VELOCIDAD_BALA;
         this.imagenBaseHorizontal = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASEHORIZONTAL))));
         this.imagenBaseVertical = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITETORRETAVERTICAL))));
         this.imagenBase = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream(SPRITEBASE))));
@@ -78,8 +78,8 @@ public class JugadorAuto extends TanqueJugador {
         this.puedeMoverseAbajo = true;
         this.puedeMoverseDerecha = true;
         this.puedeMoverseIzquierda = true;
-        this.arrayBalasAuto = new ArrayList<>();
-        this.balasAutoActivas = 0;
+        arrayBalasAuto = new ArrayList<>();
+        balasAutoActivas = 0;
         cargarCargador();
         cambiarDireccionAleatoria();
 
@@ -356,8 +356,8 @@ public class JugadorAuto extends TanqueJugador {
     }
 
     public boolean estanColisionanadoContraBala(){
-     javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
-        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Bala.cordsBalX, Bala.cordsBalX, 30, 30);
+     javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(x, y, 30, 30);
+        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Bala.cordsBalX, Bala.cordsBarY, 30, 30);
 
         return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
     }
