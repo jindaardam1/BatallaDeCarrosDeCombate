@@ -17,12 +17,12 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.Objects;
 
+import static utilidades.eventos.SpriteUtils.isCollisionDetected;
+
 public class Bala {
     public int VELOCIDADBALA;  // Velocidad de la bala
     public  double x;
     public  double y;
-    public static double cordsBalX;
-    public static double cordsBarY;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
     private double posRatonAlDispararX;
@@ -58,8 +58,6 @@ public class Bala {
     public void reubicarBala() {
         this.x = Jugador.x - 8;
         this.y = Jugador.y - 8;
-        cordsBalX = Jugador.x - 8;
-        cordsBarY = Jugador.y - 8;
 
     }
 
@@ -109,6 +107,10 @@ public class Bala {
         graficos.drawImage(rotatedImage, this.x, this.y);
         CampoDeBatalla.graficos.restore();
 
+        if(estanColisionanadoContraBala()){
+            System.out.println("HAS DESTRUIDO UN TANQUE");
+        }
+
         actualizadorDeCordRaton();
          explotar();
          if(explotando){
@@ -131,8 +133,6 @@ public class Bala {
 
         this.x += direccionX * VELOCIDADBALA;
         this.y += direccionY * VELOCIDADBALA;
-        cordsBalX+= direccionX * VELOCIDADBALA;
-        cordsBarY += direccionY * VELOCIDADBALA;
     }
 
     private void disparar() {
@@ -216,6 +216,12 @@ public class Bala {
             );
             timeline.play();
         }
+    }
+    public boolean estanColisionanadoContraBala(){
+        javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(x, y, 30, 30);
+        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(JugadorAuto.x, JugadorAuto.y, 30, 30);
+
+        return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
     }
 
 

@@ -115,9 +115,7 @@ public class Jugador extends TanqueJugador {
             recargar();
         }
 
-      if(estanColisionanadoContraBala()){
-          System.out.println("HAS PERDIDO");
-      }
+
 
 
         try {
@@ -296,12 +294,6 @@ public class Jugador extends TanqueJugador {
         timeline.play();
     }
 
-public boolean estanColisionanadoContraBala(){
- javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
-    javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(BalaAuto.cordsBalAutoX, BalaAuto.cordsBalAutoY, 30, 30);
-
-    return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
-}
 
 
 

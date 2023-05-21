@@ -123,9 +123,6 @@ public class JugadorAuto extends TanqueJugador {
             recargar();
         }
 
-        if(estanColisionanadoContraBala()){
-            System.out.println("HAS DESTRUIDO UN TANQUE");
-        }
 
             balasAutoActivas++;
 
@@ -355,11 +352,6 @@ public class JugadorAuto extends TanqueJugador {
         timeline.play();
     }
 
-    public boolean estanColisionanadoContraBala(){
-     javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(x, y, 30, 30);
-        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Bala.cordsBalX, Bala.cordsBarY, 30, 30);
 
-        return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
-    }
 
 }

@@ -17,12 +17,12 @@ import vista.juego.CampoDeBatalla;
 import java.awt.*;
 import java.util.Objects;
 
+import static utilidades.eventos.SpriteUtils.isCollisionDetected;
+
 public class BalaAuto {
     public int VELOCIDADBALA;  // Velocidad de la bala
     public  double x;
     public  double y;
-    public static double cordsBalAutoX;
-    public static double cordsBalAutoY;
     private double direccionX;  // Dirección X hacia la cual moverse
     private double direccionY;  // Dirección Y hacia la cual moverse
     private double posJugadorAlDispararX;
@@ -58,8 +58,6 @@ public class BalaAuto {
     public void reubicarBala() {
         this.x = JugadorAuto.x - 8;
         this.y = JugadorAuto.y - 8;
-        cordsBalAutoX = JugadorAuto.x - 8;
-        cordsBalAutoY = JugadorAuto.y - 8;
 
     }
 
@@ -117,6 +115,10 @@ public class BalaAuto {
 
              graficos.drawImage(imagenExplosion.getImage(),explosionX,explosionY);
          }
+        if(estanColisionanadoContraBala()){
+            System.out.println("HAS PERDIDO");
+        }
+
 
         if (enDisparo) {
 
@@ -132,8 +134,6 @@ public class BalaAuto {
 
         x += direccionX * VELOCIDADBALA;
         y += direccionY * VELOCIDADBALA;
-        cordsBalAutoX += direccionX * VELOCIDADBALA;
-        cordsBalAutoY += direccionY * VELOCIDADBALA;
 
     }
 
@@ -219,6 +219,13 @@ public class BalaAuto {
             timeline.play();
         }
     }
+    public boolean estanColisionanadoContraBala(){
+        javafx.scene.shape.Rectangle rectanguloJugador = new javafx.scene.shape.Rectangle(this.x, this.y, 30, 30);
+        javafx.scene.shape.Rectangle rectanguloBalaAuto = new javafx.scene.shape.Rectangle(Jugador.x,Jugador.y, 30, 30);
+
+        return isCollisionDetected(rectanguloJugador, rectanguloBalaAuto);
+    }
+
 
 
 }
