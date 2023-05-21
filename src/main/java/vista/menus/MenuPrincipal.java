@@ -31,16 +31,18 @@ public class MenuPrincipal {
         Hyperlink boton1 = new Hyperlink("CLÁSICO");
         Hyperlink boton2 = new Hyperlink("SURVIVAL");
         Hyperlink boton3 = new Hyperlink("TOP SCORES");
-        Hyperlink boton4 = new Hyperlink("SALIR");
+        Hyperlink boton4 = new Hyperlink("SKINS");
+        Hyperlink boton5 = new Hyperlink("SALIR");
 
         boton1.getStyleClass().add("hyperlink-custom");
         boton2.getStyleClass().add("hyperlink-custom");
         boton3.getStyleClass().add("hyperlink-custom");
         boton4.getStyleClass().add("hyperlink-custom");
+        boton5.getStyleClass().add("hyperlink-custom");
 
         root.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(boton1, boton2, boton3, boton4);
+        root.getChildren().addAll(boton1, boton2, boton3, boton4, boton5);
 
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
 
@@ -59,7 +61,11 @@ public class MenuPrincipal {
            mts.mostrar();
 
         });
-        boton4.setOnAction(actionEvent -> escenarioPrincipal.close());
+        boton4.setOnAction(actionEvent -> {
+            MenuSkins ms = new MenuSkins(escenarioPrincipal);
+            ms.mostrar();
+        });
+        boton5.setOnAction(actionEvent -> escenarioPrincipal.close());
     }
 
     public void mostrar() {

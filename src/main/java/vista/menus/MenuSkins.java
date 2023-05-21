@@ -1,6 +1,6 @@
 package vista.menus;
 
-import dao.records.Score;
+import dao.records.Skin;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -8,21 +8,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import servicio.ServicioScore;
-import utilidades.eventos.RandomizadorFondo;
+import servicio.ServicioSkins;
 import utilidades.eventos.PulsarTeclasUtil;
+import utilidades.eventos.RandomizadorFondo;
 import utilidades.pantalla.PantallaUtil;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class MenuTopScores {
+public class MenuSkins {
 
     private Stage escenarioPrincipal;
     private Scene scene;
-    public MenuTopScores(Stage escenarioPrincipal) {
-        this.escenarioPrincipal = escenarioPrincipal;
 
+    public MenuSkins(Stage escenarioPrincipal) {
+        this.escenarioPrincipal = escenarioPrincipal;
         VBox root = new VBox();
         root.setBackground(new Background(new BackgroundImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(RandomizadorFondo.obtenerImagenAleatoria()))), BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -33,20 +33,14 @@ public class MenuTopScores {
         GridPane gridPane = new GridPane();
         gridPane.setId("grid-pane");
 
-        List<Score> mejoresScores = ServicioScore.los10Mejores();
+        ArrayList<Skin> skins = ServicioSkins.getSkins();
 
-        for (int i = 0; i < mejoresScores.size(); i++) {
-            Score score = mejoresScores.get(i);
+        for (int i = 0; i < skins.size(); i++) {
+            Skin skin = skins.get(i);
 
-            Label labelScore = new Label(score.JUGADOR_NICKNAME() + " - " + score.NUM_MAPAS());
+            Label labelScore = new Label(skin.NOMBRE() + " - " + skin.CONSEGUIDA() + " - " + skin.JUGADOR_NICKNAME());
             labelScore.getStyleClass().add("label-score");
-
-            switch (i) {
-                case 0 -> labelScore.getStyleClass().add("oro");
-                case 1 -> labelScore.getStyleClass().add("plata");
-                case 2 -> labelScore.getStyleClass().add("bronce");
-                default -> labelScore.getStyleClass().add("casi-pero-no");
-            }
+            labelScore.getStyleClass().add("oro");
 
             gridPane.add(labelScore, 0, i);
         }
@@ -82,7 +76,7 @@ public class MenuTopScores {
         escenarioPrincipal.setScene(scene);
 
         // Configurar el título de la ventana
-        escenarioPrincipal.setTitle("Top scores");
+        escenarioPrincipal.setTitle("Menú principal");
 
         // Volver al menú principal con enter
         PulsarTeclasUtil.configurarVolverMenuPrincipal(scene, escenarioPrincipal);
