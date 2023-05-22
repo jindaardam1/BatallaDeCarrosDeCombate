@@ -1,6 +1,7 @@
 package modelo;
 
 import controlador.input.MouseInputManager;
+import dao.records.Score;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,7 +13,9 @@ import javafx.scene.image.WritableImage;
 import javafx.util.Duration;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
+import servicio.ServicioPartida;
 import vista.juego.CampoDeBatalla;
+import vista.menus.MenuPrincipal;
 
 import java.awt.*;
 import java.util.Objects;
@@ -110,6 +113,9 @@ public class Bala {
         if(estanColisionanadoContraBala()){
             System.out.println("HAS DESTRUIDO UN TANQUE");
             JugadorAuto.destruir();
+            ServicioPartida.guardarPartida(CampoDeBatalla.getScore());
+            MenuPrincipal.pasarNivel();
+
         }
 
         actualizadorDeCordRaton();

@@ -31,6 +31,7 @@ public class JugadorAuto extends TanqueJugador {
     public int MAXIMO_BALAS;
     public int MAXIMO_MINAS;
     public static int balas;
+    public boolean detener = false;
     public int velocidad;
     public int minas;
     public static boolean borrarBala = false;
@@ -59,7 +60,7 @@ public class JugadorAuto extends TanqueJugador {
     public boolean colisionLateralDerecho = false;
     public boolean colisionLateralIzquierdo = false;
     public Direccion direccionActual = Direccion.ARRIBA;
-    public static boolean destruido = false;
+    public static boolean destruido ;
 
 
     public JugadorAuto(int REBOTES_MAXIMOS, int VELOCIDAD_BALA, int MAXIMO_BALAS, int MAXIMO_MINAS, int balas, int velocidad, int cadencia, int minas, int posX, int posY, String spriteTorreta, String spriteBaseHorizontal, String spriteTorretaVertical) {
@@ -86,6 +87,8 @@ public class JugadorAuto extends TanqueJugador {
         this.puedeMoverseIzquierda = true;
         arrayBalasAuto = new ArrayList<>();
         balasAutoActivas = 0;
+        destruido = false;
+        detener = false;
 
         cambiarDireccionAleatoria();
 
@@ -109,6 +112,9 @@ public class JugadorAuto extends TanqueJugador {
 
     }
 
+    public void detener() {
+        detener = true;
+    }
 
     public static void eliminarBala() {
         borrarBala = true;
@@ -116,53 +122,55 @@ public class JugadorAuto extends TanqueJugador {
 
 
     public void pintar(GraphicsContext graficos) {
-        if (!destruido) {
-            mover();
+        if (!detener) {
+            if (!destruido) {
+                mover();
 
-            comprobarColision();
-            actualizarRotacion();
-
-
-            if (arrayBalasAuto.size() < 1 && !recargando) {
-                recargando = true;
-                recargar();
-            }
+                comprobarColision();
+                actualizarRotacion();
 
 
-            balasAutoActivas++;
-
-
-            try {
-                Iterator<BalaAuto> iterator = arrayBalasAuto.iterator();
-                while (iterator.hasNext()) {
-                    BalaAuto bala = iterator.next();
-                    bala.pintar(graficos);
-                    if (borrarBala) {
-                        iterator.remove();
-                        borrarBala = false;
-                    }
+                if (arrayBalasAuto.size() < 1 && !recargando) {
+                    recargando = true;
+                    recargar();
                 }
 
-            } catch (ConcurrentModificationException e) {
-                e.printStackTrace();
-                Logs.errorLogManager(e);
+
+                balasAutoActivas++;
+
+
+                try {
+                    Iterator<BalaAuto> iterator = arrayBalasAuto.iterator();
+                    while (iterator.hasNext()) {
+                        BalaAuto bala = iterator.next();
+                        bala.pintar(graficos);
+                        if (borrarBala) {
+                            iterator.remove();
+                            borrarBala = false;
+                        }
+                    }
+
+                } catch (ConcurrentModificationException e) {
+                    e.printStackTrace();
+                    Logs.errorLogManager(e);
+                }
+
+
+                graficos.drawImage(imagenBase.getImage(), x, y);
+                double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
+                double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
+                graficos.save(); //guardar estado de graficos
+                graficos.translate(torretaX, torretaY); //mover al centro de la torreta
+                graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
+                graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
+                graficos.restore(); //recuperar estado de graficos
+            } else {
+
+                graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/explosionTanque.gif"))), x, y);
+                graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/TanqueDestruido.png"))), x, y);
+                detener();
+
             }
-
-
-            graficos.drawImage(imagenBase.getImage(), x, y);
-            double torretaX = x - imagenTorreta.getImage().getWidth() / 2 + 32;
-            double torretaY = y - imagenTorreta.getImage().getHeight() / 2 + 32;
-            graficos.save(); //guardar estado de graficos
-            graficos.translate(torretaX, torretaY); //mover al centro de la torreta
-            graficos.rotate(imagenTorreta.getRotate()); //rotar en base al angulo
-            graficos.drawImage(imagenTorreta.getImage(), -imagenTorreta.getImage().getWidth() / 2, -imagenTorreta.getImage().getHeight() / 2); //centrar imagen en coordenadas (0,0)
-            graficos.restore(); //recuperar estado de graficos
-        } else {
-
-            graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/explosionTanque.gif"))), x, y);
-            graficos.drawImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/otros/TanqueDestruido.png"))), x, y);
-
-
         }
     }
 
