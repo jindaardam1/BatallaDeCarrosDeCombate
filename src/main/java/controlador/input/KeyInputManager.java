@@ -19,7 +19,6 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
                 case S -> abajo = true;
                 case A -> izquierda = true;
                 case D -> derecha = true;
-                case ESCAPE -> escape = true;
                 default -> {
                 }
             }
@@ -51,9 +50,6 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
     }
 
     public static boolean isDerecha() {
-        return derecha;
-    }
-    public static boolean isEscape() {
         return derecha;
     }
 }

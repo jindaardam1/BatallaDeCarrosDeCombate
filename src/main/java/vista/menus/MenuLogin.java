@@ -19,10 +19,19 @@ import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
+/**
+ *  Clase MenuLogin.
+ *  Esta clase representa el menú de inicio de sesión de la aplicación.
+ *  Permite al usuario ingresar su nickname y comenzar el proceso de inicio de sesión.
+ */
 public class MenuLogin {
     private Stage escenarioPrincipal;
     private Scene scene;
 
+    /**
+     * Constructor de la clase MenuLogin.
+     * @param escenarioPrincipal El escenario principal de la aplicación.
+     */
     public MenuLogin(Stage escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
 
@@ -85,6 +94,11 @@ public class MenuLogin {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloLogin.css")).toExternalForm());
     }
 
+    /**
+     * Método mostrar.
+     * Muestra la ventana del menú de inicio de sesión en el escenario principal.
+     * Configura el título de la ventana y el evento de pulsación de tecla para cerrar con "Escape".
+     */
     public void mostrar() {
         // Asignar la escena al Stage principal
         escenarioPrincipal.setScene(scene);
