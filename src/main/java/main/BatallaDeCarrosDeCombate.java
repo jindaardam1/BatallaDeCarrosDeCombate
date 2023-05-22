@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import modelo.records.InfoUsuario;
+import utilidades.eventos.Guardado;
 import utilidades.log.Logs;
 import utilidades.pantalla.PantallaUtil;
 import vista.menus.MenuLogin;
@@ -39,6 +40,7 @@ public class BatallaDeCarrosDeCombate extends Application {
      */
     @Override
     public void start(Stage escenarioPrincipal) {
+        Guardado guardado = new Guardado();
         InicializarBADA.crearBADA();
         double ancho = PantallaUtil.obtenerAnchoPantalla();
         double altura = PantallaUtil.obtenerAlturaPantalla();

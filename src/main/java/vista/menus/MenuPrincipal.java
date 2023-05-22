@@ -1,16 +1,25 @@
 package vista.menus;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import servicio.ServicioPartida;
+import servicio.ServicioScore;
 import servicio.ServicioSkins;
-import utilidades.eventos.PulsarTeclasUtil;
+import utilidades.eventos.Guardado;
 import utilidades.eventos.RandomizadorFondo;
+import utilidades.eventos.PulsarTeclasUtil;
 import utilidades.pantalla.PantallaUtil;
 import vista.juego.CampoDeBatalla;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.util.Objects;
 
@@ -24,15 +33,15 @@ public class MenuPrincipal {
 
         String audioPath = Objects.requireNonNull(getClass().getResource("/musica/MenuPrincipalCancion.mp3")).toExternalForm();
 
-       // Media media = new Media(audioPath);
+        Media media = new Media(audioPath);
 
-        //MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-      //mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 
-      //mediaPlayer.setVolume(0.05);
+        mediaPlayer.setVolume(0.05);
 
-      //mediaPlayer.play();
+        mediaPlayer.play();
 
         VBox root = new VBox();
         root.setBackground(new Background(new BackgroundImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream(RandomizadorFondo.obtenerImagenAleatoria()))), BackgroundRepeat.NO_REPEAT,
@@ -61,40 +70,42 @@ public class MenuPrincipal {
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
 
         boton1.setOnAction(actionEvent -> {
-            MenuComingSoon mcs = new MenuComingSoon(escenarioPrincipal);
-            mcs.mostrar();
-           // mediaPlayer.stop();
+            MenuMuerte mm = new MenuMuerte(escenarioPrincipal);
+            mm.mostrar();
+            mediaPlayer.stop();
         });
         boton2.setOnAction(actionEvent -> {
 
-            campoDeBatalla  = new CampoDeBatalla();
+            campoDeBatalla = new CampoDeBatalla();
             campoDeBatalla.start(escenarioPrincipal);
-          //  mediaPlayer.stop();
+            mediaPlayer.stop();
         });
         boton3.setOnAction(actionEvent -> {
             MenuTopScores mts = new MenuTopScores(escenarioPrincipal);
             mts.mostrar();
-           // mediaPlayer.stop();
+            mediaPlayer.stop();
         });
         boton4.setOnAction(actionEvent -> {
             MenuSkins ms = new MenuSkins(escenarioPrincipal);
             ms.mostrar();
-           // mediaPlayer.stop();
+            mediaPlayer.stop();
         });
         boton5.setOnAction(actionEvent -> escenarioPrincipal.close());
     }
-    public static void pasarNivel(){
+
+    public static void pasarNivel() {
+        ServicioPartida.cargarPartidaGuardada();
+        ServicioPartida.guardarPartida(Guardado.getScore());
 
 
         campoDeBatalla.borrarElementos();
         campoDeBatalla.acabarCiclo();
-            campoDeBatalla = new CampoDeBatalla();
+        campoDeBatalla = new CampoDeBatalla();
 
-            campoDeBatalla.iniciar(escenarioPrincipal);
-            if((int) (Math.random() * 20)==1) {
-                ServicioSkins.desbloquearSkin((int) (Math.random() * 10));
-            }
-
+        campoDeBatalla.iniciar(escenarioPrincipal);
+        if ((int) (Math.random() * 20) == 1) {
+            ServicioSkins.desbloquearSkin((int) (Math.random() * 10));
+        }
 
 
     }

@@ -1,6 +1,7 @@
 package modelo.tanques;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -32,6 +33,7 @@ public class Contador {
         graficos.setFill(Color.WHITE);
         graficos.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         graficos.fillText("Cantidad: " + cantidad, x + 10, y + 30);
+
         // Carga la imagen desde un archivo (ajusta la ruta según tus necesidades)
         Image imagen = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/sprites/balas/bullet.gif")));
         ImageView imageView = new ImageView(imagen);
@@ -39,6 +41,15 @@ public class Contador {
         imageView.setFitHeight(50);
         imageView.setLayoutX(x);
         imageView.setLayoutY(y);
+
+        // Aplicar efecto DropShadow al ImageView
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.BLACK);
+        dropShadow.setRadius(1);
+        dropShadow.setOffsetX(1);
+        dropShadow.setOffsetY(0);
+        imageView.setEffect(dropShadow);
+
         panel.getChildren().add(imageView);
     }
 

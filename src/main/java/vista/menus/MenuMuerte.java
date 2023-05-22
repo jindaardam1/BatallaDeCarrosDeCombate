@@ -56,6 +56,9 @@ public class MenuMuerte {
 
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
     }
+    public void ocultar() {
+        escenarioPrincipal.close();
+    }
 
     public void mostrar() {
         // Asignar la escena al Stage principal

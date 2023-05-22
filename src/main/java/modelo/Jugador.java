@@ -152,8 +152,6 @@ public class Jugador extends TanqueJugador {
                 }
 
             }
-        } else{
-            System.out.println("hola");
         }
     }
 

@@ -113,7 +113,7 @@ public class Bala {
         if(estanColisionanadoContraBala()){
             System.out.println("HAS DESTRUIDO UN TANQUE");
             JugadorAuto.destruir();
-            ServicioPartida.guardarPartida(CampoDeBatalla.getScore());
+
             MenuPrincipal.pasarNivel();
 
         }

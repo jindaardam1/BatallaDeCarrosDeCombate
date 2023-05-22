@@ -21,7 +21,10 @@ import modelo.mapa.MapaProcedural;
 import modelo.mapa.TipoCasilla;
 import modelo.records.RectangleTipo;
 import modelo.tanques.Contador;
+import servicio.ServicioPartida;
+import servicio.ServicioScore;
 import utilidades.eventos.CordenadasSpawn;
+import utilidades.eventos.Guardado;
 import utilidades.eventos.RandomizadorFondo;
 import utilidades.pantalla.PantallaUtil;
 import vista.menus.MenuMuerte;
@@ -67,16 +70,7 @@ public class CampoDeBatalla extends Application {
     public static int posSpawnJugadorX;
     public static int posSpawnJugadorY;
     public static Point cordenadasEnemigo = new Point();
-    public static int tanqueNegro;
-    public static int tanqueRojo;
-    public static int tanqueBlanco;
-    public static int tanqueVerde;
-    public static int tanqueVerdeOscuro;
-    public static int tanqueMorado;
-    public static int tanqueAmarillo;
-    public static int tanqueGris;
-    public static int tanqueMarron;
-    public static int nivel;
+
 
 
     public static ArrayList<CordenadasSpawn> posSpawns = new ArrayList<>();
@@ -91,10 +85,23 @@ public class CampoDeBatalla extends Application {
         gestionEventos();
         cicloJuego();
     }
+
+    /**
+     *Cierra el ciclo de juego
+     */
     public void acabarCiclo(){
         animationTimer.stop();
     }
+
+    /**
+     * Cambia la escena al menuMuerte
+     */
     public static void mostrarMenuMuerte() {
+        //borra la anterior
+      ServicioScore.registrarNuevoScore(Guardado.getScore());
+      //guarda la actual
+
+        Guardado.reset();
         animationTimer.stop();
         MenuMuerte menuMuerte = new MenuMuerte(escenarioPrincipal);
         escenarioPrincipal.hide();
@@ -103,7 +110,7 @@ public class CampoDeBatalla extends Application {
     }
 
 
-    @Override
+
     public void start(Stage escenarioPrincipal) {
 
         escenarioPrincipal.show();
@@ -111,7 +118,9 @@ public class CampoDeBatalla extends Application {
 
     }
 
-
+    /**
+     *Crea el ciclo de juego
+     */
     public void cicloJuego() {
 
         long tiempoInicial = System.nanoTime();
@@ -129,7 +138,9 @@ public class CampoDeBatalla extends Application {
 
 
     }
-
+    /**
+     *Inicializa todos los componentes
+     */
 
     public void inizializarComponentes() {
 
@@ -159,18 +170,28 @@ public class CampoDeBatalla extends Application {
         crearEntidades();
     }
 
+    /**
+     *Elimina las entidades
+     */
     public void borrarElementos() {
         eliminarJugadorAnterior();
         eliminarJugadorAutoAnterior();
 
 
     }
+
+    /**
+     *Elimina los jugadores
+     */
     private void eliminarJugadorAnterior() {
         if (jugador != null) {
             jugador.detener();
             jugador = null;
         }
     }
+    /**
+     *Elimina los enemigos
+     */
     private void eliminarJugadorAutoAnterior() {
         if (bot != null) {
             bot.detener();
@@ -178,7 +199,9 @@ public class CampoDeBatalla extends Application {
         }
     }
 
-
+    /**
+     *Carga las imagenes
+     */
     private void cargarImagenes() {
 
         this.imgNada1 = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/Terreno/Verde.png")));
@@ -197,7 +220,9 @@ public class CampoDeBatalla extends Application {
 
     }
 
-
+    /**
+     *Crea el fondo
+     */
     private ImageView crearFondo() {
         this.fondo.fitWidthProperty().add(PantallaUtil.HEIGHT_VENTANA); // Ajusta el ancho de la imagen al ancho de la escena
         this.fondo.fitHeightProperty().add(PantallaUtil.WIDTH_VENTANA); // Ajusta la altura de la imagen al alto de la escena
@@ -205,6 +230,9 @@ public class CampoDeBatalla extends Application {
     }
 
 
+    /**
+     *Se ejecuta en cada frame para pintar los elementos
+     */
     private void pintar() {
         //borra lo de detras
         graficos.clearRect(0, 0, lienzo.getWidth(), lienzo.getHeight());
@@ -215,7 +243,9 @@ public class CampoDeBatalla extends Application {
 
 
     }
-
+    /**
+     *Inicializa las clases de input
+     */
 
     public void gestionEventos() {
         escena.setOnKeyPressed(new KeyInputManager());
@@ -223,7 +253,9 @@ public class CampoDeBatalla extends Application {
         escena.setOnMouseMoved(new MouseInputManager());
         escena.setOnMouseClicked(new MouseInputManager());
     }
-
+    /**
+     *Pinta el mapa principal
+     */
     public void pintarEscenario() {
         MapaProcedural mapa = new MapaProcedural(CANTIDADFILAS, CANTIDADCOLUMNAS);
         mapa.generarMapa();
@@ -332,7 +364,9 @@ public class CampoDeBatalla extends Application {
         }
     }
 
-
+    /**
+     *Nos muestra por consola el array
+     */
     private void verArray() {
         for (int i = 0; i < coordenadasImagenes.length; i++) {
             for (int j = 0; j < coordenadasImagenes[i].length; j++) {
@@ -359,6 +393,9 @@ public class CampoDeBatalla extends Application {
 
 
     }
+    /**
+     *Cambia la pared a textura random
+     */
 
     private Image paredRandom() {
         int roll = getRoll(6);
@@ -383,7 +420,9 @@ public class CampoDeBatalla extends Application {
             }
         }
     }
-
+    /**
+     *Cambia el suelo a textura random
+     */
     private Image sueloRandom() {
         int roll = getRoll(3);
         switch (roll) {
@@ -398,13 +437,17 @@ public class CampoDeBatalla extends Application {
             }
         }
     }
-
+    /**
+     *Randomiza
+     */
     private int getRoll(int numMax) {
         Random rand = new Random();
         return rand.nextInt(numMax) + 1;
     }
 
-
+    /**
+     *Calcula las cordenadas de los spawn
+     */
     public void calcularCodendadasSpawns() {
         posSpawns = new ArrayList<>();
 
@@ -432,7 +475,9 @@ public class CampoDeBatalla extends Application {
         }
 
     }
-
+    /**
+     *Obtiene las cordenadas segun el tipo casilla, y si no devuelve default (100,100)
+     */
     public static Point getCordenadas(TipoCasilla tipo) {
         for (CordenadasSpawn cords : posSpawns) {
             if (cords.getTipoCasilla() == tipo) {
@@ -442,7 +487,9 @@ public class CampoDeBatalla extends Application {
         }
         return new Point(100, 100);
     }
-
+    /**
+     *Obtienes todas las cordenadas de los enemigos
+     */
     public static Point getCordenadasEnemigo() {
         for (CordenadasSpawn cords : posSpawns) {
             if (cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_AMARILLO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_BLANCO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_GRIS || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_MARRON || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_MORADO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_NEGRO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_ROJO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_VERDE_CLARO || cords.getTipoCasilla() == TipoCasilla.SPAWN_TANQUE_VERDE_OSCURO) {
@@ -453,69 +500,70 @@ public class CampoDeBatalla extends Application {
         }
         return new Point(500, 500);
     }
-
+    /**
+     *Crea las entidades
+     */
     public void crearEntidades() {
         this.jugador = new Jugador(1, 6, 3, 4, 5, 2, 3, getCordenadas(TipoCasilla.SPAWN_JUGADOR).x, getCordenadas(TipoCasilla.SPAWN_JUGADOR).y);
 
         Point posicion = cordenadasEnemigo;
         int numero = (int) (Math.random() * 9) + 1;
 
-
         switch (numero) {
             case 1 -> {
                 // Marrón
                 this.bot = new JugadorAuto(1, 6, 3, 4, 2, 0, 5000, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/marron/marronTankTurret.png", "/imagenes/sprites/tanques/marron/marronTankBaseY.png", "/imagenes/sprites/tanques/marron/marronTankBaseX.png");
-                tanqueMarron++;
+                Guardado.tanqueMarron++;
             }
             case 2 -> {
                 // Gris
                 this.bot = new JugadorAuto(1, 6, 3, 4, 3, 1, 4000, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/gris/grisTankTurret.png", "/imagenes/sprites/tanques/gris/grisTankBaseY.png", "/imagenes/sprites/tanques/gris/grisTankBaseX.png");
-                tanqueGris++;
+                Guardado.tanqueGris++;
             }
             case 3 -> {
                 // Amarillo
                 this.bot = new JugadorAuto(1, 6, 3, 4, 3, 2, 5000, 3, posicion.x, posicion.y,
-                        "/imagenes/sprites/tanques/amarillo/amarilloTankTurret.png.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseY.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseX.png");
-                tanqueAmarillo++;
+                        "/imagenes/sprites/tanques/amarillo/amarilloTankTurret.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseY.png", "/imagenes/sprites/tanques/amarillo/amarilloTankBaseX.png");
+                Guardado.tanqueAmarillo++;
             }
             case 4 ->{
                 // Verde Oscuro
                     this.bot = new JugadorAuto(1, 10, 3, 4, 4, 2, 3000, 3, posicion.x, posicion.y,
                             "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankTurret.png", "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankBaseY.png", "/imagenes/sprites/tanques/verdeOscuro/verdeOscuroTankBaseX.png");
-            tanqueVerdeOscuro++;
+                Guardado.tanqueVerdeOscuro++;
         }
             case 5 -> {
                 // Verde gris
                 this.bot = new JugadorAuto(1, 12, 3, 4, 6, 2, 2000, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/verde claro/verdeClaroTankTurret.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseY.png", "/imagenes/sprites/tanques/verde claro/verdeClaroTankBaseX.png");
-                tanqueVerde++;
+                Guardado.tanqueVerde++;
             }
             case 6 -> {
                 // Morado
                 this.bot = new JugadorAuto(1, 6, 3, 4, 2, 3, 4000, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/morado/moradoTankTurret.png", "/imagenes/sprites/tanques/morado/moradoTankBaseY.png", "/imagenes/sprites/tanques/morado/moradoTankBaseX.png");
-                tanqueMorado++;
+                Guardado.tanqueMorado++;
             }
             case 7 -> {
                 // Rojo
                 this.bot = new JugadorAuto(1, 8, 10, 4, 5, 3, 5000, 3, posicion.x, posicion.y,
                         "imagenes/sprites/tanques/rojo/rojoTankTurret.png", "/imagenes/sprites/tanques/rojo/rojoTankBaseY.png", "/imagenes/sprites/tanques/rojo/rojoTankBaseX.png");
-                tanqueRojo++;
+                Guardado.tanqueRojo++;
             }
             case 8 -> {
                 // Blanco
                 this.bot = new JugadorAuto(1, 6, 3, 4, 5, 8, 1000, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/blanco/blancoTankTurret.png", "/imagenes/sprites/tanques/blanco/blancoTankBaseY.png", "/imagenes/sprites/tanques/blanco/blancoTankBaseX.png");
-                tanqueBlanco++;
+                Guardado.tanqueBlanco++;
             }
             case 9 -> {
                 // Negro
 
-                this.bot = new JugadorAuto(1, 10, 3, 4, 20, 4, 1000, 3, posicion.x, posicion.y,
+                this.bot = new JugadorAuto(1, 10, 3, 4, 2, 4, 1, 3, posicion.x, posicion.y,
                         "/imagenes/sprites/tanques/negro/negroTankTurret.png", "/imagenes/sprites/tanques/negro/negroTankBaseY.png", "/imagenes/sprites/tanques/negro/negroTankBaseX.png");
-                tanqueNegro++;
+                Guardado.tanqueNegro++;
             }
 
             default -> this.bot = new JugadorAuto(1, 6, 3, 4, 5, 2, 5000, 3, posicion.x, posicion.y,
@@ -525,10 +573,7 @@ public class CampoDeBatalla extends Application {
 
     }
 
-    public static Score getScore() {
 
-        return new Score(nivel, tanqueMarron, tanqueGris, tanqueAmarillo, tanqueMorado, tanqueBlanco, tanqueNegro, tanqueRojo, tanqueVerde, tanqueVerdeOscuro, BatallaDeCarrosDeCombate.nickname.NICKNAME());
-    }
 
 
 }

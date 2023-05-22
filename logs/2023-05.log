@@ -1692,3 +1692,632 @@
 2023-05-21 17:08:52 [ERROR] -> [java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1013), java.base/java.util.ArrayList$Itr.next(ArrayList.java:967), com.example.pruebafx/modelo.JugadorAuto.pintar(JugadorAuto.java:136), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:162), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:92), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
 2023-05-21 17:08:53 [ERROR] -> [java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1013), java.base/java.util.ArrayList$Itr.next(ArrayList.java:967), com.example.pruebafx/modelo.JugadorAuto.pintar(JugadorAuto.java:136), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:162), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:92), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
 2023-05-21 17:08:55 [ERROR] -> [java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1013), java.base/java.util.ArrayList$Itr.next(ArrayList.java:967), com.example.pruebafx/modelo.JugadorAuto.pintar(JugadorAuto.java:136), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:162), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:92), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:06:44 [INFO] -> Tanques pium pium
+2023-05-22 10:06:44 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:06:44 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:06:44 [INFO] -> Base de datos creada.
+2023-05-22 10:06:44 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:06:44 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:06:46 [INFO] -> Conexión establecida.
+2023-05-22 10:06:56 [INFO] -> Conexión establecida.
+2023-05-22 10:06:56 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:07:01 [INFO] -> Conexión establecida.
+2023-05-22 10:07:01 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:07:12 [INFO] -> Conexión establecida.
+2023-05-22 10:07:12 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:07:21 [INFO] -> Conexión establecida.
+2023-05-22 10:07:21 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:08:00 [INFO] -> Tanques pium pium
+2023-05-22 10:08:00 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:08:01 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:08:01 [INFO] -> Base de datos creada.
+2023-05-22 10:08:01 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:01 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:03 [INFO] -> Conexión establecida.
+2023-05-22 10:08:19 [INFO] -> Tanques pium pium
+2023-05-22 10:08:19 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:08:19 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:08:19 [INFO] -> Base de datos creada.
+2023-05-22 10:08:19 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:19 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:22 [INFO] -> Tanques pium pium
+2023-05-22 10:08:22 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:08:22 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:08:22 [INFO] -> Base de datos creada.
+2023-05-22 10:08:22 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:22 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:08:24 [INFO] -> Conexión establecida.
+2023-05-22 10:08:36 [INFO] -> Conexión establecida.
+2023-05-22 10:08:36 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:10:07 [INFO] -> Tanques pium pium
+2023-05-22 10:10:07 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:10:07 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:10:07 [INFO] -> Base de datos creada.
+2023-05-22 10:10:07 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:10:07 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:10:09 [INFO] -> Conexión establecida.
+2023-05-22 10:10:16 [INFO] -> Conexión establecida.
+2023-05-22 10:10:16 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:10:16 [INFO] -> Conexión establecida.
+2023-05-22 10:10:16 [INFO] -> Skin 2marcada como conseguida.
+2023-05-22 10:11:39 [INFO] -> Tanques pium pium
+2023-05-22 10:11:39 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:11:39 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:11:39 [INFO] -> Base de datos creada.
+2023-05-22 10:11:39 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:11:39 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:11:41 [INFO] -> Conexión establecida.
+2023-05-22 10:11:41 [INFO] -> Conexión establecida.
+2023-05-22 10:11:41 [INFO] -> Se ha añadido el usuario sda
+2023-05-22 10:11:48 [INFO] -> Conexión establecida.
+2023-05-22 10:11:48 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:12:51 [INFO] -> Tanques pium pium
+2023-05-22 10:12:51 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:12:51 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:12:51 [INFO] -> Base de datos creada.
+2023-05-22 10:12:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:12:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:12:52 [INFO] -> Conexión establecida.
+2023-05-22 10:13:14 [INFO] -> Conexión establecida.
+2023-05-22 10:13:14 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:13:32 [INFO] -> Tanques pium pium
+2023-05-22 10:13:32 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:13:32 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:13:32 [INFO] -> Base de datos creada.
+2023-05-22 10:13:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:13:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:13:33 [INFO] -> Conexión establecida.
+2023-05-22 10:13:44 [INFO] -> Conexión establecida.
+2023-05-22 10:13:44 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:14:39 [INFO] -> Tanques pium pium
+2023-05-22 10:14:39 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:14:39 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:14:39 [INFO] -> Base de datos creada.
+2023-05-22 10:14:39 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:14:39 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:14:40 [INFO] -> Conexión establecida.
+2023-05-22 10:15:42 [INFO] -> Tanques pium pium
+2023-05-22 10:15:42 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:15:42 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:15:42 [INFO] -> Base de datos creada.
+2023-05-22 10:15:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:15:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:15:44 [INFO] -> Conexión establecida.
+2023-05-22 10:15:55 [INFO] -> Conexión establecida.
+2023-05-22 10:15:55 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:213), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:17:45 [INFO] -> Tanques pium pium
+2023-05-22 10:17:45 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:17:45 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:17:45 [INFO] -> Base de datos creada.
+2023-05-22 10:17:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:17:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:17:52 [INFO] -> Tanques pium pium
+2023-05-22 10:17:52 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:17:52 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:17:52 [INFO] -> Base de datos creada.
+2023-05-22 10:17:52 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:17:52 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:17:53 [INFO] -> Conexión establecida.
+2023-05-22 10:18:05 [INFO] -> Conexión establecida.
+2023-05-22 10:18:05 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:20:08 [INFO] -> Tanques pium pium
+2023-05-22 10:20:09 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:20:09 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:20:09 [INFO] -> Base de datos creada.
+2023-05-22 10:20:09 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:20:09 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:20:10 [INFO] -> Conexión establecida.
+2023-05-22 10:20:27 [INFO] -> Tanques pium pium
+2023-05-22 10:20:27 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:20:27 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:20:27 [INFO] -> Base de datos creada.
+2023-05-22 10:20:27 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:20:27 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:20:28 [INFO] -> Conexión establecida.
+2023-05-22 10:20:28 [INFO] -> Conexión establecida.
+2023-05-22 10:20:29 [INFO] -> Se ha añadido el usuario sada
+2023-05-22 10:20:36 [INFO] -> Conexión establecida.
+2023-05-22 10:20:36 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:21:01 [INFO] -> Conexión establecida.
+2023-05-22 10:21:01 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:21:26 [INFO] -> Tanques pium pium
+2023-05-22 10:21:26 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:21:26 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:21:26 [INFO] -> Base de datos creada.
+2023-05-22 10:21:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:21:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:21:28 [INFO] -> Conexión establecida.
+2023-05-22 10:21:37 [INFO] -> Conexión establecida.
+2023-05-22 10:21:37 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:21:49 [INFO] -> Tanques pium pium
+2023-05-22 10:21:49 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:21:49 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:21:49 [INFO] -> Base de datos creada.
+2023-05-22 10:21:49 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:21:49 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:22:12 [INFO] -> Tanques pium pium
+2023-05-22 10:22:12 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:22:12 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:22:12 [INFO] -> Base de datos creada.
+2023-05-22 10:22:12 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:22:12 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:22:13 [INFO] -> Conexión establecida.
+2023-05-22 10:22:25 [INFO] -> Conexión establecida.
+2023-05-22 10:22:25 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:22:42 [INFO] -> Tanques pium pium
+2023-05-22 10:22:42 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:22:42 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:22:42 [INFO] -> Base de datos creada.
+2023-05-22 10:22:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:22:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:22:44 [INFO] -> Conexión establecida.
+2023-05-22 10:22:54 [INFO] -> Conexión establecida.
+2023-05-22 10:22:54 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:23:32 [INFO] -> Tanques pium pium
+2023-05-22 10:23:32 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:23:32 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:23:32 [INFO] -> Base de datos creada.
+2023-05-22 10:23:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:23:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:23:33 [INFO] -> Conexión establecida.
+2023-05-22 10:23:46 [INFO] -> Tanques pium pium
+2023-05-22 10:23:46 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:23:46 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:23:46 [INFO] -> Base de datos creada.
+2023-05-22 10:23:46 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:23:46 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:23:48 [INFO] -> Conexión establecida.
+2023-05-22 10:23:56 [INFO] -> Conexión establecida.
+2023-05-22 10:23:56 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:24:07 [INFO] -> Conexión establecida.
+2023-05-22 10:24:07 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:24:28 [INFO] -> Conexión establecida.
+2023-05-22 10:28:52 [INFO] -> Tanques pium pium
+2023-05-22 10:28:52 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:28:53 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:28:53 [INFO] -> Base de datos creada.
+2023-05-22 10:28:53 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:28:53 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:28:55 [INFO] -> Conexión establecida.
+2023-05-22 10:29:08 [INFO] -> Tanques pium pium
+2023-05-22 10:29:08 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:29:08 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:29:08 [INFO] -> Base de datos creada.
+2023-05-22 10:29:08 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:08 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:10 [INFO] -> Conexión establecida.
+2023-05-22 10:29:26 [INFO] -> Tanques pium pium
+2023-05-22 10:29:26 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:29:26 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:29:26 [INFO] -> Base de datos creada.
+2023-05-22 10:29:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:28 [INFO] -> Conexión establecida.
+2023-05-22 10:29:48 [INFO] -> Tanques pium pium
+2023-05-22 10:29:48 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:29:48 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:29:48 [INFO] -> Base de datos creada.
+2023-05-22 10:29:48 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:48 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:29:49 [INFO] -> Conexión establecida.
+2023-05-22 10:33:23 [INFO] -> Tanques pium pium
+2023-05-22 10:33:23 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:33:23 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:33:23 [INFO] -> Base de datos creada.
+2023-05-22 10:33:23 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:33:23 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:33:27 [INFO] -> Conexión establecida.
+2023-05-22 10:33:27 [INFO] -> Conexión establecida.
+2023-05-22 10:33:27 [INFO] -> Se ha añadido el usuario wdsssssssssssssssssssssssssssssssssssss
+2023-05-22 10:33:33 [INFO] -> Conexión establecida.
+2023-05-22 10:34:29 [INFO] -> Tanques pium pium
+2023-05-22 10:34:29 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:34:29 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:34:29 [INFO] -> Base de datos creada.
+2023-05-22 10:34:29 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:34:29 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:34:30 [INFO] -> Conexión establecida.
+2023-05-22 10:38:38 [INFO] -> Tanques pium pium
+2023-05-22 10:38:38 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:38:38 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:38:38 [INFO] -> Base de datos creada.
+2023-05-22 10:38:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:38:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:38:40 [INFO] -> Conexión establecida.
+2023-05-22 10:39:35 [INFO] -> Tanques pium pium
+2023-05-22 10:39:35 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:39:35 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:39:35 [INFO] -> Base de datos creada.
+2023-05-22 10:39:35 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:39:35 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:39:37 [INFO] -> Conexión establecida.
+2023-05-22 10:46:00 [INFO] -> Tanques pium pium
+2023-05-22 10:46:00 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:46:00 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:46:00 [INFO] -> Base de datos creada.
+2023-05-22 10:46:00 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:00 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:02 [INFO] -> Conexión establecida.
+2023-05-22 10:46:23 [INFO] -> Tanques pium pium
+2023-05-22 10:46:23 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:46:24 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:46:24 [INFO] -> Base de datos creada.
+2023-05-22 10:46:24 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:24 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:25 [INFO] -> Conexión establecida.
+2023-05-22 10:46:46 [INFO] -> Conexión establecida.
+2023-05-22 10:46:46 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:46:54 [INFO] -> Tanques pium pium
+2023-05-22 10:46:54 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:46:54 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:46:54 [INFO] -> Base de datos creada.
+2023-05-22 10:46:54 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:54 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:46:56 [INFO] -> Conexión establecida.
+2023-05-22 10:47:03 [INFO] -> Tanques pium pium
+2023-05-22 10:47:03 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:47:04 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:47:04 [INFO] -> Base de datos creada.
+2023-05-22 10:47:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:47:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:47:05 [INFO] -> Conexión establecida.
+2023-05-22 10:47:25 [INFO] -> Conexión establecida.
+2023-05-22 10:47:34 [INFO] -> Conexión establecida.
+2023-05-22 10:47:50 [INFO] -> Tanques pium pium
+2023-05-22 10:47:50 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:47:50 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:47:50 [INFO] -> Base de datos creada.
+2023-05-22 10:47:50 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:47:50 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:47:52 [INFO] -> Conexión establecida.
+2023-05-22 10:48:00 [INFO] -> Conexión establecida.
+2023-05-22 10:48:00 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:48:18 [INFO] -> Tanques pium pium
+2023-05-22 10:48:18 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:48:18 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:48:18 [INFO] -> Base de datos creada.
+2023-05-22 10:48:18 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:48:18 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:48:20 [INFO] -> Conexión establecida.
+2023-05-22 10:48:20 [INFO] -> Conexión establecida.
+2023-05-22 10:48:21 [INFO] -> Se ha añadido el usuario dada
+2023-05-22 10:48:30 [INFO] -> Tanques pium pium
+2023-05-22 10:48:30 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:48:31 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:48:31 [INFO] -> Base de datos creada.
+2023-05-22 10:48:31 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:48:31 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:48:33 [INFO] -> Conexión establecida.
+2023-05-22 10:48:33 [INFO] -> Conexión establecida.
+2023-05-22 10:48:33 [INFO] -> Se ha añadido el usuario dad
+2023-05-22 10:49:01 [INFO] -> Conexión establecida.
+2023-05-22 10:49:01 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:49:10 [INFO] -> Tanques pium pium
+2023-05-22 10:49:10 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:49:10 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:49:10 [INFO] -> Base de datos creada.
+2023-05-22 10:49:10 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:10 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:12 [INFO] -> Conexión establecida.
+2023-05-22 10:49:12 [INFO] -> Conexión establecida.
+2023-05-22 10:49:12 [INFO] -> Se ha añadido el usuario adad
+2023-05-22 10:49:26 [INFO] -> Tanques pium pium
+2023-05-22 10:49:26 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:49:26 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:49:26 [INFO] -> Base de datos creada.
+2023-05-22 10:49:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:26 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:28 [INFO] -> Conexión establecida.
+2023-05-22 10:49:51 [INFO] -> Tanques pium pium
+2023-05-22 10:49:51 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:49:51 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:49:51 [INFO] -> Base de datos creada.
+2023-05-22 10:49:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:49:53 [INFO] -> Conexión establecida.
+2023-05-22 10:50:09 [INFO] -> Tanques pium pium
+2023-05-22 10:50:09 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:50:09 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:50:09 [INFO] -> Base de datos creada.
+2023-05-22 10:50:09 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:50:09 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:50:11 [INFO] -> Conexión establecida.
+2023-05-22 10:50:43 [INFO] -> Tanques pium pium
+2023-05-22 10:50:43 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:50:43 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:50:43 [INFO] -> Base de datos creada.
+2023-05-22 10:50:43 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:50:43 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:50:45 [INFO] -> Conexión establecida.
+2023-05-22 10:50:45 [INFO] -> Conexión establecida.
+2023-05-22 10:50:45 [INFO] -> Se ha añadido el usuario daad
+2023-05-22 10:50:54 [INFO] -> Conexión establecida.
+2023-05-22 10:50:54 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:51:08 [INFO] -> Conexión establecida.
+2023-05-22 10:51:08 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:51:16 [INFO] -> Conexión establecida.
+2023-05-22 10:51:16 [ERROR] -> [sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1012), sqlite.jdbc@3.34.0/org.sqlite.core.DB.newSQLException(DB.java:1024), sqlite.jdbc@3.34.0/org.sqlite.core.DB.execute(DB.java:863), sqlite.jdbc@3.34.0/org.sqlite.core.DB.executeUpdate(DB.java:904), sqlite.jdbc@3.34.0/org.sqlite.jdbc3.JDBC3PreparedStatement.executeUpdate(JDBC3PreparedStatement.java:98), com.example.pruebafx/dao.InsertsBADA.insertarRegistro(InsertsBADA.java:63), com.example.pruebafx/servicio.ServicioPartida.guardarPartida(ServicioPartida.java:10), com.example.pruebafx/modelo.Bala.pintar(Bala.java:116), com.example.pruebafx/modelo.Jugador.pintar(Jugador.java:126), com.example.pruebafx/vista.juego.CampoDeBatalla.pintar(CampoDeBatalla.java:212), com.example.pruebafx/vista.juego.CampoDeBatalla$1.handle(CampoDeBatalla.java:124), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.lambda$handle$0(AnimationTimer.java:58), java.base/java.security.AccessController.doPrivileged(AccessController.java:399), javafx.graphics/javafx.animation.AnimationTimer$AnimationTimerReceiver.handle(AnimationTimer.java:57), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer.timePulseImpl(AbstractPrimaryTimer.java:356), javafx.graphics/com.sun.scenario.animation.AbstractPrimaryTimer$MainLoop.run(AbstractPrimaryTimer.java:266), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:571), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulse(QuantumToolkit.java:555), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.pulseFromQueue(QuantumToolkit.java:548), javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.lambda$runToolkit$11(QuantumToolkit.java:353), javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96), javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method), javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184), java.base/java.lang.Thread.run(Thread.java:833)]
+2023-05-22 10:51:57 [INFO] -> Tanques pium pium
+2023-05-22 10:51:57 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:51:57 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:51:57 [INFO] -> Base de datos creada.
+2023-05-22 10:51:57 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:51:57 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:51:59 [INFO] -> Conexión establecida.
+2023-05-22 10:51:59 [INFO] -> Conexión establecida.
+2023-05-22 10:51:59 [INFO] -> Se ha añadido el usuario ada
+2023-05-22 10:52:15 [INFO] -> Tanques pium pium
+2023-05-22 10:52:15 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 10:52:16 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 10:52:16 [INFO] -> Base de datos creada.
+2023-05-22 10:52:16 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:52:16 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 10:52:17 [INFO] -> Conexión establecida.
+2023-05-22 11:30:07 [INFO] -> Tanques pium pium
+2023-05-22 11:30:07 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 11:30:07 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 11:30:07 [INFO] -> Base de datos creada.
+2023-05-22 11:30:07 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:07 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:09 [INFO] -> Conexión establecida.
+2023-05-22 11:30:44 [INFO] -> Tanques pium pium
+2023-05-22 11:30:44 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 11:30:44 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 11:30:44 [INFO] -> Base de datos creada.
+2023-05-22 11:30:44 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:44 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:46 [INFO] -> Conexión establecida.
+2023-05-22 11:30:55 [INFO] -> Tanques pium pium
+2023-05-22 11:30:55 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 11:30:55 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 11:30:55 [INFO] -> Base de datos creada.
+2023-05-22 11:30:55 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:55 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:30:58 [INFO] -> Conexión establecida.
+2023-05-22 11:30:58 [INFO] -> Conexión establecida.
+2023-05-22 11:30:58 [INFO] -> Se ha añadido el usuario cv
+2023-05-22 11:31:22 [INFO] -> Tanques pium pium
+2023-05-22 11:31:22 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 11:31:22 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 11:31:22 [INFO] -> Base de datos creada.
+2023-05-22 11:31:22 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:31:22 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:31:25 [INFO] -> Conexión establecida.
+2023-05-22 11:31:45 [INFO] -> Tanques pium pium
+2023-05-22 11:31:45 [DEBUG] -> No se ha creado la carpeta porque ya existe.
+2023-05-22 11:31:45 [ERROR] -> Error al crear la base de datos: [SQLITE_ERROR] SQL error or missing database (table mapa already exists)
+2023-05-22 11:31:45 [INFO] -> Base de datos creada.
+2023-05-22 11:31:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:31:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:31:47 [INFO] -> Conexión establecida.
+2023-05-22 11:31:47 [INFO] -> Conexión establecida.
+2023-05-22 11:31:47 [INFO] -> Se ha añadido el usuario das
+2023-05-22 11:35:48 [INFO] -> Tanques pium pium
+2023-05-22 11:35:48 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:35:48 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:35:48 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:35:49 [INFO] -> Conexión establecida.
+2023-05-22 11:44:42 [INFO] -> Tanques pium pium
+2023-05-22 11:44:42 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:44:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:44:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:44:44 [INFO] -> Conexión establecida.
+2023-05-22 11:45:00 [INFO] -> Conexión establecida.
+2023-05-22 11:45:00 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:46:05 [INFO] -> Tanques pium pium
+2023-05-22 11:46:05 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:46:05 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:46:05 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:46:50 [INFO] -> Tanques pium pium
+2023-05-22 11:46:50 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:46:50 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:46:50 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:47:30 [INFO] -> Tanques pium pium
+2023-05-22 11:47:30 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:47:30 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:47:30 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:50:36 [INFO] -> Tanques pium pium
+2023-05-22 11:50:36 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:50:36 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:50:36 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:50:59 [INFO] -> Tanques pium pium
+2023-05-22 11:50:59 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:50:59 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:50:59 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:51:01 [INFO] -> Conexión establecida.
+2023-05-22 11:51:03 [INFO] -> Conexión establecida.
+2023-05-22 11:51:04 [INFO] -> Conexión establecida.
+2023-05-22 11:51:04 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:51:04 [INFO] -> Conexión establecida.
+2023-05-22 11:51:05 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:51:12 [INFO] -> Conexión establecida.
+2023-05-22 11:51:12 [INFO] -> Conexión establecida.
+2023-05-22 11:51:12 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:51:12 [INFO] -> Conexión establecida.
+2023-05-22 11:51:12 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:51:14 [INFO] -> Conexión establecida.
+2023-05-22 11:51:14 [INFO] -> Conexión establecida.
+2023-05-22 11:51:14 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:51:14 [INFO] -> Conexión establecida.
+2023-05-22 11:51:14 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:51:18 [INFO] -> Tanques pium pium
+2023-05-22 11:51:18 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:51:18 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:51:18 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:51:20 [INFO] -> Conexión establecida.
+2023-05-22 11:51:42 [INFO] -> Conexión establecida.
+2023-05-22 11:51:42 [INFO] -> Conexión establecida.
+2023-05-22 11:51:42 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:51:42 [INFO] -> Conexión establecida.
+2023-05-22 11:51:42 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:52:15 [INFO] -> Tanques pium pium
+2023-05-22 11:52:15 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:52:15 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:52:15 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:52:18 [INFO] -> Conexión establecida.
+2023-05-22 11:52:18 [INFO] -> Conexión establecida.
+2023-05-22 11:52:18 [INFO] -> Se ha añadido el usuario asddd
+2023-05-22 11:52:22 [INFO] -> Conexión establecida.
+2023-05-22 11:52:22 [INFO] -> Conexión establecida.
+2023-05-22 11:52:22 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:52:22 [INFO] -> Conexión establecida.
+2023-05-22 11:52:22 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:52:38 [INFO] -> Tanques pium pium
+2023-05-22 11:52:38 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:52:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:52:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:52:41 [INFO] -> Conexión establecida.
+2023-05-22 11:52:43 [INFO] -> Conexión establecida.
+2023-05-22 11:52:43 [INFO] -> Conexión establecida.
+2023-05-22 11:52:43 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:52:43 [INFO] -> Conexión establecida.
+2023-05-22 11:52:43 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:53:32 [INFO] -> Tanques pium pium
+2023-05-22 11:53:32 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:53:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:53:32 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:53:34 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:53:46 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:53:46 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Conexión establecida.
+2023-05-22 11:53:46 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:53:55 [INFO] -> Tanques pium pium
+2023-05-22 11:53:55 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:53:55 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:53:55 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:53:58 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:54:05 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:54:05 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Conexión establecida.
+2023-05-22 11:54:05 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:54:14 [INFO] -> Tanques pium pium
+2023-05-22 11:54:14 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:54:14 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:54:14 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:54:17 [INFO] -> Conexión establecida.
+2023-05-22 11:54:17 [INFO] -> Conexión establecida.
+2023-05-22 11:54:17 [INFO] -> Se ha añadido el usuario Aitorrrrr
+2023-05-22 11:54:38 [INFO] -> Conexión establecida.
+2023-05-22 11:54:38 [INFO] -> Conexión establecida.
+2023-05-22 11:54:38 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:54:38 [INFO] -> Conexión establecida.
+2023-05-22 11:54:38 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:54:38 [INFO] -> Conexión establecida.
+2023-05-22 11:54:38 [INFO] -> Conexión establecida.
+2023-05-22 11:54:38 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:55:51 [INFO] -> Tanques pium pium
+2023-05-22 11:55:51 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:55:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:55:51 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:55:53 [INFO] -> Conexión establecida.
+2023-05-22 11:55:59 [INFO] -> Conexión establecida.
+2023-05-22 11:55:59 [INFO] -> Conexión establecida.
+2023-05-22 11:55:59 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:55:59 [INFO] -> Conexión establecida.
+2023-05-22 11:55:59 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:56:04 [INFO] -> Tanques pium pium
+2023-05-22 11:56:04 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:56:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:56:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:56:06 [INFO] -> Conexión establecida.
+2023-05-22 11:56:13 [INFO] -> Conexión establecida.
+2023-05-22 11:56:13 [INFO] -> Conexión establecida.
+2023-05-22 11:56:13 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:56:13 [INFO] -> Conexión establecida.
+2023-05-22 11:56:13 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 11:56:17 [INFO] -> Tanques pium pium
+2023-05-22 11:56:17 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 11:56:17 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:56:17 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 11:56:18 [INFO] -> Conexión establecida.
+2023-05-22 11:56:18 [INFO] -> Conexión establecida.
+2023-05-22 11:56:18 [INFO] -> Se ha añadido el usuario sadasad
+2023-05-22 11:56:34 [INFO] -> Conexión establecida.
+2023-05-22 11:56:34 [INFO] -> Conexión establecida.
+2023-05-22 11:56:34 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 11:56:34 [INFO] -> Conexión establecida.
+2023-05-22 11:56:34 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:00:43 [INFO] -> Tanques pium pium
+2023-05-22 12:00:43 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:00:43 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:00:43 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:28 [INFO] -> Tanques pium pium
+2023-05-22 12:01:28 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:01:28 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:28 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:29 [INFO] -> Conexión establecida.
+2023-05-22 12:01:31 [INFO] -> Conexión establecida.
+2023-05-22 12:01:31 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:01:36 [INFO] -> Tanques pium pium
+2023-05-22 12:01:36 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:01:36 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:36 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:37 [INFO] -> Conexión establecida.
+2023-05-22 12:01:40 [INFO] -> Conexión establecida.
+2023-05-22 12:01:40 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:01:45 [INFO] -> Tanques pium pium
+2023-05-22 12:01:45 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:01:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:45 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:01:47 [INFO] -> Conexión establecida.
+2023-05-22 12:02:00 [INFO] -> Conexión establecida.
+2023-05-22 12:02:00 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:02:04 [INFO] -> Tanques pium pium
+2023-05-22 12:02:04 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:02:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:04 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:07 [INFO] -> Conexión establecida.
+2023-05-22 12:02:07 [INFO] -> Conexión establecida.
+2023-05-22 12:02:07 [INFO] -> Se ha añadido el usuario asdasd
+2023-05-22 12:02:10 [INFO] -> Conexión establecida.
+2023-05-22 12:02:10 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:02:15 [INFO] -> Tanques pium pium
+2023-05-22 12:02:15 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:02:15 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:15 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:17 [INFO] -> Conexión establecida.
+2023-05-22 12:02:24 [INFO] -> Conexión establecida.
+2023-05-22 12:02:24 [INFO] -> Conexión establecida.
+2023-05-22 12:02:24 [INFO] -> Partida guardada borrada exitosamente
+2023-05-22 12:02:24 [INFO] -> Conexión establecida.
+2023-05-22 12:02:24 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:02:26 [INFO] -> Conexión establecida.
+2023-05-22 12:02:26 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:02:38 [INFO] -> Tanques pium pium
+2023-05-22 12:02:38 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:02:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:38 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:02:40 [INFO] -> Conexión establecida.
+2023-05-22 12:02:49 [INFO] -> Conexión establecida.
+2023-05-22 12:02:49 [INFO] -> Se ha guardado el registro correctamente.
+2023-05-22 12:14:54 [INFO] -> Tanques pium pium
+2023-05-22 12:14:54 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:14:54 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:14:54 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:14:57 [INFO] -> Conexión establecida.
+2023-05-22 12:14:58 [INFO] -> Conexión establecida.
+2023-05-22 12:17:47 [INFO] -> Tanques pium pium
+2023-05-22 12:17:47 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:17:47 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:17:47 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:17:49 [INFO] -> Conexión establecida.
+2023-05-22 12:18:14 [INFO] -> Tanques pium pium
+2023-05-22 12:18:14 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:18:14 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:18:14 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:18:16 [INFO] -> Conexión establecida.
+2023-05-22 12:18:42 [INFO] -> Tanques pium pium
+2023-05-22 12:18:42 [DEBUG] -> No se ha creado la base de datos porque ya existe.
+2023-05-22 12:18:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:18:42 [DEBUG] -> Ancho de pantalla: 1680.0
+2023-05-22 12:18:43 [INFO] -> Conexión establecida.
+2023-05-22 12:18:43 [INFO] -> Conexión establecida.
+2023-05-22 12:18:43 [INFO] -> Se ha añadido el usuario asds
