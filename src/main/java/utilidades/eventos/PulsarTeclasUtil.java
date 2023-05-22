@@ -16,7 +16,7 @@ public class PulsarTeclasUtil {
 
     public static void configurarVolverMenuPrincipal(Scene scene, Stage stage) {
         scene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE) {
                 MenuPrincipal mp = new MenuPrincipal(stage);
                 mp.mostrar();
             }

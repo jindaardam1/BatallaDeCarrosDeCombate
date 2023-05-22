@@ -16,10 +16,20 @@ import utilidades.pantalla.PantallaUtil;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * La clase MenuTopScores representa un menú que muestra los puntajes más altos en el juego.
+ * Permite al usuario ver los 10 mejores puntajes y regresar al menú principal.
+ */
 public class MenuTopScores {
 
     private Stage escenarioPrincipal;
     private Scene scene;
+
+    /**
+     * Crea una nueva instancia de MenuTopScores.
+     *
+     * @param escenarioPrincipal El escenario principal en el que se mostrará el menú.
+     */
     public MenuTopScores(Stage escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
 
@@ -77,6 +87,10 @@ public class MenuTopScores {
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
     }
 
+    /**
+     * Muestra el menú de puntajes más altos en el escenario principal.
+     * Configura el título de la ventana y la opción de volver al menú principal con la tecla Enter.
+     */
     public void mostrar() {
         // Asignar la escena al Stage principal
         escenarioPrincipal.setScene(scene);

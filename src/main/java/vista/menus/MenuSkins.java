@@ -16,11 +16,21 @@ import utilidades.pantalla.PantallaUtil;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
+/**
+ * La clase MenuSkins representa un menú que muestra las skins disponibles para el juego.
+ * Permite al usuario seleccionar una skin y regresar al menú principal.
+ */
 public class MenuSkins {
 
     private Stage escenarioPrincipal;
     private Scene scene;
 
+    /**
+     * Constructor de la clase MenuSkins.
+     *
+     * @param escenarioPrincipal El escenario principal de la aplicación.
+     */
     public MenuSkins(Stage escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
         VBox root = new VBox();
@@ -71,6 +81,9 @@ public class MenuSkins {
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
     }
 
+    /**
+     * Muestra el menú de selección de skins en el escenario principal.
+     */
     public void mostrar() {
         // Asignar la escena al Stage principal
         escenarioPrincipal.setScene(scene);

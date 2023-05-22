@@ -1,0 +1,6 @@
+#label-atras {
+    -fx-text-fill: red;
+    -fx-padding: 0 0 0 70px;
+    -fx-font-size: 25px;
+    -fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);
+}

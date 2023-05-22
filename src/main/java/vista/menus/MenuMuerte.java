@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -22,23 +24,33 @@ public class MenuMuerte {
 
         VBox root = new VBox();
         root.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloPrincipal.css")).toExternalForm());
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloMuerte.css")).toExternalForm());
         root.setId("vbox-menu-muerte");
 
         Label gameoverLabel = new Label("GAME OVER");
         gameoverLabel.setTextFill(Color.RED);
         gameoverLabel.getStyleClass().add("gameover-label");
 
-        Button volverBtn = new Button("Volver al Menú Principal");
-        volverBtn.getStyleClass().add("volver-btn");
-        volverBtn.setOnAction(actionEvent -> {
+        AnchorPane anchorPane = new AnchorPane();
 
-            MenuPrincipal menuPrincipal = new MenuPrincipal(escenarioPrincipal);
-            menuPrincipal.mostrar();
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/imagenes/VentanaPrincipal/atras.png"))));
+
+        imageView.setFitWidth(60);
+        imageView.setFitHeight(60);
+
+        Label labelAtras = new Label("MENÚ PRINCIPAL");
+        labelAtras.setId("label-atras");
+
+        anchorPane.getChildren().addAll(imageView, labelAtras);
+
+        anchorPane.setOnMouseClicked(event -> {
+            MenuPrincipal mp = new MenuPrincipal(escenarioPrincipal);
+            mp.mostrar();
         });
 
-        root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(gameoverLabel, volverBtn);
+        root.getChildren().add(anchorPane);
+
+        VBox.setMargin(anchorPane, new Insets(10));
 
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
     }
@@ -51,7 +63,7 @@ public class MenuMuerte {
         escenarioPrincipal.setTitle("Game Over");
 
         // Configurar el evento de pulsación de tecla para cerrar con "Escape"
-        PulsarTeclasUtil.configurarCerrarConEscape(scene, escenarioPrincipal);
+        PulsarTeclasUtil.configurarVolverMenuPrincipal(scene, escenarioPrincipal);
 
         // Mostrar la ventana
         escenarioPrincipal.show();

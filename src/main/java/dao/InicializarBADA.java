@@ -33,7 +33,7 @@ public class InicializarBADA {
      * @return true si la base de datos existe, false en caso contrario.
      */
     private static boolean existeBADA() {
-        File archivoBD = new File("tanquesbd.db");
+        File archivoBD = new File("db/tanquesbd.db");
         return archivoBD.exists();
     }
 
