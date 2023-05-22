@@ -1,11 +1,7 @@
 package controlador.input;
 
 import javafx.event.EventHandler;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import modelo.Bala;
-import modelo.Jugador;
 import vista.juego.CampoDeBatalla;
 
 
@@ -23,6 +19,12 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
 
     }
 
+    /**
+     * Maneja el evento del ratón.
+     * Registra las coordenadas del ratón y el tipo de clic realizado.
+     *
+     * @param event El evento del ratón.
+     */
     @Override
     public void handle(MouseEvent event) {
 
@@ -52,15 +54,18 @@ public class MouseInputManager implements EventHandler<MouseEvent> {
         }
     }
 
-
-
-
-
-
+    /**
+     * Retorna la posición X actual del mouse.
+     * @return La posición X del mouse.
+     */
     public static double getMouseX() {
         return mouseX;
     }
 
+    /**
+     * Retorna la posición Y actual del mouse.
+     * @return La posición Y del mouse.
+     */
     public static double getMouseY() {
         return mouseY;
     }

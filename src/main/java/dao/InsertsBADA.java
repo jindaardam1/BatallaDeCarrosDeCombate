@@ -1,12 +1,19 @@
 package dao;
 
 import dao.records.Score;
+import utilidades.log.Logs;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InsertsBADA {
+
+    /**
+     *
+     *
+     * @param nickname el nombre del jugador que se va a insertar
+     */
     public static void insertarJugador(String nickname) {
         try (Connection conexion = ConexionBADA.conectar()) {
             String sql = "INSERT INTO jugador(nickname) VALUES(?)";
@@ -14,16 +21,23 @@ public class InsertsBADA {
                 pstmt.setString(1, nickname);
                 pstmt.executeUpdate();
                 System.out.println("Datos insertados correctamente.");
+                Logs.infoLogManager("Se ha añadido el usuario " + nickname);
             } catch (SQLException e) {
                 System.out.println("Error al insertarJugador datos en la tabla 'jugador'.");
-                e.printStackTrace();
+                Logs.errorLogManager(e);
             }
         } catch (SQLException e) {
             System.out.println("Error al conectarse a la base de datos.");
-            e.printStackTrace();
+            Logs.errorLogManager(e);
         }
     }
 
+    /**
+     * Inserta un registro en la tabla especificada con los datos del objeto Score proporcionado.
+     *
+     * @param tabla La tabla en la que se desea insertar el registro.
+     * @param score El objeto Score que contiene los datos del registro a insertar.
+     */
     public static void insertarRegistro(String tabla, Score score) {
         try (Connection conn = ConexionBADA.conectar()) {
             conn.setAutoCommit(false);
@@ -50,13 +64,15 @@ public class InsertsBADA {
 
                 conn.commit();
                 System.out.println("Registro guardado correctamente.");
+                Logs.infoLogManager("Se ha guardado el registro correctamente.");
             } catch (SQLException e) {
                 conn.rollback();
                 System.out.println("Error al hacer el insert.");
-                e.printStackTrace();
+                Logs.errorLogManager(e);
             }
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos.");
+            Logs.errorLogManager(e);
         }
     }
 }

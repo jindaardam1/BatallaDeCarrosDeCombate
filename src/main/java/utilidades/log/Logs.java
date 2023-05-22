@@ -13,27 +13,60 @@ import java.util.Arrays;
  * Clase encargada de general los logs del programa.
  */
 public class Logs {
+    /**
+     * Registra un error en el registro de errores.
+     *
+     * @param e La excepción que se registrará en el log.
+     */
     public static void errorLogManager(Exception e) {
         addLog(crearStringLog("ERROR", Arrays.toString(e.getStackTrace())));
     }
 
+    /**
+     * Registra un error personalizado en el registro de errores.
+     *
+     * @param errorPersonalizado El mensaje de error personalizado a registrar en el log.
+     */
     public static void errorLogManager(String errorPersonalizado) {
         addLog(crearStringLog("ERROR", errorPersonalizado));
     }
 
+    /**
+     * Registra un mensaje de depuración en el registro de eventos.
+     *
+     * @param mensaje El mensaje de depuración a registrar en el log.
+     */
     public static void debugLogManager(String mensaje) {
         addLog(crearStringLog("DEBUG", mensaje));
     }
 
+    /**
+     * Registra un mensaje de información en el registro de eventos.
+     *
+     * @param mensaje El mensaje de información a registrar en el log.
+     */
     public static void infoLogManager(String mensaje) {
         addLog(crearStringLog("INFO", mensaje));
     }
 
-    public static String crearStringLog(String tipoLog, String mensajeLog) {
+
+    /**
+     * Crea una cadena de registro formateada.
+     *
+     * @param tipoLog El tipo de registro (por ejemplo, "INFO", "ERROR", "DEBUG").
+     * @param mensajeLog El mensaje de registro.
+     * @return La cadena de registro formateada.
+     */
+    private static String crearStringLog(String tipoLog, String mensajeLog) {
         String logFormat = "%s [%s] -> %s";
         return String.format(logFormat, getFechaHoraActual(), tipoLog, mensajeLog);
     }
 
+    /**
+     * Agrega un registro de log al archivo de registro del mes actual.
+     *
+     * @param nuevoLog El registro de log a agregar.
+     */
     private static void addLog(String nuevoLog) {
         File archivoLog = cargarLogMesActual();
 
@@ -46,6 +79,10 @@ public class Logs {
         }
     }
 
+    /**
+     * Carga el archivo de registro correspondiente al mes actual.
+     * @return El archivo de registro del mes actual.
+     */
     private static File cargarLogMesActual() {
         File carpetaLogs = cargarCarpetaLogs();
         LocalDate fechaActual = LocalDate.now();
@@ -65,6 +102,10 @@ public class Logs {
         return archivoLog;
     }
 
+    /**
+     * Carga la carpeta de registros (logs).
+     * @return Objeto File que representa la carpeta de registros.
+     */
     private static File cargarCarpetaLogs() {
         File carpetaLogs = new File("logs");
 

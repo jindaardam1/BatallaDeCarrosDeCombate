@@ -11,6 +11,10 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
     public static boolean escape = false;
 
 
+    /**
+     * Maneja los eventos de teclado para controlar el movimiento.
+     * @param evento El evento de teclado recibido.
+     */
     @Override
     public void handle(KeyEvent evento) {
         if (evento.getEventType() == KeyEvent.KEY_PRESSED) {
@@ -37,18 +41,38 @@ public class KeyInputManager implements EventHandler<KeyEvent> {
 
 
 
+    /**
+     * Devuelve el estado de la dirección "arriba".
+     *
+     * @return true si la dirección "arriba" está activada, false en caso contrario.
+     */
     public static boolean isArriba() {
         return arriba;
     }
 
+    /**
+     * Devuelve el estado de la dirección "abajo".
+     *
+     * @return true si la dirección "abajo" está activada, false en caso contrario.
+     */
     public static boolean isAbajo() {
         return abajo;
     }
 
+    /**
+     * Devuelve el estado de la dirección "izquierda".
+     *
+     * @return true si la dirección "izquierda" está activada, false en caso contrario.
+     */
     public static boolean isIzquierda() {
         return izquierda;
     }
 
+    /**
+     * Devuelve el estado de la dirección "derecha".
+     *
+     * @return true si la dirección "derecha" está activada, false en caso contrario.
+     */
     public static boolean isDerecha() {
         return derecha;
     }

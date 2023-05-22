@@ -54,6 +54,10 @@ public class PantallaUtil {
         return (int) (dimensiones.getHeight() - dimensiones.getMinY());
     }
 
+    /**
+     * Obtiene las coordenadas del centro de la pantalla.
+     * @return Un objeto Point2D que representa las coordenadas X e Y del centro de la pantalla.
+     */
     public static Point2D obtenerCentroPantalla() {
         Screen screen = Screen.getPrimary();
         Rectangle2D bounds = screen.getBounds();

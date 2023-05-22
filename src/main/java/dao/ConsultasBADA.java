@@ -5,12 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import modelo.mapa.SerializadorMapa;
 import dao.records.Score;
 import dao.records.Skin;
+import utilidades.log.Logs;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConsultasBADA {
+
+    /**
+     * Obtiene una lista de jugadores.
+     *
+     * @return La lista de jugadores.
+     */
     public static List<String> obtenerJugadores() {
         List<String> jugadores = new ArrayList<>();
 
@@ -24,24 +31,39 @@ public class ConsultasBADA {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logs.errorLogManager(e);
         }
 
         return jugadores;
     }
 
 
+    /**
+     * Obtiene todos los registros de puntuación almacenados.
+     * @return una lista de objetos Score que representan los registros de puntuación
+     */
     public static List<Score> obtenerScores() {
         String query = "SELECT * FROM score";
         return obtenerRegistros(query);
     }
 
+    /**
+     * Obtiene la información de la primera partida almacenada.
+     * @return un objeto Score que representa la partida obtenida, o null si no hay partidas almacenadas
+     */
     public static Score obtenerPartida() {
         String query = "SELECT * FROM partida LIMIT 1";
         List<Score> registros = obtenerRegistros(query);
         return registros.isEmpty() ? null : registros.get(0);
     }
 
+    /**
+     * Obtiene los registros de puntuación según una consulta dada.
+     *
+     * @param query la consulta SQL utilizada para obtener los registros de puntuación
+     *
+     * @return una lista de objetos Score que representan los registros de puntuación obtenidos
+     */
     private static List<Score> obtenerRegistros(String query) {
         List<Score> registros = new ArrayList<>();
 
@@ -70,13 +92,17 @@ public class ConsultasBADA {
             }
         } catch (SQLException e) {
             System.out.println("Error al cargar los registros.");
-            e.printStackTrace();
+            Logs.errorLogManager(e);
         }
 
         return registros;
     }
 
-
+    /**
+     * Obtiene la serialización de un mapa en base a su índice.
+     * @param index el índice del mapa que se desea obtener
+     * @return la serialización del mapa en formato de cadena de texto, o null si no se encontró el mapa
+     */
     public static String obtenerMapa(int index) {
         String mapa = null;
         String query = "SELECT serializacion FROM mapa WHERE id = ?";
@@ -90,10 +116,18 @@ public class ConsultasBADA {
             rs.close();
         } catch (SQLException e) {
             System.err.println("Error al obtener el mapa: " + e.getMessage());
+            Logs.errorLogManager(e);
         }
         return mapa;
     }
 
+    /**
+     * Método para deserializar un objeto SerializadorMapa a partir de una cadena JSON.
+     * Utiliza la librería Jackson para llevar a cabo la deserialización.
+     *
+     * @param jsonString La cadena JSON que contiene los datos a deserializar.
+     * @return Un objeto SerializadorMapa deserializado a partir del JSON.
+     */
     public static SerializadorMapa deserializador(String jsonString) {
         // Crear un objeto ObjectMapper de Jackson
         ObjectMapper objectMapper = new ObjectMapper();
@@ -104,11 +138,17 @@ public class ConsultasBADA {
             mapa = objectMapper.readValue(jsonString, SerializadorMapa.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+            Logs.errorLogManager(e);
         }
 
         return mapa;
     }
 
+    /**
+     * Obtiene todas las skins disponibles en la base de datos.
+     *
+     * @return ArrayList de objetos Skin que representa todas las skins disponibles.
+     */
     public static ArrayList<Skin> obtenerSkins() {
         ArrayList<Skin> skins = new ArrayList<>();
         String query = "SELECT * FROM skins";
@@ -128,6 +168,7 @@ public class ConsultasBADA {
 
         } catch (SQLException e) {
             System.err.println("Error al obtener las skins: " + e.getMessage());
+            Logs.errorLogManager(e);
         }
         return skins;
     }
