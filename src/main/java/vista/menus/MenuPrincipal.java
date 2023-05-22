@@ -1,24 +1,16 @@
 package vista.menus;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import servicio.ServicioPartida;
-import servicio.ServicioScore;
 import servicio.ServicioSkins;
-import utilidades.eventos.RandomizadorFondo;
 import utilidades.eventos.PulsarTeclasUtil;
+import utilidades.eventos.RandomizadorFondo;
 import utilidades.pantalla.PantallaUtil;
 import vista.juego.CampoDeBatalla;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 import java.util.Objects;
 
