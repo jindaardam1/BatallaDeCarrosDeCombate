@@ -69,8 +69,8 @@ public class MenuPrincipal {
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
 
         boton1.setOnAction(actionEvent -> {
-            MenuMuerte mm = new MenuMuerte(escenarioPrincipal);
-            mm.mostrar();
+            MenuComingSoon mcs = new MenuComingSoon(escenarioPrincipal);
+            mcs.mostrar();
            // mediaPlayer.stop();
         });
         boton2.setOnAction(actionEvent -> {

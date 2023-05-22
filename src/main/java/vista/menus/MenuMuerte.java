@@ -3,7 +3,6 @@ package vista.menus;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,13 +22,15 @@ public class MenuMuerte {
         this.escenarioPrincipal = escenarioPrincipal;
 
         VBox root = new VBox();
+        root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/estiloMuerte.css")).toExternalForm());
         root.setId("vbox-menu-muerte");
 
-        Label gameoverLabel = new Label("GAME OVER");
-        gameoverLabel.setTextFill(Color.RED);
-        gameoverLabel.getStyleClass().add("gameover-label");
+        Label label = new Label("GAME OVER");
+        label.setId("label-game-over");
+
+        root.getChildren().add(label);
 
         AnchorPane anchorPane = new AnchorPane();
 
@@ -50,7 +51,8 @@ public class MenuMuerte {
 
         root.getChildren().add(anchorPane);
 
-        VBox.setMargin(anchorPane, new Insets(10));
+        AnchorPane.setLeftAnchor(anchorPane, 0.0);
+        AnchorPane.setBottomAnchor(anchorPane, 0.0);
 
         scene = new Scene(root, PantallaUtil.WIDTH_VENTANA, PantallaUtil.HEIGHT_VENTANA);
     }

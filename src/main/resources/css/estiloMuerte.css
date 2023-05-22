@@ -4,3 +4,10 @@
     -fx-font-size: 25px;
     -fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);
 }
+
+#label-game-over {
+    -fx-text-fill: red;
+    -fx-font-size: 60px;
+    -fx-effect: dropshadow(gaussian, black, 1, 1, 0, 0);
+    -fx-padding: 10px;
+}
